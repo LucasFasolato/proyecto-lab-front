@@ -1,0 +1,30 @@
+.content-form {
+  width: 30%;
+  justify-content: center;
+  margin: auto;
+  margin-top: 15vh;
+}
+
+.display-form {
+  text-align: left;
+  font-size: 18px;
+}
+.display-button {
+  display: flex;
+  width: 100%;
+}
+.display-button-sig {
+  justify-content: right;
+  text-align: right;
+  width: 50%;
+}
+
+.display-button-register {
+  justify-content: left;
+  text-align: left;
+  width: 50%;
+}
+
+button {
+  width: 95%;
+}
