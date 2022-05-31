@@ -2,12 +2,12 @@ import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 import './login.css'
 import {useNavigate } from "react-router-dom";
-import NavbarApp from '../NavbarApp/navbarApp';
+import Navbarr from '../../components/Navbar/navbar';
 function Login() {
     const navigate = useNavigate();
   return (
       <div>
-        <NavbarApp/>
+        <Navbarr/>
         <div className='content-form'>
             <h1>INICIAR SESIÓN</h1>
             <div className='display-form'>

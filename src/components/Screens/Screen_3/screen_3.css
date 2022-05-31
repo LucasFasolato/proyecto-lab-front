@@ -1,0 +1,62 @@
+.s3_size {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #3b6ce1;
+}
+
+.s3_titles {
+  width: 650px;
+  height: auto;
+  margin: 0 auto;
+  padding: 80px 0;
+}
+
+.s3_h2 {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: medium;
+  font-size: 32px;
+  color: #000000;
+  line-height: 16px;
+}
+
+.s3_h1 {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 56px;
+  color: #000000;
+  line-height: 36px;
+}
+
+.s3_boxcontent {
+  width: 80%;
+  margin: 0 auto 48px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .s3_box_sp {
+}
+
+.s3_pagination {
+} */
+
+.s3_circle {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  bottom: -5px;
+}
+
+.s3_img {
+  width: 330px;
+  height: 330px;
+  margin: 0;
+  padding: 0;
+}
+

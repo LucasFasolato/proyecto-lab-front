@@ -3,8 +3,8 @@ import {Form, Button} from 'react-bootstrap';
 import './../Login/login.css'
 import {useNavigate } from "react-router-dom";
 import { useRef, useState } from 'react';
-import NavbarApp from '../NavbarApp/navbarApp';
-import {httpPost} from "./../../utils/httpFunctions";
+import Navbarr from '../../components/Navbar/navbar';
+import {httpPost} from "../../utils/httpFunctions";
 
 
 function Register() {
@@ -31,7 +31,7 @@ function Register() {
 
   return (
       <div>
-        <NavbarApp/>
+        <Navbarr/>
         <div className='content-form'>
             <h1>REGISTRARSE</h1>
             <div className='display-form'>
