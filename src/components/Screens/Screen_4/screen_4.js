@@ -36,14 +36,12 @@ function Screen_4() {
                 <Cartel_garantia/>
               </article>
             </section>
-            
           </section>
         </section>
         <section className='s4_c'>
             <div className='s4_img-container'>
                <img className='s4_img' src={QuienesSomos}/> 
             </div>
-            
         </section>
     </div>
   )

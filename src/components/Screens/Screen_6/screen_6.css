@@ -1,0 +1,87 @@
+.s6_size {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #ffffff;
+}
+.s6_c {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  width: 80%;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+.s6_titles {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.s6_h1 {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 64px;
+  color: #222222;
+  line-height: 64px;
+}
+
+.s6_h2 {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #3b6ce1;
+  line-height: 16px;
+}
+
+.s6_content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-image: url(./../../Planisferio_fondo.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.s6_comment_1 {
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 2%;
+  left: 10%;
+  margin: 0;
+  padding: 0;
+}
+
+.s6_comment_2 {
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  margin: 0;
+}
+
+.s6_comment_3 {
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 32%;
+  left: 12%;
+  margin: 0;
+}
+
+.s6_comment_4 {
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 42%;
+  left: 52%;
+  margin: 0;
+}
