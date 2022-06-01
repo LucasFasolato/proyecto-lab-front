@@ -34,7 +34,7 @@ function Login() {
                             </Button>                      
                         </div>
                         <div className='display-button-sig'>
-                            <Button variant="primary" type="submit" onClick={() => navigate("/main")}>
+                            <Button variant="primary" type="submit" onClick={() => navigate("/home")}>
                             Siguiente
                             </Button> 
                         </div>

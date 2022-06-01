@@ -12,7 +12,7 @@ function Screen_5() {
         <section className='s5_content'>
             <section className='s5_c1'>
                 <div className='s5_img-container'>
-                <img className='s5_img' src={Inversion}/> 
+                    <img className='s5_img' src={Inversion}/> 
                 </div>
             </section>
             <section className='s5_c2'>

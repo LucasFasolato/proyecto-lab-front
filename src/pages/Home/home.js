@@ -3,6 +3,7 @@ import Banner_data from '../../components/Banner_Data/banner_data'
 import Footer from '../../components/Footer/footer'
 import Navbarr from '../../components/Navbar/navbar'
 import Screen1 from '../../components/Screens/Screen_1/screen_1'
+import Screen_2 from '../../components/Screens/Screen_2/screen_2'
 import Screen_3 from '../../components/Screens/Screen_3/screen_3'
 import Screen_4 from '../../components/Screens/Screen_4/screen_4'
 import Screen_5 from '../../components/Screens/Screen_5/screen_5'
@@ -13,6 +14,7 @@ function Menu() {
     <div className='display-content-menu'>
         <Navbarr/>
         <Screen1/>
+        <Screen_2/>
         <Screen_3/>
         <Screen_4/>
         <Screen_5/>
