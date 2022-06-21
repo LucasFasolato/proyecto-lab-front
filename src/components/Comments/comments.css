@@ -9,6 +9,17 @@
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+.comment_box-size:hover {
+  transition-property: all;
+  transition-delay: 0ms;
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(8px);
+  box-shadow: 0 20px 40px #4d4d4d;
+  cursor: pointer;
+}
+
+
 .comment_sp {
   width: 100%;
   height: auto;

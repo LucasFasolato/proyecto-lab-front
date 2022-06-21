@@ -47,6 +47,7 @@
   background-image: url(./../../Planisferio_fondo.svg);
   background-repeat: no-repeat;
   background-size: contain;
+  overflow: hidden;
 }
 
 .s6_comment_1 {

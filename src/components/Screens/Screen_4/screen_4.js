@@ -1,9 +1,41 @@
 import React from 'react'
 import './screen_4.css'
 import QuienesSomos from './../../Quienes_somos.jpg'
+import QuienesSomos1 from './../../Quienes_somos1.svg'
+import QuienesSomos2 from './../../Quienes_somos2.svg'
+import Circles from './../../Circles.svg'
 import Cartel_garantia from '../../Cartel_Garantia/cartel_garantia'
+import { motion } from "framer-motion"
 
 function Screen_4() {
+  const variantImage1= {
+    offscreen: {
+        scale: 0,
+        opacity: 0
+    },
+    onscreen: {
+        opacity: 1,
+        scale: [0.5, 1],
+        transition: {
+        duration: 0.7,
+        delay: 0.3
+        }
+    }
+};
+const variantImage2= {
+  offscreen: {
+      scale: 0,
+      opacity: 0
+  },
+  onscreen: {
+      opacity: 1,
+      scale: [0.5, 1],
+      transition: {
+      duration: 0.7,
+      delay: 1
+      }
+  }
+};
   return (
     <div className='s4_size'>
         <section className='s4_c'>
@@ -40,7 +72,9 @@ function Screen_4() {
         </section>
         <section className='s4_c'>
             <div className='s4_img-container'>
-               <img className='s4_img' src={QuienesSomos}/> 
+               <motion.img className='s4_img1' src={QuienesSomos1} drag dragConstraints={{top: 0,left: 0,right: 0,bottom: 0,}} dragElastic={0.2} variants={variantImage1} initial="offscreen" animate="onscreen"/> 
+               <motion.img className='s4_img2' src={QuienesSomos2} drag dragConstraints={{top: 0,left: 0,right: 0,bottom: 0,}} dragElastic={0.2} variants={variantImage2} initial="offscreen" animate="onscreen"/>
+               <motion.img className='s4_img3' src={Circles} drag dragConstraints={{top: 0,left: 0,right: 0,bottom: 0,}} dragElastic={0.2} variants={variantImage1} initial="offscreen" animate="onscreen"/>  
             </div>
         </section>
     </div>

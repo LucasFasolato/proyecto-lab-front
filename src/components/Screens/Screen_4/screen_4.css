@@ -45,16 +45,34 @@
 
 .s4_img-container {
   display: flex;
+  position: relative;
   width: 100%;
   height: 100%;
   background-color: none;
   align-items: center;
 }
 
-.s4_img {
+.s4_img1 {
   margin: 20% 0 auto auto;
+  position: absolute;
+  top: 0%;
+  left: 10%;
+  z-index: 2;
 }
-
+.s4_img2 {
+  margin: 20% 0 auto auto;
+  position: absolute;
+  top: 32%;
+  left: 38%;
+  z-index: 3;
+}
+.s4_img3 {
+  margin: 20% 0 auto auto;
+  position: absolute;
+  top: 42%;
+  left: 16%;
+  z-index: 1;
+}
 .s4_content {
   width: 100%;
 }
@@ -88,6 +106,16 @@
   background-color: #3b6ce1;
 }
 
+.s4_button:hover {
+  transition-property: all;
+  transition-delay: 0ms;
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(4px);
+  box-shadow: 0 8px 12px #4d4d4d;
+  cursor: pointer;
+}
+
 .s4_container-garantia {
   display: flex;
   flex-wrap: wrap;
@@ -99,5 +127,17 @@
 
 .s4_garantia {
   width: 45%;
+  height: 128px;
   margin: 16px;
+  border-radius: 24px;
+}
+
+.s4_garantia:hover {
+  transition-property: all;
+  transition-delay: 0ms;
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(8px);
+  box-shadow: 0 20px 40px #4d4d4d;
+  cursor: pointer;
 }

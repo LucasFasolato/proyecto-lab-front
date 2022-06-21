@@ -8,10 +8,11 @@
 }
 
 .s3_titles {
-  width: 650px;
-  height: auto;
+  width: 55%;
+  height: 27vh;
   margin: 0 auto;
   padding: 80px 0;
+  overflow: hidden;
 }
 
 .s3_h2 {
@@ -34,16 +35,19 @@
 
 .s3_boxcontent {
   width: 80%;
-  margin: 0 auto 48px auto;
+  height: 38%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
 }
 
-/* .s3_box_sp {
+.s3_box_sp {
+  width: auto;
+  height: 82%;
+  border-radius: 48px;
+  margin: 0;
+  padding: 0;
 }
-
-.s3_pagination {
-} */
 
 .s3_circle {
   position: absolute;
@@ -59,4 +63,3 @@
   margin: 0;
   padding: 0;
 }
-

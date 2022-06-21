@@ -1,6 +1,5 @@
 import React from 'react'
 import Banner_data from '../../components/Banner_Data/banner_data'
-import Footer from '../../components/Footer/footer'
 import Navbarr from '../../components/Navbar/navbar'
 import Screen1 from '../../components/Screens/Screen_1/screen_1'
 import Screen_2 from '../../components/Screens/Screen_2/screen_2'
@@ -9,10 +8,24 @@ import Screen_4 from '../../components/Screens/Screen_4/screen_4'
 import Screen_5 from '../../components/Screens/Screen_5/screen_5'
 import Screen_6 from '../../components/Screens/Screen_6/screen_6'
 import Screen_7 from '../../components/Screens/Screen_7/screen_7'
+import { motion } from "framer-motion"
 function Menu() {
+  const variantNavbar = {
+    hidden: { y: '-40px' },
+    visible: { 
+      y: '0px',
+      transition: { duration: 1, ease:'easeInOut' }
+    }
+  }
   return (
     <div className='display-content-menu'>
+      <motion.div
+        variants={variantNavbar}
+        initial="hidden"
+        animate="visible"
+      >
         <Navbarr/>
+      </motion.div>
         <Screen1/>
         <Screen_2/>
         <Screen_3/>
