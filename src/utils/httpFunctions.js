@@ -25,7 +25,6 @@ export const logout = () => {
     login("logout","logout");
     localStorage.clear();
 
-
 }
 
 export const httpPost = async (endpoint, data) => {

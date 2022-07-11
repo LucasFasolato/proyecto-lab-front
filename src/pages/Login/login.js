@@ -4,6 +4,7 @@ import './login.css'
 import {Navigate, useLocation, useNavigate} from "react-router-dom";
 import Navbarr from '../../components/Navbar/navbar';
 import {httpGet, httpPost, login} from "../../utils/httpFunctions";
+import {isLogedIn} from "../../utils/helpers";
 
 function Login() {
     const redirect = useLocation().state;
@@ -11,10 +12,6 @@ function Login() {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState(false);
     const navigate = useNavigate();
-
-    const isLogIn = () => {
-        return localStorage.getItem('user');
-    }
 
     const handleEmail = (e) => {
         setUsername(e.target.value);
@@ -38,7 +35,7 @@ function Login() {
     return (
         <div>
             <Navbarr/>
-            {isLogIn() && <Navigate to={"/dashboard"}/>}
+            {isLogedIn() && <Navigate to={"/dashboard"}/>}
             <div className='content-form'>
                 <h1>INICIAR SESIÓN</h1>
                 <div className='display-form'>

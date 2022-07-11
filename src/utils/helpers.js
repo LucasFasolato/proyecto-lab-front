@@ -15,3 +15,7 @@ export const makeDateTime = (day, time) => {
     //let dt2 = new Date(dt).toISOString();
     return dt;
 }
+
+export const isLogedIn = () => {
+    return localStorage.getItem('user');
+}
