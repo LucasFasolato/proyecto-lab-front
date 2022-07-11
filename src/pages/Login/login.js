@@ -1,52 +1,83 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import './login.css'
-import {useNavigate } from "react-router-dom";
+import {Navigate, useLocation, useNavigate} from "react-router-dom";
 import Navbarr from '../../components/Navbar/navbar';
+import {httpGet, httpPost, login} from "../../utils/httpFunctions";
+
 function Login() {
+    const redirect = useLocation().state;
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState(false);
     const navigate = useNavigate();
-  return (
-      <div>
-        <Navbarr/>
-        <div className='content-form'>
-            <h1>INICIAR SESIÓN</h1>
-            <div className='display-form'>
-                <Form>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Correo electrónico</Form.Label>
-                    <Form.Control type="email" placeholder="Ingrese su correo" />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
-                    </Form.Group>
-                
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Contraseña</Form.Label>
-                    <Form.Control type="password" placeholder="Ingrese su contraseña" />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Recordarme" />
-                    </Form.Group>
-                    <div className='display-button'>
-                        <div className='display-button-register'>      
-                            <Button variant="secondary" type="button" onClick={() => navigate("/register")}>
-                            Registrarse
-                            </Button>                      
+
+    const isLogIn = () => {
+        return localStorage.getItem('user');
+    }
+
+    const handleEmail = (e) => {
+        setUsername(e.target.value);
+    }
+    const handlePassword = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        login(username, password)
+            .then(res => {
+                setErrors(false)
+                navigate(redirect.from.pathname)
+            })
+            .catch(err => {
+                setErrors(true);
+            })
+    }
+
+    return (
+        <div>
+            <Navbarr/>
+            {isLogIn() && <Navigate to={"/dashboard"}/>}
+            <div className='content-form'>
+                <h1>INICIAR SESIÓN</h1>
+                <div className='display-form'>
+                    <Form onSubmit={handleLogin}>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Correo electrónico</Form.Label>
+                            <Form.Control onChange={handleEmail} value={username} type="email"
+                                          placeholder="Ingrese su correo"/>
+                            <Form.Text className="text-muted">
+                                No compartiremos tu email con nadie.
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Contraseña</Form.Label>
+                            <Form.Control onChange={handlePassword} value={password} type="password"
+                                          placeholder="Ingrese su contraseña"/>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                            <Form.Check type="checkbox" label="Recordarme"/>
+                        </Form.Group>
+                        <div className='display-button'>
+                            <div className='display-button-register'>
+                                <Button variant="secondary" type="button" onClick={() => navigate("/register")}>
+                                    Registrarse
+                                </Button>
+                            </div>
+                            <div className='display-button-sig'>
+                                <Button variant="primary" type="submit">
+                                    Ingresar
+                                </Button>
+                            </div>
+                            {errors && "credenciales invalidas"}
                         </div>
-                        <div className='display-button-sig'>
-                            <Button variant="primary" type="submit" onClick={() => navigate("/home")}>
-                            Siguiente
-                            </Button> 
-                        </div>
-                        
-                    </div>
-                    
-                </Form>
+                    </Form>
+                </div>
             </div>
         </div>
-      </div>
-   
-  )
+
+    )
 }
 
 export default Login
