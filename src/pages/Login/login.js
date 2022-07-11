@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import './login.css'
 import {Navigate, useLocation, useNavigate} from "react-router-dom";
-import Navbarr from '../../components/Navbar/navbar';
 import {httpGet, httpPost, login} from "../../utils/httpFunctions";
 import {isLogedIn} from "../../utils/helpers";
 
@@ -34,7 +33,6 @@ function Login() {
 
     return (
         <div>
-            <Navbarr/>
             {isLogedIn() && <Navigate to={"/dashboard"}/>}
             <div className='content-form'>
                 <h1>INICIAR SESIÓN</h1>

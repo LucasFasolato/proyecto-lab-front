@@ -1,6 +1,5 @@
 import React from 'react'
 import Banner_data from '../../components/Banner_Data/banner_data'
-import Navbarr from '../../components/Navbar/navbar'
 import Screen1 from '../../components/Screens/Screen_1/screen_1'
 import Screen_2 from '../../components/Screens/Screen_2/screen_2'
 import Screen_3 from '../../components/Screens/Screen_3/screen_3'
@@ -24,7 +23,7 @@ function Menu() {
         initial="hidden"
         animate="visible"
       >
-        <Navbarr/>
+
       </motion.div>
         <Screen1/>
         <Screen_2/>

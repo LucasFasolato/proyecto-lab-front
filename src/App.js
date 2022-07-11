@@ -9,17 +9,19 @@ import Home from './pages/Home/home'
 import Dashboard from "./pages/AuthPages/Dashboard";
 import * as PropTypes from "prop-types";
 import RequireAuth from "./pages/RequireAuth";
+import Navbar from "./components/Navbar/navbar";
 
 
 function AppWrapper() {
     return (
         <div>
+            <Navbar/>
             <Routes>
-                <Route path="/" element={<Navigate to="/home"/>}/>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/home" element={<Home/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>
-                <Route path="/home" element={<Home/>}/>
-                <Route path="/dashboard" element={<RequireAuth><Dashboard/> </RequireAuth>}/>
+                <Route path="/dashboard" element={<RequireAuth><Dashboard/></RequireAuth>}/>
             </Routes>
         </div>
     );

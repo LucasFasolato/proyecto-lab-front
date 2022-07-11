@@ -3,7 +3,6 @@ import {Form, Button} from 'react-bootstrap';
 import './../Login/login.css'
 import {useNavigate } from "react-router-dom";
 import { useRef, useState } from 'react';
-import Navbarr from '../../components/Navbar/navbar';
 import {httpPost} from "../../utils/httpFunctions";
 
 
@@ -31,7 +30,6 @@ function Register() {
 
   return (
       <div>
-        <Navbarr/>
         <div className='content-form'>
             <h1>REGISTRARSE</h1>
             <div className='display-form'>
