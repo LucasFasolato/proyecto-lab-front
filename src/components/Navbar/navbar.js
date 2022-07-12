@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Logo from './../../components/LogoAustral.jpg'
 import {Link, useNavigate} from "react-router-dom";
 import './navbar.css'
@@ -6,10 +6,16 @@ import {isLogedIn} from "../../utils/helpers";
 import {logout} from "../../utils/httpFunctions";
 
 function Navbar() {
+    const [user, setUser] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        setUser(isLogedIn())
+    }, [user])
 
     const handleLogout = () => {
         logout();
+        setUser(false)
         navigate("/");
     }
 
@@ -22,7 +28,7 @@ function Navbar() {
                     </button>
 
                 </section>
-                {!isLogedIn() &&
+                {!user &&
                 <>
                     <section className='nav_links'>
                         <ul>
@@ -46,7 +52,7 @@ function Navbar() {
                         </button>
                     </section>
                 </>}
-                {isLogedIn() &&
+                {user &&
                 <>
                     <section className='nav_links'>
                         <ul>

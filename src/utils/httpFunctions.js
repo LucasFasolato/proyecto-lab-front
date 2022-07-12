@@ -10,21 +10,25 @@ export const httpGet = async (endpoint) => {
 }
 
 export const login = async (username, password) => {
-        return axios.get(baseURL + "users", {
-            headers: {
-                authorization: `Basic ${window.btoa(username + ":" + password)}`
-            }
-        }).then((res) => {
-            localStorage.setItem('user', window.btoa(username + ":" + password));
-            return res.data;
-        })
+    return axios.get(baseURL + "users", {
+        headers: {
+            authorization: `Basic ${window.btoa(username + ":" + password)}`
+        }
+    }).then((res) => {
+        localStorage.setItem('user', window.btoa(username + ":" + password));
+        return res.data;
+    })
 }
 
 // Basic auth no tiene una manera de desdloguear, sino que pones credenciales invalidas y lsito
 export const logout = () => {
-    login("logout","logout");
-    localStorage.clear();
-
+    return axios.get(baseURL + "users", {
+        headers: {
+            authorization: `Basic ${window.btoa("a" + ":" + "a")}`
+        }
+    }).then((res) => {
+        localStorage.clear();
+    })
 }
 
 export const httpPost = async (endpoint, data) => {
