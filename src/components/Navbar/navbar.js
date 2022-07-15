@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import Logo from './../../components/LogoAustral.jpg'
-import {Link, useNavigate} from "react-router-dom";
+import Logo from './../../imgs/LogoAustral.jpg'
 import './navbar.css'
 import {isLogedIn} from "../../utils/helpers";
 import {logout} from "../../utils/httpFunctions";
+import {Link, useNavigate} from "react-router-dom";
 
 function Navbar() {
     const [user, setUser] = useState(false);
@@ -66,7 +66,7 @@ function Navbar() {
                                 Portfolio
                             </li>
                             <li className='links_text'>
-                                Perfil
+                            <Link to={"/perfil"}>Perfil</Link>
                             </li>
                         </ul>
                     </section>

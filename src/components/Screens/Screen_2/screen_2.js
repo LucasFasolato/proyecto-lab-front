@@ -1,10 +1,10 @@
 import React from 'react'
 import './screen_2.css'
-import Phone from './../../Phone_photo.svg'
-import CredictCard from './../../CredictCard_photo.svg'
-import LogoEthereum from './../../LogoEthereum.svg'
-import LogoCohete from './../../LogoCohete.svg'
-import LogoInfo from './../../LogoInfo.svg'
+import Phone from './../../../imgs/Phone_photo.svg'
+import CredictCard from './../../../imgs/CredictCard_photo.svg'
+import LogoEthereum from './../../../imgs/LogoEthereum.svg'
+import LogoCohete from './../../../imgs/LogoCohete.svg'
+import LogoInfo from './../../../imgs/LogoInfo.svg'
 import { motion } from "framer-motion"
 
 function Screen_2() {

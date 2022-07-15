@@ -1,48 +1,14 @@
 import React from 'react';
 import './Dashboard.css';
+import Dashboard_menu from '../../../components/Dashboard_menu/dashboard_menu';
+import Dashboard_actividad_li from '../../../components/Dashboard_actividad_li/dashboard_actividad-li';
 
 function Dashboard(props) {
     return (
         <div className='dashboard_size'>
             <div className='dashboard_content'>
                 <div className='dashboard_column-1'>
-                    <section className='dashboard_menu'>
-                        <div className='dashboard_menu-link'>
-                            <a className='dashboard_menu-a'>
-                                <h2 className='dashboard_menu-h2'>Inicio</h2>
-                            </a>
-                        </div>
-                        <div className='dashboard_menu-link'>
-                            <a className='dashboard_menu-a'>
-                                <h2 className='dashboard_menu-h2'>Tu perfil</h2>
-                            </a>
-                        </div>
-                        <div className='dashboard_menu-link'>
-                            <a className='dashboard_menu-a'>
-                                <h2 className='dashboard_menu-h2'>Ayuda</h2>
-                            </a>
-                        </div>
-                        <div className='dashboard_menu-link'>
-                            <a className='dashboard_menu-a'>
-                                <h2 className='dashboard_menu-h2'>Tu dinero</h2>
-                            </a>
-                        </div>
-                        <div className='dashboard_menu-link'>
-                            <a className='dashboard_menu-a'>
-                                <h2 className='dashboard_menu-h2'>Actividad</h2>
-                            </a>
-                        </div>
-                        <div className='dashboard_menu-link'>
-                            <a className='dashboard_menu-a'>
-                                <h2 className='dashboard_menu-h2'>Enviar dinero</h2>
-                            </a>
-                        </div>
-                        <div className='dashboard_menu-link'>
-                            <a className='dashboard_menu-a'>
-                                <h2 className='dashboard_menu-h2'>Salir</h2>
-                            </a>
-                        </div>
-                    </section>
+                    <Dashboard_menu/>
                 </div>
                 <div className='dashboard_column-2'>
                     <section className='dashboard_column-2-content'>
@@ -98,37 +64,27 @@ function Dashboard(props) {
                                     <input className='column-2-right-actividad-input' type='text' placeholder='Buscar'/>
                                 </div>
                                 <div className='column-2-right-actividad-li'>
-                                    <div className='column-2-right-actividad-li-img'>
-                                        <div className='column-2-right-actividad-li-img-size'></div>
-                                    </div>
-                                    <div className='column-2-right-actividad-li-datos'>
-                                        <h3 className='column-2-right-actividad-li-datos-h3'>Te transfirieron dinero</h3>
-                                    </div>
-                                    <div className='column-2-right-actividad-li-valortransf'>
-                                        <div className='column-2-right-actividad-li-valortransf-monto'>
-                                            <h3 className='column-2-right-actividad-li-valortransf-h3'>$ 700,00</h3>
-                                        </div>
-                                        <div className='column-2-right-actividad-li-valortransf-dia'>
-                                            <h4 className='column-2-right-actividad-li-valortransf-h4'>Lunes</h4>
-                                        </div>
-                                    </div>
+                                    <Dashboard_actividad_li/>
                                 </div>
                                 <hr/>
                                 <div className='column-2-right-actividad-li'>
-                                    <div className='column-2-right-actividad-li-img'>
-                                        <div className='column-2-right-actividad-li-img-size'></div>
-                                    </div>
-                                    <div className='column-2-right-actividad-li-datos'>
-                                        <h3 className='column-2-right-actividad-li-datos-h3'>Te transfirieron dinero</h3>
-                                    </div>
-                                    <div className='column-2-right-actividad-li-valortransf'>
-                                        <div className='column-2-right-actividad-li-valortransf-monto'>
-                                            <h3 className='column-2-right-actividad-li-valortransf-h3'>$ 1200,00</h3>
-                                        </div>
-                                        <div className='column-2-right-actividad-li-valortransf-dia'>
-                                            <h4 className='column-2-right-actividad-li-valortransf-h4'>Jueves</h4>
-                                        </div>
-                                    </div>
+                                    <Dashboard_actividad_li/>
+                                </div>
+                                <hr/>
+                                <div className='column-2-right-actividad-li'>
+                                    <Dashboard_actividad_li/>
+                                </div>
+                                <hr/>
+                                <div className='column-2-right-actividad-li'>
+                                    <Dashboard_actividad_li/>
+                                </div>
+                                <hr/>
+                                <div className='column-2-right-actividad-li'>
+                                    <Dashboard_actividad_li/>
+                                </div>
+                                <hr/>
+                                <div className='column-2-right-actividad-li'>
+                                    <Dashboard_actividad_li/>
                                 </div>
                             </section>
                         </section>

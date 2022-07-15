@@ -6,10 +6,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login/login'
 import Register from './pages/Register/register'
 import Home from './pages/Home/home'
-import Dashboard from "./pages/AuthPages/Dashboard";
+import Dashboard from "./pages/AuthPages/Dashboard/Dashboard";
+import Perfil from "./pages/AuthPages/Perfil/perfil"
 import * as PropTypes from "prop-types";
 import RequireAuth from "./pages/RequireAuth";
 import Navbar from "./components/Navbar/navbar";
+import Cvu_Alias from './pages/AuthPages/Cvu_Alias/cvu_alias';
 
 
 function AppWrapper() {
@@ -22,6 +24,8 @@ function AppWrapper() {
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/dashboard" element={<RequireAuth><Dashboard/></RequireAuth>}/>
+                <Route path="/perfil" element={<RequireAuth><Perfil/></RequireAuth>}/>
+                <Route path="/perfil/cvu" element={<RequireAuth> <Cvu_Alias/> </RequireAuth>}/>
             </Routes>
         </div>
     );

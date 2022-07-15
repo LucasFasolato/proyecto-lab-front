@@ -1,6 +1,6 @@
 import React from 'react'
 import './screen_5.css'
-import Inversion from './../../Inversion_photo.svg'
+import Inversion from './../../../imgs/Inversion_photo.svg'
 
 function Screen_5() {
   return (

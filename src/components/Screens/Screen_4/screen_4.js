@@ -1,9 +1,9 @@
 import React from 'react'
 import './screen_4.css'
-import QuienesSomos from './../../Quienes_somos.jpg'
-import QuienesSomos1 from './../../Quienes_somos1.svg'
-import QuienesSomos2 from './../../Quienes_somos2.svg'
-import Circles from './../../Circles.svg'
+import QuienesSomos from './../../../imgs/Quienes_somos.jpg'
+import QuienesSomos1 from './../../../imgs/Quienes_somos1.svg'
+import QuienesSomos2 from './../../../imgs/Quienes_somos2.svg'
+import Circles from './../../../imgs/Circles.svg'
 import Cartel_garantia from '../../Cartel_Garantia/cartel_garantia'
 import { motion } from "framer-motion"
 

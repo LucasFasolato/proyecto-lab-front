@@ -44,7 +44,7 @@
   position: relative;
   height: 100%;
   width: 100%;
-  background-image: url(./../../Planisferio_fondo.svg);
+  background-image: url(./../../../imgs/Planisferio_fondo.svg);
   background-repeat: no-repeat;
   background-size: contain;
   overflow: hidden;

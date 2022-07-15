@@ -2,7 +2,7 @@ import React from 'react'
 import Box_queOfrecemos from '../../Box_queOfrecemos/box_queOfrecemos'
 import Pagination_circle from '../../Pagination_circle/pagination_circle'
 import './screen_3.css'
-import Circle_decorationW from './../../Circle_decorationW.svg'
+import Circle_decorationW from './../../../imgs/Circle_decorationW.svg'
 import { motion } from "framer-motion"
 
 function Screen_3() {

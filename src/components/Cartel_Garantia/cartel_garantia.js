@@ -1,6 +1,6 @@
 import React from 'react'
 import './cartel_garantia.css'
-import LogoGarantia from './../../components/LogoGarantia.svg'
+import LogoGarantia from './../../imgs/LogoGarantia.svg'
 
 function Cartel_garantia() {
   return (
