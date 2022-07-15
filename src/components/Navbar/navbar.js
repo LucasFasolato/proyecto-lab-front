@@ -14,7 +14,7 @@ function Navbar({isLoggedIn, setIsLoggedIn}) {
         } else {
             setIsLoggedIn(false)
         }
-    }, [])
+    }, [isLoggedIn])
 
     const handleLogout = () => {
         localStorage.clear();

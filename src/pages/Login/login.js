@@ -5,6 +5,8 @@ import {Navigate, useLocation, useNavigate} from "react-router-dom";
 import {httpGet, httpPost, login} from "../../utils/httpFunctions";
 import {isLogedIn} from "../../utils/helpers";
 import {ClipLoader} from "react-spinners";
+import axios from "axios";
+
 
 function Login({setIsLoggedIn, isLoggedIn}) {
     const [loading, setLoading] = useState(false);
@@ -15,7 +17,7 @@ function Login({setIsLoggedIn, isLoggedIn}) {
     const [errors, setErrors] = useState(false);
     const navigate = useNavigate();
 
-     // LIBRERIA PARA EL SPINER
+    // LIBRERIA PARA EL SPINER
     // https://www.davidhu.io/react-spinners/
 
 
@@ -26,29 +28,40 @@ function Login({setIsLoggedIn, isLoggedIn}) {
         setPassword(e.target.value)
     }
 
-    const handleLogin = (e) => {
-        setLoading(true);
-        e.preventDefault();
-        login(username, password)
-            .then(res => {
+    const handleLogin = async  (e) => {
+        try {
+            e.preventDefault();
+            setLoading(true);
+            let response = await login(username, password);
+            console.log(response)
+            if (response.request.status == 201) {
+                localStorage.setItem('user', window.btoa(username + ":" + password));
                 setLoading(false);
                 setErrors(false)
                 setIsLoggedIn(true);
                 navigate(redirect.from.pathname)
-            })
-            .catch(err => {
+            }
+            else {
+                setLoading(false);
+                setIsLoggedIn(false);
                 setErrors(true);
-            })
+            }
+        } catch (err) {
+            setLoading(false);
+            setIsLoggedIn(false);
+            setErrors(true);
+        }
+
     }
 
     return (
         <div>
             {isLogedIn() && <Navigate to={"/dashboard"}/>}
             {loading &&
-                <div className="sweet-loading">
+            <div className="sweet-loading">
 
-                    <ClipLoader color={color} loading={loading}size={150} />
-                </div>
+                <ClipLoader color={color} loading={loading} size={150}/>
+            </div>
             }
             {!loading &&
             <div className='content-form'>

@@ -1,6 +1,6 @@
 import './App.css';
 import './../src/components/ResetsEstilos.css'
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Navigate, Route, Routes, BrowserRouter as Router} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login/login'
@@ -16,6 +16,9 @@ import Cvu_Alias from './pages/AuthPages/Cvu_Alias/cvu_alias';
 
 function AppWrapper() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
+
     return (
         <div>
             <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>

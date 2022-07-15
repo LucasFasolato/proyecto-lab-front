@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const baseURL = "https://peaceful-harbor-44195.herokuapp.com/";
+// const baseURL = "http://localhost:8080/";
 
 
 export const httpGet = async (endpoint) => {
@@ -10,14 +11,16 @@ export const httpGet = async (endpoint) => {
 }
 
 export const login = async (username, password) => {
-    return axios.get(baseURL + "users", {
-        headers: {
-            authorization: `Basic ${window.btoa(username + ":" + password)}`
-        }
-    }).then((res) => {
-        localStorage.setItem('user', window.btoa(username + ":" + password));
-        return res.data;
-    })
+    try {
+        return await axios.get(baseURL + "auth/login", {
+            headers: {
+                authorization: `Basic ${window.btoa(username + ":" + password)}`
+            }
+        })
+    } catch (err) {
+        return err;
+    }
+
 }
 
 // Basic auth no tiene una manera de desdloguear, sino que pones credenciales invalidas y lsito
@@ -31,16 +34,34 @@ export const logout = () => {
     })
 }
 
-export const httpPost = async (endpoint, data) => {
-    return axios.post(baseURL + endpoint, data, {
-        headers: {
-            // Overwrite Axios's automatically set Content-Type
-            'contentType': 'application/json',
-            'dataType': 'json'
+export const httpPost = async (endpoint, data, register = false) => {
+    try {
+        const configRegistro = {
+            headers: {
+                // Overwrite Axios's automatically set Content-Type
+                'content-Type': 'application/json',
+                'dataType': 'json',
+            }
         }
-    }).then((res) => {
-        return res.data;
-    })
+        const configLogueado = {
+            headers: {
+                // Overwrite Axios's automatically set Content-Type
+                'content-Type': 'application/json',
+                'dataType': 'json',
+                authorization: `Basic ${localStorage.getItem('user')}`
+            }
+        }
+        if (register) {
+            return await axios.post(baseURL + endpoint, data, configRegistro)
+
+        } else {
+            return await axios.post(baseURL + endpoint, data, configLogueado);
+        }
+
+
+    } catch (err) {
+        return err;
+    }
 }
 
 export const httpDelete = async (endpoint) => {
