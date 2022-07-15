@@ -1,9 +1,44 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './Dashboard.css';
 import Dashboard_menu from '../../../components/Dashboard_menu/dashboard_menu';
 import Dashboard_actividad_li from '../../../components/Dashboard_actividad_li/dashboard_actividad-li';
+import {httpGet} from "../../../utils/httpFunctions";
 
 function Dashboard(props) {
+    const [transferenciasRecibidas, setTransferenciasRecibidas] = useState(null)
+    const [cargandoTransferenciasRecibidas, setCargandoTransferenciasRecibidas] = useState(false)
+    const [transferenciasEmitidas, setTransferenciasEmitidas] = useState(null)
+    const [cargandoTransferenciasEmitidas, setCargandoTransferenciasEmitidas] = useState(false)
+    const [user, setUser] = useState({});
+    const [cargandoUser, setCargandoUser] = useState(false);
+
+    useEffect(() => {
+        setCargandoUser(true)
+        httpGet("users/me").then(res => {
+            setCargandoUser(false);
+            setUser(res)
+            console.log(res)
+        })
+    }, [])
+
+    useEffect(() => {
+        setCargandoTransferenciasRecibidas(true)
+        httpGet("transfer/recibidas").then(res => {
+            setCargandoTransferenciasRecibidas(false);
+            setTransferenciasRecibidas(res)
+            console.log(res)
+        })
+    }, [])
+
+    useEffect(() => {
+        setCargandoTransferenciasEmitidas(true)
+        httpGet("transfer/emitidas").then(res => {
+            setCargandoTransferenciasEmitidas(false);
+            setTransferenciasEmitidas(res)
+            console.log(res)
+        })
+    }, [])
+
     return (
         <div className='dashboard_size'>
             <div className='dashboard_content'>
@@ -17,7 +52,9 @@ function Dashboard(props) {
                                 <div className='column-2-left-fondos-info'>
                                     <div className='column-2-left-fondos-data'>
                                         <p className='column-2-left-fondos-data-p'>Dinero disponible</p>
-                                        <h1 className='column-2-left-fondos-data-h1'>$ 7.105,56</h1>
+                                        <h1 className='column-2-left-fondos-data-h1'>
+                                            {cargandoUser ? <>Cargando</> : <>$ {user.fondo}</> }
+                                        </h1>
                                     </div>
                                     <hr/>
                                     <div className='column-2-left-fondos-inv'>
@@ -25,7 +62,7 @@ function Dashboard(props) {
                                             <p className='column-2-left-fondos-inv-p'>Invertido</p>
                                         </div>
                                         <div className='column-2-left-fondos-inv-right'>
-                                            <p className='column-2-left-fondos-inv-p'>$ 7.105,56</p>
+                                            <p className='column-2-left-fondos-inv-p'>$ 0</p>
                                         </div>
                                         
                                     </div>
@@ -63,29 +100,19 @@ function Dashboard(props) {
                                 <div className='column-2-right-actividad-searchbar'>
                                     <input className='column-2-right-actividad-input' type='text' placeholder='Buscar'/>
                                 </div>
-                                <div className='column-2-right-actividad-li'>
-                                    <Dashboard_actividad_li/>
-                                </div>
+
+                                {cargandoTransferenciasEmitidas ? <p>Cargando</p> :
+                                    transferenciasEmitidas &&
+                                    transferenciasEmitidas.map(transf => {
+                                        return (
+                                            <div key={transf.transferId} className='column-2-right-actividad-li'>
+                                                <Dashboard_actividad_li emitida={true} cantidad={transf.cantidadTransferida} cbuEmisor={transf.emisor.mail} cbuReceptor={transf.receptor.mail}/>
+                                            </div>
+                                        )
+                                    })
+                                }
                                 <hr/>
-                                <div className='column-2-right-actividad-li'>
-                                    <Dashboard_actividad_li/>
-                                </div>
-                                <hr/>
-                                <div className='column-2-right-actividad-li'>
-                                    <Dashboard_actividad_li/>
-                                </div>
-                                <hr/>
-                                <div className='column-2-right-actividad-li'>
-                                    <Dashboard_actividad_li/>
-                                </div>
-                                <hr/>
-                                <div className='column-2-right-actividad-li'>
-                                    <Dashboard_actividad_li/>
-                                </div>
-                                <hr/>
-                                <div className='column-2-right-actividad-li'>
-                                    <Dashboard_actividad_li/>
-                                </div>
+
                             </section>
                         </section>
                     </section>
@@ -99,7 +126,7 @@ function Dashboard(props) {
                     <span>Lucas Daniel Fasolato · Último ingreso: 6 abr 2022 · 12:17 hs.</span>
                     <br/>
                     <span>Mercado Pago ofrece servicios de pago y no está autorizado por el Banco Central a operar como entidad financiera. </span>
-                    <span>Los fondos acreditados en cuentas de pago no constituyen depósitos en una entidad financiera ni están garantizados conforme legislación aplicable a depósitos en entidades financieras.</span>
+                    <span>Los fon   dos acreditados en cuentas de pago no constituyen depósitos en una entidad financiera ni están garantizados conforme legislación aplicable a depósitos en entidades financieras.</span>
                 </p>
             </div>
         </div>

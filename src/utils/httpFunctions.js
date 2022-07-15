@@ -5,7 +5,11 @@ const baseURL = "https://peaceful-harbor-44195.herokuapp.com/";
 
 
 export const httpGet = async (endpoint) => {
-    return axios.get(baseURL + endpoint).then((res) => {
+    return axios.get(baseURL + endpoint, {
+        headers: {
+            authorization: `Basic ${localStorage.getItem('user')}`
+        }
+    }).then((res) => {
         return res.data;
     })
 }
