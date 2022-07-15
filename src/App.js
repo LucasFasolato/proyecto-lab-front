@@ -17,8 +17,6 @@ import Cvu_Alias from './pages/AuthPages/Cvu_Alias/cvu_alias';
 function AppWrapper() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-
-
     return (
         <div>
             <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>

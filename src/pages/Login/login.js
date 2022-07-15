@@ -28,25 +28,17 @@ function Login({setIsLoggedIn, isLoggedIn}) {
         setPassword(e.target.value)
     }
 
-    const handleLogin = async  (e) => {
-        try {
-            e.preventDefault();
-            setLoading(true);
-            let response = await login(username, password);
-            console.log(response)
-            if (response.request.status == 201) {
-                localStorage.setItem('user', window.btoa(username + ":" + password));
-                setLoading(false);
-                setErrors(false)
-                setIsLoggedIn(true);
-                navigate(redirect.from.pathname)
-            }
-            else {
-                setLoading(false);
-                setIsLoggedIn(false);
-                setErrors(true);
-            }
-        } catch (err) {
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        let response = await login(username, password);
+        if (response.request.status == 201) {
+            localStorage.setItem('user', window.btoa(username + ":" + password));
+            setIsLoggedIn(true);
+            setLoading(false);
+            setErrors(false)
+            navigate("/dashboard")
+        } else {
             setLoading(false);
             setIsLoggedIn(false);
             setErrors(true);
