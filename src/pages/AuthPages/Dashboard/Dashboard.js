@@ -5,10 +5,8 @@ import Dashboard_actividad_li from '../../../components/Dashboard_actividad_li/d
 import {httpGet} from "../../../utils/httpFunctions";
 
 function Dashboard(props) {
-    const [transferenciasRecibidas, setTransferenciasRecibidas] = useState(null)
-    const [cargandoTransferenciasRecibidas, setCargandoTransferenciasRecibidas] = useState(false)
-    const [transferenciasEmitidas, setTransferenciasEmitidas] = useState(null)
-    const [cargandoTransferenciasEmitidas, setCargandoTransferenciasEmitidas] = useState(false)
+    const [transferencias, setTransferencias] = useState(null)
+    const [cargandoTransferencias, setCargandoTransferencias] = useState(false)
     const [user, setUser] = useState({});
     const [cargandoUser, setCargandoUser] = useState(false);
 
@@ -22,22 +20,17 @@ function Dashboard(props) {
     }, [])
 
     useEffect(() => {
-        setCargandoTransferenciasRecibidas(true)
-        httpGet("transfer/recibidas").then(res => {
-            setCargandoTransferenciasRecibidas(false);
-            setTransferenciasRecibidas(res)
+        setCargandoTransferencias(true)
+        httpGet("transfer/me").then(res => {
+            setCargandoTransferencias(false);
+            setTransferencias(res)
             console.log(res)
         })
     }, [])
 
-    useEffect(() => {
-        setCargandoTransferenciasEmitidas(true)
-        httpGet("transfer/emitidas").then(res => {
-            setCargandoTransferenciasEmitidas(false);
-            setTransferenciasEmitidas(res)
-            console.log(res)
-        })
-    }, [])
+    function tipoTransf(transf) {
+        return transf.emisor.userId == user.userId ? "emisor" : "receptor";
+    }
 
     return (
         <div className='dashboard_size'>
@@ -53,7 +46,7 @@ function Dashboard(props) {
                                     <div className='column-2-left-fondos-data'>
                                         <p className='column-2-left-fondos-data-p'>Dinero disponible</p>
                                         <h1 className='column-2-left-fondos-data-h1'>
-                                            {cargandoUser ? <>Cargando</> : <>$ {user.fondo}</> }
+                                            {cargandoUser ? <>Cargando</> : <>$ {user.fondo}</>}
                                         </h1>
                                     </div>
                                     <hr/>
@@ -64,7 +57,7 @@ function Dashboard(props) {
                                         <div className='column-2-left-fondos-inv-right'>
                                             <p className='column-2-left-fondos-inv-p'>$ 0</p>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <hr/>
@@ -80,7 +73,7 @@ function Dashboard(props) {
                                 </div>
                             </section>
                             <section className='column-2-left-reportesaldo'>
-                                <div  className='column-2-left-reportesaldo-content'>
+                                <div className='column-2-left-reportesaldo-content'>
                                     <div className='column-2-left-reportesaldo-left'>
                                         <div className='column-2-left-reportesaldo-left-img'/>
                                         <p className='column-2-left-reportesaldo-left-p'>Reporte saldo al 31/12</p>
@@ -101,12 +94,17 @@ function Dashboard(props) {
                                     <input className='column-2-right-actividad-input' type='text' placeholder='Buscar'/>
                                 </div>
 
-                                {cargandoTransferenciasEmitidas ? <p>Cargando</p> :
-                                    transferenciasEmitidas &&
-                                    transferenciasEmitidas.map(transf => {
+                                {cargandoTransferencias ? <p>Cargando</p> :
+                                    transferencias &&
+                                    transferencias.map(transf => {
                                         return (
                                             <div key={transf.transferId} className='column-2-right-actividad-li'>
-                                                <Dashboard_actividad_li emitida={true} cantidad={transf.cantidadTransferida} cbuEmisor={transf.emisor.mail} cbuReceptor={transf.receptor.mail}/>
+                                                <Dashboard_actividad_li fecha={transf.createdAt}
+                                                                        cantidad={transf.cantidadTransferida}
+                                                                        mailEmisor={transf.emisor.mail}
+                                                                        mailReceptor={transf.receptor.mail}
+                                                                        tipo={tipoTransf(transf)}
+                                                />
                                             </div>
                                         )
                                     })
@@ -119,7 +117,7 @@ function Dashboard(props) {
                 </div>
                 <hr/>
             </div>
-            
+
             <hr/>
             <div className='dashboard_terms'>
                 <p className='dashboard_terms-p'>

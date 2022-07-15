@@ -23,3 +23,16 @@ export const isLogedIn = () => {
         return false
     }
 }
+
+function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+}
+
+export function formatDate(date) {
+    let data = new Date(date);
+    return [
+        padTo2Digits(data.getDate()),
+        padTo2Digits(data.getMonth() + 1),
+        data.getFullYear(),
+    ].join('/');
+}
