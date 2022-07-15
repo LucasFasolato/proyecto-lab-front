@@ -5,17 +5,20 @@ import {isLogedIn} from "../../utils/helpers";
 import {logout} from "../../utils/httpFunctions";
 import {Link, useNavigate} from "react-router-dom";
 
-function Navbar() {
-    const [user, setUser] = useState(false);
+function Navbar({isLoggedIn, setIsLoggedIn}) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        setUser(isLogedIn())
-    }, [user])
+        if (localStorage.getItem("user")) {
+            setIsLoggedIn(true)
+        } else {
+            setIsLoggedIn(false)
+        }
+    }, [])
 
     const handleLogout = () => {
-        logout();
-        setUser(false)
+        localStorage.clear();
+        setIsLoggedIn(false);
         navigate("/");
     }
 
@@ -28,7 +31,7 @@ function Navbar() {
                     </button>
 
                 </section>
-                {!user &&
+                {!isLoggedIn &&
                 <>
                     <section className='nav_links'>
                         <ul>
@@ -52,7 +55,7 @@ function Navbar() {
                         </button>
                     </section>
                 </>}
-                {user &&
+                {isLoggedIn &&
                 <>
                     <section className='nav_links'>
                         <ul>

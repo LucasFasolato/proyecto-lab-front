@@ -1,6 +1,6 @@
 import './App.css';
 import './../src/components/ResetsEstilos.css'
-import React from 'react';
+import React, {useState} from 'react';
 import {Navigate, Route, Routes, BrowserRouter as Router} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login/login'
@@ -15,14 +15,15 @@ import Cvu_Alias from './pages/AuthPages/Cvu_Alias/cvu_alias';
 
 
 function AppWrapper() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     return (
         <div>
-            <Navbar/>
+            <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/home" element={<Home/>}/>
                 <Route path="/register" element={<Register/>}/>
-                <Route path="/login" element={<Login/>}/>
+                <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/>
                 <Route path="/dashboard" element={<RequireAuth><Dashboard/></RequireAuth>}/>
                 <Route path="/perfil" element={<RequireAuth><Perfil/></RequireAuth>}/>
                 <Route path="/perfil/cvu" element={<RequireAuth> <Cvu_Alias/> </RequireAuth>}/>

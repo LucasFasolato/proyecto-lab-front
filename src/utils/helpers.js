@@ -17,5 +17,9 @@ export const makeDateTime = (day, time) => {
 }
 
 export const isLogedIn = () => {
-    return localStorage.getItem('user');
+    if (localStorage.getItem('user')) {
+        return true
+    } else {
+        return false
+    }
 }

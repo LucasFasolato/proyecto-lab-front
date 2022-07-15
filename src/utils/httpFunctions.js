@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:8080/";
+const baseURL = "https://peaceful-harbor-44195.herokuapp.com/";
 
 
 export const httpGet = async (endpoint) => {

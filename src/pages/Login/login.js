@@ -4,13 +4,20 @@ import './login.css'
 import {Navigate, useLocation, useNavigate} from "react-router-dom";
 import {httpGet, httpPost, login} from "../../utils/httpFunctions";
 import {isLogedIn} from "../../utils/helpers";
+import {ClipLoader} from "react-spinners";
 
-function Login() {
+function Login({setIsLoggedIn, isLoggedIn}) {
+    const [loading, setLoading] = useState(false);
+    let [color, setColor] = useState("#000000");
     const redirect = useLocation().state;
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState(false);
     const navigate = useNavigate();
+
+     // LIBRERIA PARA EL SPINER
+    // https://www.davidhu.io/react-spinners/
+
 
     const handleEmail = (e) => {
         setUsername(e.target.value);
@@ -20,10 +27,13 @@ function Login() {
     }
 
     const handleLogin = (e) => {
+        setLoading(true);
         e.preventDefault();
         login(username, password)
             .then(res => {
+                setLoading(false);
                 setErrors(false)
+                setIsLoggedIn(true);
                 navigate(redirect.from.pathname)
             })
             .catch(err => {
@@ -34,6 +44,13 @@ function Login() {
     return (
         <div>
             {isLogedIn() && <Navigate to={"/dashboard"}/>}
+            {loading &&
+                <div className="sweet-loading">
+
+                    <ClipLoader color={color} loading={loading}size={150} />
+                </div>
+            }
+            {!loading &&
             <div className='content-form'>
                 <h1>INICIAR SESIÓN</h1>
                 <div className='display-form'>
@@ -70,6 +87,7 @@ function Login() {
                     </Form>
                 </div>
             </div>
+            }
         </div>
 
     )
