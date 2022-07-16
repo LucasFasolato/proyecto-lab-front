@@ -1,11 +1,25 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import './perfil.css'
 import Dashboard_menu from '../../../components/Dashboard_menu/dashboard_menu';
 import {Link, useNavigate} from "react-router-dom";
+import {httpGet} from "../../../utils/httpFunctions";
+import {formatDate} from "../../../utils/helpers";
 
 function Perfil() {
     const navigate = useNavigate();
-  return (
+    const [user, setUser] = useState({});
+    const [cargandoUser, setCargandoUser] = useState(false);
+
+    useEffect(() => {
+        setCargandoUser(true)
+        httpGet("users/me").then(res => {
+            setCargandoUser(false);
+            setUser(res)
+            console.log(res)
+        })
+    }, [])
+
+    return (
     <div className='perfil_size'>
         <div className='perfil_content'>
             <div className='perfil_column-1'>
@@ -19,10 +33,10 @@ function Perfil() {
                         </div>
                         <div className='perfil_column-2-user-info'>
                             <div className='perfil_column-2-user-name'>
-                                <h2 className='perfil_column-2-user-h2'>Lucas Daniel Fasolato</h2>
+                                <h2 className='perfil_column-2-user-h2'>{cargandoUser ? <>Cargando</> : <>{user.username}</>}</h2>
                             </div>
                             <div className='perfil_column-2-user-register'>
-                                <h3 className='perfil_column-2-user-h3'>Usuario creado el día 14/07/2022</h3>
+                                <h3 className='perfil_column-2-user-h3'>{cargandoUser ? <>Cargando</> : <>Usuario creado el día {formatDate(user.createdAt)}</>}</h3>
                             </div>
                         </div>
                     </section>

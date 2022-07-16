@@ -43,6 +43,7 @@ export const httpPost = async (endpoint, data, register = false) => {
         const configRegistro = {
             headers: {
                 // Overwrite Axios's automatically set Content-Type
+                'access-Control-Allow-Origin' : '*',
                 'content-Type': 'application/json',
                 'dataType': 'json',
             }
@@ -50,6 +51,7 @@ export const httpPost = async (endpoint, data, register = false) => {
         const configLogueado = {
             headers: {
                 // Overwrite Axios's automatically set Content-Type
+                'access-Control-Allow-Origin' : '*',
                 'content-Type': 'application/json',
                 'dataType': 'json',
                 authorization: `Basic ${localStorage.getItem('user')}`

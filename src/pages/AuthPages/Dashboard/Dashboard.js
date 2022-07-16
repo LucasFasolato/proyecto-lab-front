@@ -3,8 +3,10 @@ import './Dashboard.css';
 import Dashboard_menu from '../../../components/Dashboard_menu/dashboard_menu';
 import Dashboard_actividad_li from '../../../components/Dashboard_actividad_li/dashboard_actividad-li';
 import {httpGet} from "../../../utils/httpFunctions";
+import {Link, useNavigate} from "react-router-dom";
 
 function Dashboard(props) {
+    const navigate = useNavigate();
     const [transferencias, setTransferencias] = useState(null)
     const [cargandoTransferencias, setCargandoTransferencias] = useState(false)
     const [user, setUser] = useState({});
@@ -64,10 +66,10 @@ function Dashboard(props) {
                                 <div className='column-2-left-fondos-bttns'>
                                     <div className='column-2-left-fondos-bttns-content'>
                                         <div className='column-2-left-fondos-bttns-size'>
-                                            <button className='column-2-left-fondos-bttn'>Ingresar dinero</button>
+                                            <button className='column-2-left-fondos-bttn' onClick={() => navigate("/perfil/ingresardinero")}>Ingresar dinero</button>
                                         </div>
                                         <div className='column-2-left-fondos-bttns-size'>
-                                            <button className='column-2-left-fondos-bttn'>Transferir dinero</button>
+                                            <button className='column-2-left-fondos-bttn' onClick={() => navigate("/perfil/transferirdinero")}>Transferir dinero</button>
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +81,7 @@ function Dashboard(props) {
                                         <p className='column-2-left-reportesaldo-left-p'>Reporte saldo al 31/12</p>
                                     </div>
                                     <div className='column-2-left-reportesaldo-right'>
-                                        <button className='column-2-left-reportesaldo-right-bttn'>Pedir dinero</button>
+                                        <button className='column-2-left-reportesaldo-right-bttn'>Pedir reporte</button>
                                     </div>
                                 </div>
                             </section>
@@ -93,24 +95,26 @@ function Dashboard(props) {
                                 <div className='column-2-right-actividad-searchbar'>
                                     <input className='column-2-right-actividad-input' type='text' placeholder='Buscar'/>
                                 </div>
+                                <div className='column-2-right-actividad-content'>
+                                    {cargandoTransferencias ? <p>Cargando</p> :
+                                        transferencias &&
+                                        transferencias.map(transf => {
+                                            return (
+                                                <div key={transf.transferId} className='column-2-right-actividad-li'>
+                                                    <Dashboard_actividad_li fecha={transf.createdAt}
+                                                                            cantidad={transf.cantidadTransferida}
+                                                                            mailEmisor={transf.emisor.mail}
+                                                                            mailReceptor={transf.receptor.mail}
+                                                                            tipo={tipoTransf(transf)}
+                                                    />
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
 
-                                {cargandoTransferencias ? <p>Cargando</p> :
-                                    transferencias &&
-                                    transferencias.map(transf => {
-                                        return (
-                                            <div key={transf.transferId} className='column-2-right-actividad-li'>
-                                                <Dashboard_actividad_li fecha={transf.createdAt}
-                                                                        cantidad={transf.cantidadTransferida}
-                                                                        mailEmisor={transf.emisor.mail}
-                                                                        mailReceptor={transf.receptor.mail}
-                                                                        tipo={tipoTransf(transf)}
-                                                />
-                                            </div>
-                                        )
-                                    })
-                                }
+                                
                                 <hr/>
-
                             </section>
                         </section>
                     </section>

@@ -12,6 +12,8 @@ import * as PropTypes from "prop-types";
 import RequireAuth from "./pages/RequireAuth";
 import Navbar from "./components/Navbar/navbar";
 import Cvu_Alias from './pages/AuthPages/Cvu_Alias/cvu_alias';
+import Transferir_dinero from './pages/AuthPages/Transferir_dinero/transferir_dinero';
+import Ingresar_dinero from './pages/AuthPages/Ingresar_dinero/ingresar_dinero';
 
 
 function AppWrapper() {
@@ -28,6 +30,8 @@ function AppWrapper() {
                 <Route path="/dashboard" element={<RequireAuth><Dashboard/></RequireAuth>}/>
                 <Route path="/perfil" element={<RequireAuth><Perfil/></RequireAuth>}/>
                 <Route path="/perfil/cvu" element={<RequireAuth> <Cvu_Alias/> </RequireAuth>}/>
+                <Route path="/perfil/transferirdinero" element={<RequireAuth> <Transferir_dinero/> </RequireAuth>}/>
+                <Route path="/perfil/ingresardinero" element={<RequireAuth> <Ingresar_dinero/> </RequireAuth>}/>
             </Routes>
         </div>
     );

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import './cvu_alias.css'
+import './ingresar_dinero.css'
 import Dashboard_menu from '../../../components/Dashboard_menu/dashboard_menu';
 import {Link, useNavigate} from "react-router-dom";
 import {httpGet} from "../../../utils/httpFunctions";
 
-function Cvu_Alias() {
+function Ingresar_dinero() {
     const navigate = useNavigate();
     const [user, setUser] = useState({});
     const [cargandoUser, setCargandoUser] = useState(false);
@@ -63,7 +63,7 @@ function Cvu_Alias() {
                         </div>
                     </section>
                     <div className='cvu_alias_column-2-bttn-volver'>
-                            <button className='cvu_alias_column-2-bttn-volver-bttn' onClick={() => navigate("/perfil")}>VOLVER A MI PERFIL</button>
+                            <button className='cvu_alias_column-2-bttn-volver-bttn' onClick={() => navigate("/dashboard")}>VOLVER A MI PERFIL</button>
                         </div>
                 </section>
             </div>
@@ -72,4 +72,4 @@ function Cvu_Alias() {
   )
 }
 
-export default Cvu_Alias
+export default Ingresar_dinero
