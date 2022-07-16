@@ -21,11 +21,7 @@ function Ingresar_dinero() {
     }, [])
     
   return (
-    <div className='cvu_alias_size'>
-        <div className='cvu_alias_content'>
-            <div className='cvu_alias_column-1'>
-                <Dashboard_menu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
-            </div>
+
             <div className='cvu_alias_column-2'>
                 <section className='cvu_alias_column-2-content'>
                     <section className='cvu_alias_column-2-cvu'>
@@ -68,8 +64,7 @@ function Ingresar_dinero() {
                         </div>
                 </section>
             </div>
-        </div>
-    </div>
+
   )
 }
 

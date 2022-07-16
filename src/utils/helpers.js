@@ -16,14 +16,6 @@ export const makeDateTime = (day, time) => {
     return dt;
 }
 
-export const isLogedIn = () => {
-    if (localStorage.getItem('user')) {
-        return true
-    } else {
-        return false
-    }
-}
-
 function padTo2Digits(num) {
     return num.toString().padStart(2, '0');
 }
@@ -35,4 +27,12 @@ export function formatDate(date) {
         padTo2Digits(data.getMonth() + 1),
         data.getFullYear(),
     ].join('/');
+}
+
+export function makeAvatarUrl(user) {
+    // Libreria https://github.com/tobiaslins/avatar
+    const iniciales = user[0].toUpperCase();
+    const baseURL = "https://avatar.tobi.sh/";
+    console.log(baseURL + user + ".svg?text=" + iniciales + "&size=30")
+    return baseURL + user + ".svg?text=" + iniciales + "&size=1";
 }

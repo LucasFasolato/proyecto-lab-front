@@ -17,10 +17,19 @@ import Ingresar_dinero from './pages/AuthPages/Ingresar_dinero/ingresar_dinero';
 import MiActividad from './pages/AuthPages/MiActividad/miActividad';
 import MiDinero from './pages/AuthPages/MiDinero/miDinero';
 import DatosUser from './pages/AuthPages/Perfil/DatosUser/datosUser';
+import PerfilLayout from "./components/PerfilLayout/PerfilLayout";
 
 
 function AppWrapper() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        if (localStorage.getItem("user")) {
+            setIsLoggedIn(true)
+        } else {
+            setIsLoggedIn(false)
+        }
+    }, [isLoggedIn])
 
     return (
         <div>
@@ -30,14 +39,17 @@ function AppWrapper() {
                 <Route path="/home" element={<Home/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/>
-                <Route path="/dashboard" element={<RequireAuth><Dashboard/></RequireAuth>}/>
-                <Route path="/perfil" element={<RequireAuth><Perfil/></RequireAuth>}/>
-                <Route path="/perfil/cvu" element={<RequireAuth> <Cvu_Alias/> </RequireAuth>}/>
-                <Route path="/perfil/datos" element={<RequireAuth> <DatosUser/> </RequireAuth>}/>
-                <Route path="/perfil/transferirdinero" element={<RequireAuth> <Transferir_dinero/> </RequireAuth>}/>
-                <Route path="/perfil/ingresardinero" element={<RequireAuth> <Ingresar_dinero/> </RequireAuth>}/>
-                <Route path="/miactividad" element={<RequireAuth> <MiActividad/> </RequireAuth>}/>
-                <Route path="/midinero" element={<RequireAuth> <MiDinero/> </RequireAuth>}/>
+
+                <Route element={<><RequireAuth/><PerfilLayout isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/></> }>
+                    <Route path="/dashboard" element={<Dashboard />}/>
+                    <Route path="/perfil" element={<Perfil/>}/>
+                    <Route path="/perfil/cvu" element={ <Cvu_Alias /> }/>
+                    <Route path="/perfil/datos" element={ <DatosUser/> }/>
+                    <Route path="/perfil/transferirdinero" element={ <Transferir_dinero/> }/>
+                    <Route path="/perfil/ingresardinero" element={ <Ingresar_dinero/> }/>
+                    <Route path="/miactividad" element={ <MiActividad/> }/>
+                    <Route path="/midinero" element={ <MiDinero/> }/>
+                </Route>
             </Routes>
         </div>
     );

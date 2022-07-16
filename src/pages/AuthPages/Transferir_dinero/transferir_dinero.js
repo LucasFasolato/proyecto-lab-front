@@ -12,7 +12,7 @@ function Transferir_dinero() {
 
     const createTransfer = (e) => {
         e.preventDefault()
-        httpPost('/transfer', {cantidadTransferida: destinatario, cbuReceptor: cantidad}, false)
+        httpPost('transfer', {cantidadTransferida: destinatario, cbuReceptor: Number(cantidad)}, false)
             .then((res) => {
                 console.log(res)
             }).catch((err)=> alert.show('No se ha podido realizar la transferencia.',{
@@ -21,11 +21,7 @@ function Transferir_dinero() {
       }
     
   return (
-    <div className='transferirdinero_size'>
-        <div className='transferirdinero_content'>
-            <div className='transferirdinero_column-1'>
-                <Dashboard_menu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
-            </div>
+
             <div className='transferirdinero_column-2'>
                 <section className='transferirdinero_column-2-content'>
                     <section className='transferirdinero_column-2-transf'>
@@ -57,8 +53,7 @@ function Transferir_dinero() {
                     </div>
                 </section>
             </div>
-        </div>
-    </div>
+
   )
 }
 

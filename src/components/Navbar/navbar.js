@@ -8,13 +8,7 @@ import {Link, useNavigate} from "react-router-dom";
 function Navbar({isLoggedIn, setIsLoggedIn}) {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (localStorage.getItem("user")) {
-            setIsLoggedIn(true)
-        } else {
-            setIsLoggedIn(false)
-        }
-    }, [isLoggedIn])
+
 
 
     const handleLogout = () => {

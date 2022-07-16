@@ -63,8 +63,6 @@ export const httpPost = async (endpoint, data, register = false) => {
         } else {
             return await axios.post(baseURL + endpoint, data, configLogueado);
         }
-
-
     } catch (err) {
         return err;
     }

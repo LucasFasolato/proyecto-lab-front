@@ -3,7 +3,6 @@ import {Form, Button} from 'react-bootstrap';
 import './login.css'
 import {Navigate, useLocation, useNavigate} from "react-router-dom";
 import {httpGet, httpPost, login} from "../../utils/httpFunctions";
-import {isLogedIn} from "../../utils/helpers";
 import {ClipLoader} from "react-spinners";
 import axios from "axios";
 
@@ -48,7 +47,7 @@ function Login({setIsLoggedIn, isLoggedIn}) {
 
     return (
         <div>
-            {isLogedIn() && <Navigate to={"/dashboard"}/>}
+            {isLoggedIn && <Navigate to={"/dashboard"}/>}
             {loading &&
             <div className="sweet-loading">
 

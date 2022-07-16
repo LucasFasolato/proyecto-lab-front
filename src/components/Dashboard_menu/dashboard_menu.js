@@ -7,19 +7,12 @@ import './dashboard_menu.css'
 function Dashboard_menu({isLoggedIn, setIsLoggedIn}) {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (localStorage.getItem("user")) {
-            setIsLoggedIn(true)
-        } else {
-            setIsLoggedIn(false)
-        }
-    }, [isLoggedIn])
-
     const handleLogout = () => {
         localStorage.clear();
         setIsLoggedIn(false);
         navigate("/");
     }
+
   return (
     <div className='dashboard_menu-size'>
         <section className='dashboard_menu'>

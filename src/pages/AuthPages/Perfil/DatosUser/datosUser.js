@@ -21,11 +21,7 @@ function DatosUser() {
     }, [])
 
     return (
-    <div className='perfil_size'>
-        <div className='perfil_content'>
-            <div className='perfil_column-1'>
-                <Dashboard_menu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
-            </div>
+
             <div className='perfil_column-2'>
                 <section className='perfil_column-2-content'>
                     <section className='perfil_column-2-user'>
@@ -135,8 +131,7 @@ function DatosUser() {
                     </section>
                 </section>
             </div>
-        </div>
-    </div>
+
   )
 }
 
