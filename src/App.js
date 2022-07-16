@@ -14,6 +14,9 @@ import Navbar from "./components/Navbar/navbar";
 import Cvu_Alias from './pages/AuthPages/Cvu_Alias/cvu_alias';
 import Transferir_dinero from './pages/AuthPages/Transferir_dinero/transferir_dinero';
 import Ingresar_dinero from './pages/AuthPages/Ingresar_dinero/ingresar_dinero';
+import MiActividad from './pages/AuthPages/MiActividad/miActividad';
+import MiDinero from './pages/AuthPages/MiDinero/miDinero';
+import DatosUser from './pages/AuthPages/Perfil/DatosUser/datosUser';
 
 
 function AppWrapper() {
@@ -30,8 +33,11 @@ function AppWrapper() {
                 <Route path="/dashboard" element={<RequireAuth><Dashboard/></RequireAuth>}/>
                 <Route path="/perfil" element={<RequireAuth><Perfil/></RequireAuth>}/>
                 <Route path="/perfil/cvu" element={<RequireAuth> <Cvu_Alias/> </RequireAuth>}/>
+                <Route path="/perfil/datos" element={<RequireAuth> <DatosUser/> </RequireAuth>}/>
                 <Route path="/perfil/transferirdinero" element={<RequireAuth> <Transferir_dinero/> </RequireAuth>}/>
                 <Route path="/perfil/ingresardinero" element={<RequireAuth> <Ingresar_dinero/> </RequireAuth>}/>
+                <Route path="/miactividad" element={<RequireAuth> <MiActividad/> </RequireAuth>}/>
+                <Route path="/midinero" element={<RequireAuth> <MiDinero/> </RequireAuth>}/>
             </Routes>
         </div>
     );

@@ -6,6 +6,7 @@ import {httpGet} from "../../../utils/httpFunctions";
 import {Link, useNavigate} from "react-router-dom";
 
 function Dashboard(props) {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
     const [transferencias, setTransferencias] = useState(null)
     const [cargandoTransferencias, setCargandoTransferencias] = useState(false)
@@ -38,7 +39,7 @@ function Dashboard(props) {
         <div className='dashboard_size'>
             <div className='dashboard_content'>
                 <div className='dashboard_column-1'>
-                    <Dashboard_menu/>
+                    <Dashboard_menu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
                 </div>
                 <div className='dashboard_column-2'>
                     <section className='dashboard_column-2-content'>

@@ -10,7 +10,7 @@ function Dashboard_actividad_li({cantidad, mailReceptor, mailEmisor, tipo, fecha
         </div>
         <div className='dashboard_actividad_li-datos'>
             <h3 className='dashboard_actividad_li-datos-h3'>
-                {tipo == "emisor" && <>Transferista a {mailReceptor}</>}
+                {tipo == "emisor" && <>Transferiste a {mailReceptor}</>}
                 {tipo == "receptor" && <>Recibiste de {mailEmisor}</>}
             </h3>
         </div>

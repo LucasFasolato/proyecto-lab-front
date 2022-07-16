@@ -5,6 +5,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {httpGet} from "../../../utils/httpFunctions";
 
 function Cvu_Alias() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
     const [user, setUser] = useState({});
     const [cargandoUser, setCargandoUser] = useState(false);
@@ -23,7 +24,7 @@ function Cvu_Alias() {
     <div className='cvu_alias_size'>
         <div className='cvu_alias_content'>
             <div className='cvu_alias_column-1'>
-                <Dashboard_menu/>
+                <Dashboard_menu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
             </div>
             <div className='cvu_alias_column-2'>
                 <section className='cvu_alias_column-2-content'>

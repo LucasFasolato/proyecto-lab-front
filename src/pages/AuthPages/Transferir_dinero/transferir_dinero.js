@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {httpPost} from "../../../utils/httpFunctions";
 
 function Transferir_dinero() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
     const [destinatario, setDestinatario] = useState("")
     const [cantidad, setCantidad] = useState("")
@@ -23,7 +24,7 @@ function Transferir_dinero() {
     <div className='transferirdinero_size'>
         <div className='transferirdinero_content'>
             <div className='transferirdinero_column-1'>
-                <Dashboard_menu/>
+                <Dashboard_menu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
             </div>
             <div className='transferirdinero_column-2'>
                 <section className='transferirdinero_column-2-content'>

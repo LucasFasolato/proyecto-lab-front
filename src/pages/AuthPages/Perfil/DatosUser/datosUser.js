@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react'
-import './perfil.css'
-import Dashboard_menu from '../../../components/Dashboard_menu/dashboard_menu';
+import './datosUser.css'
+import Dashboard_menu from '../../../../components/Dashboard_menu/dashboard_menu';
 import {Link, useNavigate} from "react-router-dom";
-import {httpGet} from "../../../utils/httpFunctions";
-import {formatDate} from "../../../utils/helpers";
+import {httpGet} from "../../../../utils/httpFunctions";
+import {formatDate} from "../../../../utils/helpers";
 
-function Perfil() {
+function DatosUser() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
     const [user, setUser] = useState({});
@@ -140,4 +140,4 @@ function Perfil() {
   )
 }
 
-export default Perfil
+export default DatosUser
