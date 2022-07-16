@@ -64,6 +64,13 @@
     margin: 0;
 }
 
+.creando-transferencia-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+}
+
 .transferirdinero_column-2-transf-h2 {
     font-family: "Poppins", sans-serif;
     font-weight: 500;

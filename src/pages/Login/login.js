@@ -3,13 +3,13 @@ import {Form, Button} from 'react-bootstrap';
 import './login.css'
 import {Navigate, useLocation, useNavigate} from "react-router-dom";
 import {httpGet, httpPost, login} from "../../utils/httpFunctions";
-import {ClipLoader} from "react-spinners";
+import {CircleLoader, ClipLoader, GridLoader} from "react-spinners";
 import axios from "axios";
 
 
 function Login({setIsLoggedIn, isLoggedIn}) {
     const [loading, setLoading] = useState(false);
-    let [color, setColor] = useState("#000000");
+    let [color, setColor] = useState("#3b6ce1");
     const redirect = useLocation().state;
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -49,9 +49,8 @@ function Login({setIsLoggedIn, isLoggedIn}) {
         <div>
             {isLoggedIn && <Navigate to={"/dashboard"}/>}
             {loading &&
-            <div className="sweet-loading">
-
-                <ClipLoader color={color} loading={loading} size={150}/>
+            <div className="login-loading">
+                <CircleLoader color={color} loading={loading} size={150}/>
             </div>
             }
             {!loading &&

@@ -4,8 +4,10 @@ import Dashboard_menu from '../../../components/Dashboard_menu/dashboard_menu';
 import Dashboard_actividad_li from '../../../components/Dashboard_actividad_li/dashboard_actividad-li';
 import {httpGet} from "../../../utils/httpFunctions";
 import {Link, useNavigate} from "react-router-dom";
+import {CircleLoader, ClipLoader, PropagateLoader, PuffLoader} from "react-spinners";
 
 function Dashboard({setIsLoggedIn, isLoggedIn}) {
+    let [color, setColor] = useState("#3b6ce1");
     const navigate = useNavigate();
     const [transferencias, setTransferencias] = useState(null)
     const [cargandoTransferencias, setCargandoTransferencias] = useState(false)
@@ -44,7 +46,14 @@ function Dashboard({setIsLoggedIn, isLoggedIn}) {
                                 <div className='column-2-left-fondos-data'>
                                     <p className='column-2-left-fondos-data-p'>Dinero disponible</p>
                                     <h1 className='column-2-left-fondos-data-h1'>
-                                        {cargandoUser ? <>Cargando</> : <>$ {user.fondo}</>}
+                                        {cargandoUser ?
+                                            <div className="dashboard-fondo-loading">
+                                                <ClipLoader
+                                                    color={color} loading={cargandoTransferencias}
+                                                                 size={50}/>
+                                            </div>
+                                            :
+                                            <>$ {user.fondo}</>}
                                     </h1>
                                 </div>
                                 <hr/>
@@ -96,7 +105,10 @@ function Dashboard({setIsLoggedIn, isLoggedIn}) {
                                 <input className='column-2-right-actividad-input' type='text' placeholder='Buscar'/>
                             </div>
                             <div className='column-2-right-actividad-content'>
-                                {cargandoTransferencias ? <p>Cargando</p> :
+                                {cargandoTransferencias ?
+                                    <div className="dashboard-transferencias-loading">
+                                        <PropagateLoader color={color} loading={cargandoTransferencias} size={15}/>
+                                    </div> :
                                     transferencias &&
                                     transferencias.map(transf => {
                                         return (

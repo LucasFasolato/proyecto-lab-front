@@ -18,6 +18,7 @@ import MiActividad from './pages/AuthPages/MiActividad/miActividad';
 import MiDinero from './pages/AuthPages/MiDinero/miDinero';
 import DatosUser from './pages/AuthPages/Perfil/DatosUser/datosUser';
 import PerfilLayout from "./components/PerfilLayout/PerfilLayout";
+import {ToastContainer} from "react-toastify";
 
 
 function AppWrapper() {
@@ -50,6 +51,8 @@ function AppWrapper() {
                     <Route path="/miactividad" element={ <MiActividad/> }/>
                     <Route path="/midinero" element={ <MiDinero/> }/>
                 </Route>
+
+                <Route path="*" element={<h1>PÁGINA NO ENCONTRADA</h1>} />
             </Routes>
         </div>
     );
@@ -57,6 +60,7 @@ function AppWrapper() {
 
 const App = () => (
     <Router>
+        <ToastContainer />
         <AppWrapper/>
     </Router>
 );

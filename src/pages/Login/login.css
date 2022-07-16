@@ -5,6 +5,14 @@
   margin-top: 15vh;
 }
 
+.login-loading {
+  width: 100%;
+  height:  80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .display-form {
   text-align: left;
   font-size: 18px;

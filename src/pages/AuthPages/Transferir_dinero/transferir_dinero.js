@@ -3,18 +3,46 @@ import './transferir_dinero.css'
 import Dashboard_menu from '../../../components/Dashboard_menu/dashboard_menu';
 import {useNavigate} from "react-router-dom";
 import {httpPost} from "../../../utils/httpFunctions";
+import {CircleLoader, ClimbingBoxLoader} from "react-spinners";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Transferir_dinero() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    let [color, setColor] = useState("#3b6ce1");
+    const [estadoTransferencia, setEstadoTransferencia] = useState(false)
+    const [enviandoTransferencia, setEnviandoTransferencia] = useState(false);
     const navigate = useNavigate();
     const [destinatario, setDestinatario] = useState("")
     const [cantidad, setCantidad] = useState("")
 
+    const enviada = () => {
+        toast.success("Transferencia enviada correctamente", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+        });
+    };
+
+    const rechazada = () => {
+        toast.error("Transferencia no realizada", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+        });
+    }
+
+
     const createTransfer = (e) => {
+        setEnviandoTransferencia(true);
         e.preventDefault()
         httpPost('transfer', {cantidadTransferida: destinatario, cbuReceptor: Number(cantidad)}, false)
             .then((res) => {
+                setEnviandoTransferencia(false)
                 console.log(res)
+                if (res.request.status === 201) {
+                    enviada()
+                } else {
+                    rechazada()
+                }
+
+
             }).catch((err)=> alert.show('No se ha podido realizar la transferencia.',{
                 type: "error"
             }))
@@ -25,6 +53,7 @@ function Transferir_dinero() {
             <div className='transferirdinero_column-2'>
                 <section className='transferirdinero_column-2-content'>
                     <section className='transferirdinero_column-2-transf'>
+                        {!enviandoTransferencia &&
                         <form className='transferirdinero_column-2-transf-form' onSubmit={(e) => createTransfer(e)}>
                             <div className='transferirdinero_column-2-transf-info'>
                                 <div className='transferirdinero_column-2-transf-title'>
@@ -46,6 +75,15 @@ function Transferir_dinero() {
                                 <button type='submit' className='transferirdinero_column-2-bttn-enviar-bttn'>CONFIRMAR TRANSFERENCIA</button>
                             </div>
                         </form>
+                        }
+                        {enviandoTransferencia &&
+                        <div className='transferirdinero_column-2-transf-title'>
+                            <h2 className='transferirdinero_column-2-transf-h2'>Enviando transferencia...</h2>
+                            <div className="creando-transferencia-loading">
+                                <ClimbingBoxLoader color={color} loading={enviandoTransferencia} size={17}/>
+                            </div>
+                        </div>
+                        }
                         
                     </section>
                     <div className='transferirdinero_column-2-bttn-volver'>

@@ -4,8 +4,12 @@ import Dashboard_menu from '../../../components/Dashboard_menu/dashboard_menu';
 import {Link, useNavigate} from "react-router-dom";
 import {httpGet} from "../../../utils/httpFunctions";
 import {formatDate, makeAvatarUrl} from "../../../utils/helpers";
+import {ClipLoader} from "react-spinners";
+import placeholder from "./placeholder.jpg";
+
 
 function Perfil({isLoggedIn, setIsLoggedIn}) {
+    let [color, setColor] = useState("#3b6ce1");
     const navigate = useNavigate();
     const [user, setUser] = useState({});
     const [cargandoUser, setCargandoUser] = useState(true);
@@ -25,14 +29,19 @@ function Perfil({isLoggedIn, setIsLoggedIn}) {
             <section className='perfil_column-2-content'>
                 <section className='perfil_column-2-user'>
                     <div className='perfil_column-2-user-img'>
-                        <img src={!cargandoUser && makeAvatarUrl(user.mail)} className='perfil_column-2-user-img-size'/>
+                        <img src={!cargandoUser ? makeAvatarUrl(user.mail) : placeholder} className='perfil_column-2-user-img-size'/>
                     </div>
                     <div className='perfil_column-2-user-info'>
                         <div className='perfil_column-2-user-name'>
-                            <h2 className='perfil_column-2-user-h2'>{cargandoUser ? <>Cargando</> : <>{user.username}</>}</h2>
+                            <h2 className='perfil_column-2-user-h2'>{cargandoUser ? <></> : <>{user.username}</>}</h2>
+                            {cargandoUser && <div className="dashboard-fondo-loading">
+                                <ClipLoader
+                                    color={color} loading={cargandoUser}
+                                    size={50}/>
+                            </div>}
                         </div>
                         <div className='perfil_column-2-user-register'>
-                            <h3 className='perfil_column-2-user-h3'>{cargandoUser ? <>Cargando</> : <>Usuario creado el
+                            <h3 className='perfil_column-2-user-h3'>{cargandoUser ? <></> : <>Usuario creado el
                                 día {formatDate(user.createdAt)}</>}</h3>
                         </div>
                     </div>
