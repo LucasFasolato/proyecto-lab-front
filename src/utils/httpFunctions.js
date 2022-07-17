@@ -24,7 +24,6 @@ export const login = async (username, password) => {
     } catch (err) {
         return err;
     }
-
 }
 
 // Basic auth no tiene una manera de desdloguear, sino que pones credenciales invalidas y lsito
@@ -43,7 +42,7 @@ export const httpPost = async (endpoint, data, register = false) => {
         const configRegistro = {
             headers: {
                 // Overwrite Axios's automatically set Content-Type
-                'access-Control-Allow-Origin' : '*',
+                'access-Control-Allow-Origin': '*',
                 'content-Type': 'application/json',
                 'dataType': 'json',
             }
@@ -51,7 +50,7 @@ export const httpPost = async (endpoint, data, register = false) => {
         const configLogueado = {
             headers: {
                 // Overwrite Axios's automatically set Content-Type
-                'access-Control-Allow-Origin' : '*',
+                'access-Control-Allow-Origin': '*',
                 'content-Type': 'application/json',
                 'dataType': 'json',
                 authorization: `Basic ${localStorage.getItem('user')}`
@@ -75,7 +74,15 @@ export const httpDelete = async (endpoint) => {
 }
 
 export const httpPut = async (endpoint, data) => {
-    return axios.put(baseURL + endpoint, data).then((res) => {
+    return axios.put(baseURL + endpoint, data, {
+        headers: {
+            // Overwrite Axios's automatically set Content-Type
+            'access-Control-Allow-Origin': '*',
+            'content-Type': 'application/json',
+            'dataType': 'json',
+            authorization: `Basic ${localStorage.getItem('user')}`
+        }
+    }).then((res) => {
         return res.data;
     })
 }

@@ -73,7 +73,9 @@ function Changepassword() {
                             .then((res) => {
                                 setModificandoPassword(false)
                                 console.log(res)
-                                if ((res.request.status === 201) || (res.request.status === 200) ){
+                                if (res.statusCode === "200" ){
+                                    localStorage.clear();
+                                    localStorage.setItem('user', window.btoa(user.username + ":" + newPassword.toString()));
                                     changed();
                                 } else {
                                     rechazada();
@@ -102,12 +104,12 @@ function Changepassword() {
                                 </div>
                                 <div className='changePassword_column-2-transf-monto'>
                                     <h3 className='changePassword_column-2-transf-h3'>Contraseña nueva</h3>
-                                    <input type="text" className='changePassword_column-2-transf-input' placeholder='Ingrese la contraseña nueva' 
+                                    <input type="password" className='changePassword_column-2-transf-input' placeholder='Ingrese la contraseña nueva'
                                     value={newPassword} onChange={(e) => setNewPassword(e.target.value)}/>
                                 </div>
                                 <div className='changePassword_column-2-transf-monto'>
                                     <h3 className='changePassword_column-2-transf-h3'>Confirmar contraseña</h3>
-                                    <input type="text" className='changePassword_column-2-transf-input' placeholder='Reingrese la contraseña nueva' 
+                                    <input type="password" className='changePassword_column-2-transf-input' placeholder='Reingrese la contraseña nueva'
                                     value={reNewPassword} onChange={(e) => setReNewPassword(e.target.value)}/>
                                 </div>
                             </div>

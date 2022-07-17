@@ -4,19 +4,32 @@ import './../Login/login.css'
 import {useNavigate} from "react-router-dom";
 import {useRef, useState} from 'react';
 import {httpPost} from "../../utils/httpFunctions";
-import {ClipLoader} from "react-spinners";
+import {CircleLoader, ClipLoader} from "react-spinners";
+import {toast} from "react-toastify";
 
 
 function Register() {
     const [errores, setErrores] = useState(false)
     const [loading, setLoading] = useState(false);
-    let [color, setColor] = useState("#000000");
+    let [color, setColor] = useState("#3b6ce1");
     const navigate = useNavigate();
     const rePassword = useRef();
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [repassword, setRepassword] = useState("");
+
+    const registrado = () => {
+        toast.success("Usuario creado correctamente", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+        });
+    };
+
+    const rechazada = () => {
+        toast.error("Usuario no realizada", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+        });
+    }
 
     function enableInput() {
         console.log("INPUT HABILITADO");
@@ -33,6 +46,7 @@ function Register() {
         const dataJson = JSON.stringify(data);
         let response = await httpPost("users/register", dataJson, true)
         if (response.request.status == 201) {
+            registrado()
             setLoading(false)
             console.log("creado")
             console.log(response);
@@ -43,6 +57,7 @@ function Register() {
             console.log("invalido")
             setLoading(false)
             setErrores(true)
+            rechazada()
         }
 
     }
@@ -50,11 +65,9 @@ function Register() {
     return (
         <div>
             <div className='content-form'>
-                <h1>REGISTRARSE</h1>
                 {loading &&
-                <div className="sweet-loading">
-
-                    <ClipLoader color={color} loading={loading} size={150}/>
+                <div className="registro-loading">
+                    <CircleLoader color={color} loading={loading} size={150}/>
                 </div>
                 }
                 {errores &&
@@ -68,6 +81,7 @@ function Register() {
                 }
                 {!loading &&
                 <div className='display-form'>
+                    <h1>REGISTRARSE</h1>
                     <Form onSubmit={(e) => handleRegister(e)}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Correo electrónico</Form.Label>
