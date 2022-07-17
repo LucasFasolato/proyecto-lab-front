@@ -4,7 +4,8 @@ import Dashboard_menu from '../../../components/Dashboard_menu/dashboard_menu';
 import Dashboard_actividad_li from '../../../components/Dashboard_actividad_li/dashboard_actividad-li';
 import {httpGet} from "../../../utils/httpFunctions";
 import {Link, useNavigate} from "react-router-dom";
-import {CircleLoader, ClipLoader, PropagateLoader, PuffLoader} from "react-spinners";
+import {CircleLoader, ClipLoader, PropagateLoader, PuffLoader, BeatLoader
+} from "react-spinners";
 
 function Dashboard({setIsLoggedIn, isLoggedIn}) {
     let [color, setColor] = useState("#3b6ce1");
@@ -48,9 +49,9 @@ function Dashboard({setIsLoggedIn, isLoggedIn}) {
                                     <h1 className='column-2-left-fondos-data-h1'>
                                         {cargandoUser ?
                                             <div className="dashboard-fondo-loading">
-                                                <ClipLoader
+                                                <BeatLoader
                                                     color={color} loading={cargandoTransferencias}
-                                                                 size={50}/>
+                                                                 size={10}/>
                                             </div>
                                             :
                                             <>$ {user.fondo}</>}
@@ -107,7 +108,7 @@ function Dashboard({setIsLoggedIn, isLoggedIn}) {
                             <div className='column-2-right-actividad-content'>
                                 {cargandoTransferencias ?
                                     <div className="dashboard-transferencias-loading">
-                                        <PropagateLoader color={color} loading={cargandoTransferencias} size={15}/>
+                                        <BeatLoader color={color} loading={cargandoTransferencias} size={10}/>
                                     </div> :
                                     transferencias &&
                                     transferencias.map(transf => {

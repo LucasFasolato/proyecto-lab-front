@@ -19,6 +19,7 @@ import MiDinero from './pages/AuthPages/MiDinero/miDinero';
 import DatosUser from './pages/AuthPages/Perfil/DatosUser/datosUser';
 import PerfilLayout from "./components/PerfilLayout/PerfilLayout";
 import {ToastContainer} from "react-toastify";
+import Changepassword from './pages/AuthPages/Perfil/ChangePassword/changePassword';
 
 
 function AppWrapper() {
@@ -46,6 +47,7 @@ function AppWrapper() {
                     <Route path="/perfil" element={<Perfil/>}/>
                     <Route path="/perfil/cvu" element={ <Cvu_Alias /> }/>
                     <Route path="/perfil/datos" element={ <DatosUser/> }/>
+                    <Route path="/perfil/changepassword" element={ <Changepassword/> }/>
                     <Route path="/perfil/transferirdinero" element={ <Transferir_dinero/> }/>
                     <Route path="/perfil/ingresardinero" element={ <Ingresar_dinero/> }/>
                     <Route path="/miactividad" element={ <MiActividad/> }/>

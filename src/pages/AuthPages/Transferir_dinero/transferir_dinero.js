@@ -3,7 +3,7 @@ import './transferir_dinero.css'
 import Dashboard_menu from '../../../components/Dashboard_menu/dashboard_menu';
 import {useNavigate} from "react-router-dom";
 import {httpPost} from "../../../utils/httpFunctions";
-import {CircleLoader, ClimbingBoxLoader} from "react-spinners";
+import {CircleLoader, ClimbingBoxLoader, PropagateLoader} from "react-spinners";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -80,14 +80,14 @@ function Transferir_dinero() {
                         <div className='transferirdinero_column-2-transf-title'>
                             <h2 className='transferirdinero_column-2-transf-h2'>Enviando transferencia...</h2>
                             <div className="creando-transferencia-loading">
-                                <ClimbingBoxLoader color={color} loading={enviandoTransferencia} size={17}/>
+                                <PropagateLoader color={color} loading={enviandoTransferencia} size={17}/>
                             </div>
                         </div>
                         }
                         
                     </section>
                     <div className='transferirdinero_column-2-bttn-volver'>
-                        <button className='transferirdinero_column-2-bttn-volver-bttn' onClick={() => navigate("/dashboard")}>VOLVER A MI PERFIL</button>
+                        <button className='transferirdinero_column-2-bttn-volver-bttn' onClick={() => navigate("/dashboard")}>VOLVER AL DASHBOARD</button>
                     </div>
                 </section>
             </div>

@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import './perfil.css'
-import Dashboard_menu from '../../../components/Dashboard_menu/dashboard_menu';
 import {Link, useNavigate} from "react-router-dom";
 import {httpGet} from "../../../utils/httpFunctions";
 import {formatDate, makeAvatarUrl} from "../../../utils/helpers";
-import {ClipLoader} from "react-spinners";
+import {BeatLoader} from "react-spinners";
 import placeholder from "./placeholder.jpg";
 
 
@@ -35,15 +34,20 @@ function Perfil({isLoggedIn, setIsLoggedIn}) {
                         <div className='perfil_column-2-user-name'>
                             <h2 className='perfil_column-2-user-h2'>{cargandoUser ? <></> : <>{user.username}</>}</h2>
                             {cargandoUser && <div className="dashboard-fondo-loading">
-                                <ClipLoader
+                                <BeatLoader
                                     color={color} loading={cargandoUser}
-                                    size={50}/>
+                                    size={10}/>
                             </div>}
                         </div>
                         <div className='perfil_column-2-user-register'>
                             <h3 className='perfil_column-2-user-h3'>{cargandoUser ? <></> : <>Usuario creado el
                                 día {formatDate(user.createdAt)}</>}</h3>
                         </div>
+                    </div>
+                    <div className='perfil_column-2-user-changepassword'>
+                        <button className='perfil_column-2-user-changepassword-bttn' onClick={() => navigate("/perfil/changepassword")}>
+                            Modificar contraseña
+                        </button>
                     </div>
                 </section>
 

@@ -15,8 +15,8 @@
 }
 
 .dashboard_actividad_li-img-size {
-    width: 80%;
-    height: 80%;
+    width: 4vh;
+    height: 4vh;
     position:absolute;
     top: 0; bottom: 0; left: 0; right: 0;
     margin: auto;

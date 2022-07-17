@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import './datosUser.css'
+import './../perfil.css'
 import Dashboard_menu from '../../../../components/Dashboard_menu/dashboard_menu';
 import {Link, useNavigate} from "react-router-dom";
 import {httpGet} from "../../../../utils/httpFunctions";
