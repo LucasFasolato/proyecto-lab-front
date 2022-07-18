@@ -20,6 +20,7 @@ import DatosUser from './pages/AuthPages/Perfil/DatosUser/datosUser';
 import PerfilLayout from "./components/PerfilLayout/PerfilLayout";
 import {ToastContainer} from "react-toastify";
 import Changepassword from './pages/AuthPages/Perfil/ChangePassword/changePassword';
+import MisTransferencias from './pages/AuthPages/MisTransferencias/misTransferencias';
 
 
 function AppWrapper() {
@@ -52,6 +53,7 @@ function AppWrapper() {
                     <Route path="/perfil/ingresardinero" element={ <Ingresar_dinero/> }/>
                     <Route path="/miactividad" element={ <MiActividad/> }/>
                     <Route path="/midinero" element={ <MiDinero/> }/>
+                    <Route path="/mistransferencias" element={ <MisTransferencias/> }/>
                 </Route>
 
                 <Route path="*" element={<h1>PÁGINA NO ENCONTRADA</h1>} />

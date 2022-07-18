@@ -27,8 +27,8 @@ function Dashboard_menu({isLoggedIn, setIsLoggedIn}) {
                 </a>
             </div>
             <div className='dashboard_menu-link'>
-                <a className='dashboard_menu-a' onClick={() => navigate("/contact")}>
-                    <h2 className='dashboard_menu-h2'>Ayuda</h2>
+                <a className='dashboard_menu-a' onClick={() => navigate("/mistransferencias")}>
+                    <h2 className='dashboard_menu-h2'>Transferencias</h2>
                 </a>
             </div>
             <div className='dashboard_menu-link'>

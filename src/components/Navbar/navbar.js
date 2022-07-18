@@ -58,7 +58,7 @@ function Navbar({isLoggedIn, setIsLoggedIn}) {
                                 <Link to={"/dashboard"}>Dashboard</Link>
                             </li>
                             <li className='links_text'>
-                                Transferencias
+                            <Link to={"/mistransferencias"}>Transferencias</Link>
                             </li>
                             <li className='links_text'>
                                 Portfolio
