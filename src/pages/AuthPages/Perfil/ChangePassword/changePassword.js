@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import './changePassword.css'
-import Dashboard_menu from '../../../../components/Dashboard_menu/dashboard_menu';
 import {useNavigate} from "react-router-dom";
 import {httpPut,httpGet} from "../../../../utils/httpFunctions";
 import {CircleLoader, ClimbingBoxLoader, PropagateLoader} from "react-spinners";
@@ -10,15 +9,11 @@ import 'react-toastify/dist/ReactToastify.css';
 function Changepassword() {
 
     let [color, setColor] = useState("#3b6ce1");
-    const [estadoPassword, setEstadoPassword] = useState(false)
     const [actualPassword, setActualPassword] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const [reNewPassword, setReNewPassword] = useState("")
     const [modificandoPassword, setModificandoPassword] = useState(false);
     const navigate = useNavigate();
-    const [destinatario, setDestinatario] = useState("")
-    const [cantidad, setCantidad] = useState("")
-
     const [user, setUser] = useState({});
     const [cargandoUser, setCargandoUser] = useState(true);
 
