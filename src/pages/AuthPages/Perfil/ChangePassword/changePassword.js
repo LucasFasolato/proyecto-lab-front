@@ -93,8 +93,8 @@ function Changepassword() {
                                     <h2 className='changePassword_column-2-transf-h2'>Modificar contraseña</h2>
                                 </div>
                                 <div className='changePassword_column-2-transf-dest'>
-                                    <h3 className='changePassword_column-2-transf-h3'>Contraseña actual</h3>
-                                    <input type="text" className='changePassword_column-2-transf-input' placeholder='Ingrese la contraseña actual' 
+                                    <h3 className='changePassword_column-2-transf-h3'>Ingrese su mail</h3>
+                                    <input type="text" className='changePassword_column-2-transf-input' placeholder='Ingrese el mail de su cuenta' 
                                     value={actualPassword} onChange={(e) => setActualPassword(e.target.value)}/>
                                 </div>
                                 <div className='changePassword_column-2-transf-monto'>

@@ -12,12 +12,10 @@ function MisTransferencias(props) {
     const [transferencias, setTransferencias] = useState(null)
     const [transferenciasRecibidas, setTransferenciasRecibidas] = useState(null)
     const [transferenciasEmitidas, setTransferenciasEmitidas] = useState(null)
-    const [mostrarAllTransferencias, setMostrarAllTransferencias] = useState(true)
-    const [mostrarTransferenciasRecibidas, setMostrarTransferenciasRecibidas] = useState(false)
-    const [mostrarTransferenciasEmitidas, setMostrarTransferenciasEmitidas] = useState(false)
-    const [cargandoAllTransferencias, setCargandoAllTransferencias] = useState(false)
-    const [cargandoTransferenciasEmitidas, setCargandoTransferenciasEmitidas] = useState(false)
-    const [cargandoTransferenciasRecibidas, setCargandoTransferenciasRecibidas] = useState(false)
+    // const [mostrarAllTransferencias, setMostrarAllTransferencias] = useState(true)
+    // const [mostrarTransferenciasRecibidas, setMostrarTransferenciasRecibidas] = useState(false)
+    // const [mostrarTransferenciasEmitidas, setMostrarTransferenciasEmitidas] = useState(false)
+    const [cargandoTransferencias, setCargandoTransferencias] = useState(false)
 
     const [user, setUser] = useState({});
     const [cargandoUser, setCargandoUser] = useState(false);
@@ -32,27 +30,27 @@ function MisTransferencias(props) {
     }, [])
 
     useEffect(() => {
-        setCargandoAllTransferencias(true)
+        setCargandoTransferencias(true)
         httpGet("transfer/me").then(res => {
-            setCargandoAllTransferencias(false);
+            setCargandoTransferencias(false);
             setTransferencias(res)
             console.log(res)
         })
     }, [])
 
     useEffect(() => {
-        setCargandoTransferenciasRecibidas(true)
+        setCargandoTransferencias(true)
         httpGet("transfer/recibidas").then(res => {
-            setCargandoTransferenciasRecibidas(false);
+            setCargandoTransferencias(false);
             setTransferenciasRecibidas(res)
             console.log(res)
         })
     }, [])
 
     useEffect(() => {
-        setCargandoTransferenciasEmitidas(true)
+        setCargandoTransferencias(true)
         httpGet("transfer/emitidas").then(res => {
-            setCargandoTransferenciasEmitidas(false);
+            setCargandoTransferencias(false);
             setTransferenciasEmitidas(res)
             console.log(res)
         })
@@ -62,41 +60,15 @@ function MisTransferencias(props) {
         return transf.emisor.userId == user.userId ? "emisor" : "receptor";
     }
 
-    function transferEmitidas () {
+    function showTransfer () {
         return (
             <>
-            {cargandoTransferenciasEmitidas ?
+            {cargandoTransferencias ?
                 <div className="dashboard-transferencias-loading">
-                    <BeatLoader color={color} loading={cargandoTransferenciasEmitidas} size={10}/>
+                    <BeatLoader color={color} loading={cargandoTransferencias} size={10}/>
                 </div> :
-                transferenciasEmitidas &&
-                transferenciasEmitidas.map(transf => {
-                    return (
-                        <div key={transf.transferId} className='column-2-actividad-li'>
-                            <Dashboard_actividad_li fecha={transf.createdAt}
-                                                    cantidad={transf.cantidadTransferida}
-                                                    mailEmisor={transf.emisor.mail}
-                                                    mailReceptor={transf.receptor.mail}
-                                                    tipo={tipoTransf(transf)}
-                            />
-                        </div>
-                    )
-                })
-            }
-            </>
-        
-        )
-    }
-
-    function transferRecibidas () {
-        return (
-            <>
-            {cargandoTransferenciasRecibidas ?
-                <div className="dashboard-transferencias-loading">
-                    <BeatLoader color={color} loading={cargandoTransferenciasRecibidas} size={10}/>
-                </div> :
-                transferenciasRecibidas &&
-                transferenciasRecibidas.map(transf => {
+                transferencias &&
+                transferencias.map(transf => {
                     return (
                         <div key={transf.transferId} className='column-2-actividad-li'>
                             <Dashboard_actividad_li fecha={transf.createdAt}
@@ -126,10 +98,10 @@ function MisTransferencias(props) {
                                 </div>
                                 
                                 <div className='column-2-actividad-bttns'>
-                                    <button className='column-2-actividad-bttn-size' onClick={() => transferEmitidas ()}>
+                                    <button className='column-2-actividad-bttn-size' onClick={() => setTransferencias(transferenciasEmitidas)}>
                                         Emitidas
                                     </button>
-                                    <button className='column-2-actividad-bttn-size' onClick={() => transferRecibidas ()}>
+                                    <button className='column-2-actividad-bttn-size' onClick={() => setTransferencias(transferenciasRecibidas)}>
                                         Recibidas
                                     </button>
                                 </div>
@@ -139,25 +111,7 @@ function MisTransferencias(props) {
                                 <input className='column-2-actividad-input' type='text' placeholder='Buscar transferencias'/>
                             </div>
                             <div className='column-2-actividad-content'>
-                                { 
-                                cargandoAllTransferencias ?
-                                    <div className="dashboard-transferencias-loading">
-                                        <BeatLoader color={color} loading={cargandoAllTransferencias} size={10}/>
-                                    </div> :
-                                    transferencias &&
-                                    transferencias.map(transf => {
-                                        return (
-                                            <div key={transf.transferId} className='column-2-actividad-li'>
-                                                <Dashboard_actividad_li fecha={transf.createdAt}
-                                                                        cantidad={transf.cantidadTransferida}
-                                                                        mailEmisor={transf.emisor.mail}
-                                                                        mailReceptor={transf.receptor.mail}
-                                                                        tipo={tipoTransf(transf)}
-                                                />
-                                            </div>
-                                        )
-                                    })
-                                }
+                                {showTransfer()}
                             </div>
                             <hr/>
                         </section>

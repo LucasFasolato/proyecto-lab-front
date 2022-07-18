@@ -32,7 +32,7 @@ function Transferir_dinero() {
     const createTransfer = (e) => {
         setEnviandoTransferencia(true);
         e.preventDefault()
-        httpPost('transfer', {cantidadTransferida: destinatario, cbuReceptor: Number(cantidad)}, false)
+        httpPost('transfer', {cantidadTransferida: Number(cantidad), cbuReceptor: destinatario}, false)
             .then((res) => {
                 setEnviandoTransferencia(false)
                 console.log(res)

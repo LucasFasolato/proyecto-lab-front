@@ -4,6 +4,7 @@ import Dashboard_menu from '../../../components/Dashboard_menu/dashboard_menu';
 import Dashboard_actividad_li from '../../../components/Dashboard_actividad_li/dashboard_actividad-li';
 import {httpGet} from "../../../utils/httpFunctions";
 import {Link, useNavigate} from "react-router-dom";
+import Arrow_Down from './../../../imgs/Arrow_down.png'
 import {CircleLoader, ClipLoader, PropagateLoader, PuffLoader, BeatLoader
 } from "react-spinners";
 
@@ -44,19 +45,27 @@ function Dashboard({setIsLoggedIn, isLoggedIn}) {
                     <section className='column-2-left'>
                         <section className='column-2-left-fondos'>
                             <div className='column-2-left-fondos-info'>
-                                <div className='column-2-left-fondos-data'>
-                                    <p className='column-2-left-fondos-data-p'>Dinero disponible</p>
-                                    <h1 className='column-2-left-fondos-data-h1'>
-                                        {cargandoUser ?
-                                            <div className="dashboard-fondo-loading">
-                                                <BeatLoader
-                                                    color={color} loading={cargandoTransferencias}
-                                                                 size={10}/>
-                                            </div>
-                                            :
-                                            <>$ {user.fondo}</>}
-                                    </h1>
+                                <div className='column-2-left-fondos-info-content'>
+                                    <div className='column-2-left-fondos-data'>
+                                        <p className='column-2-left-fondos-data-p'>Dinero disponible</p>
+                                        <h1 className='column-2-left-fondos-data-h1'>
+                                            {cargandoUser ?
+                                                <div className="dashboard-fondo-loading">
+                                                    <BeatLoader
+                                                        color={color} loading={cargandoTransferencias}
+                                                                    size={10}/>
+                                                </div>
+                                                :
+                                                <>$ {user.fondo}</>}
+                                        </h1>
+                                    </div>
+                                    <div className='column-2-left-fondos-data'>
+                                        <button className='column-2-left-fondos-cvu'
+                                            onClick={() => navigate("/perfil/cvu")}>CVU y Alias
+                                        </button>
+                                    </div>
                                 </div>
+                                
                                 <hr/>
                                 <div className='column-2-left-fondos-inv'>
                                     <div className='column-2-left-fondos-inv-left'>
@@ -87,7 +96,9 @@ function Dashboard({setIsLoggedIn, isLoggedIn}) {
                         <section className='column-2-left-reportesaldo'>
                             <div className='column-2-left-reportesaldo-content'>
                                 <div className='column-2-left-reportesaldo-left'>
-                                    <div className='column-2-left-reportesaldo-left-img'/>
+                                    <div className='column-2-left-reportesaldo-left-img'>
+                                        <img className='column-2-left-reportesaldo-left-img-size' src={Arrow_Down} alt="Flecha para abajo"/>
+                                    </div>
                                     <p className='column-2-left-reportesaldo-left-p'>Reporte saldo al 31/12</p>
                                 </div>
                                 <div className='column-2-left-reportesaldo-right'>

@@ -59,9 +59,15 @@ function Cvu_Alias() {
                             </div>
                         </div>
                     </section>
-                    <div className='cvu_alias_column-2-bttn-volver'>
+                    <div className='cvu_alias_column-2-bttns'>
+                        <div className='cvu_alias_column-2-bttn-volver'>
                             <button className='cvu_alias_column-2-bttn-volver-bttn' onClick={() => navigate("/perfil")}>VOLVER A MI PERFIL</button>
                         </div>
+                        <div className='cvu_alias_column-2-bttn-volver'>
+                            <button className='cvu_alias_column-2-bttn-volver-bttn' onClick={() => navigate("/dashboard")}>VOLVER A DASHBOARD</button>
+                        </div>
+                    </div>
+                    
                 </section>
             </div>
 
