@@ -88,7 +88,7 @@ function Screen_2() {
           y: "100vh"
         },
         onscreen: {
-          y: 40,
+          y: 0,
           transition: {
             type: "spring",
             duration: 2
@@ -169,18 +169,18 @@ function Screen_2() {
                         </motion.div>
                     </section>
                     <motion.section className='s2_columns'>
-                        <motion.div className='s2_eth-size'
+                        <motion.div className='s2_cards-size eth'
                             variants={variantRightColum1}
                             initial="offscreen"
                             animate="onscreen"
                         >
-                            <section className='s2_eth-left'>
-                                <article className='s2_eth-title'>
-                                    <h1 className='s2_eth-h1'>OFERTA DEL DÍA</h1>
+                            <section className='s2_cards-left'>
+                                <article className='s2_cards-title'>
+                                    <h1 className='s2_cards-h1'>OFERTA DEL DÍA</h1>
                                 </article>
                                 <section className='s2_eth-content'>
                                     <article className='s2_eth-description'>
-                                        <h2 className='s2_eth-h2'>Ethereum</h2>
+                                        <h2 className='s2_cards-h2'>Ethereum</h2>
                                     </article>
                                     <article className='s2_eth-description'>
                                         <p className='s2_eth-p'>+4,67</p>
@@ -188,43 +188,43 @@ function Screen_2() {
                                 </section>
                                 
                             </section>
-                            <section className='s2_eth-right'>
+                            <section className='s2_cards-right'>
                                 <img className='s2_eth-img' src={LogoEthereum} alt="Imagen logo ethereum"/>
                             </section>
                         </motion.div>
                         
-                        <motion.div className='s2_inv-size'
+                        <motion.div className='s2_cards-size '
                             variants={variantRightColum2}
                             initial="offscreen"
                             animate="onscreen"
                         >
-                            <section className='s2_inv-left'>
-                                <article className='s2_inv-title'>
-                                    <h1 className='s2_inv-h1'>INVERTI AHORA</h1>
+                            <section className='s2_cards-left'>
+                                <article className='s2_cards-title'>
+                                    <h1 className='s2_cards-h1'>INVERTI AHORA</h1>
                                 </article>
-                                <article className='s2_inv-description'>
-                                    <h2 className='s2_inv-h2'>Que el dinero trabaje por vos <br/> <br/>Consulta los rendimientos de la última semana</h2>
+                                <article className='s2_cards-description'>
+                                    <h2 className='s2_cards-h2'>Que el dinero trabaje por vos <br/> <br/>Rendimientos de la última semana</h2>
                                 </article>
                             </section>
-                            <section className='s2_inv-right'>
+                            <section className='s2_cards-right'>
                                 <img className='s2_inv-img' src={LogoCohete} alt="Imagen logo cohete"/>
                             </section>
                         </motion.div>
 
-                        <motion.div className='s2_info-size'
+                        <motion.div className='s2_cards-size '
                             variants={variantRightColum3}
                             initial="offscreen"
                             animate="onscreen"
                         >
-                            <section className='s2_info-left'>
-                                <article className='s2_info-title'>
-                                    <h1 className='s2_info-h1'>+ INFO</h1>
+                            <section className='s2_cards-left'>
+                                <article className='s2_cards-title'>
+                                    <h1 className='s2_cards-h1'>+ INFO</h1>
                                 </article>
-                                <article className='s2_info-description'>
-                                    <h2 className='s2_info-h2'>Podes obtener más informacion haciendo <br/><br/> CLICK AQUÍ </h2>
+                                <article className='s2_cards-description'>
+                                    <h2 className='s2_cards-h2'>Más informacion<br/><br/> CLICK AQUÍ </h2>
                                 </article>
                             </section>
-                            <section className='s2_info-right'>
+                            <section className='s2_cards-right'>
                                 <img className='s2_info-img' src={LogoInfo} alt="Imagen logo info"/>
                             </section>
                         </motion.div>

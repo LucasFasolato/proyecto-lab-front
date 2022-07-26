@@ -1,57 +1,83 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import './banner_data.css'
 import { motion } from "framer-motion"
+import {httpGet} from "../../utils/httpFunctions";
+import {BeatLoader} from "react-spinners";
 
 function Banner_data() {
-const variantBanner= {
-    offscreen: {
-        opacity:0
-    },
-    onscreen: {
-        opacity:1 ,
-        transition: {
-        duration: 1,
-        ease: "easeInOut"
+    
+    let [color, setColor] = useState("#3b6ce1");
+    const [cantidadUsers, setCantidadUsers] = useState({});
+    const [cantidadTransf, setCantidadTransf] = useState({});
+    const [cargandoUsers, setCargandoUsers] = useState(true);
+    const [cargandoTransfs, setCargandoTransfs] = useState(true);
+
+    useEffect(() => {
+        setCargandoUsers(true)
+        httpGet("users").then(res => {
+            setCargandoUsers(false);
+            setCantidadUsers(res.length)
+        })
+    }, [])
+
+    useEffect(() => {
+        setCargandoTransfs(true)
+        httpGet("transfer").then(res => {
+            setCargandoTransfs(false)
+            setCantidadTransf(res.length)
+        })
+    }, [])
+
+
+    const variantBanner= {
+        offscreen: {
+            opacity:0
+        },
+        onscreen: {
+            opacity:1 ,
+            transition: {
+            duration: 1,
+            ease: "easeInOut"
+            }
         }
-    }
-};
-const variantData= {
-    offscreen: {
-        opacity:0
-    },
-    onscreen: {
-        opacity:1,   
-        transition: {
-        duration: 0.2,
-        delay: 1,
-        ease: "easeInOut"
+    };
+    const variantData= {
+        offscreen: {
+            opacity:0
+        },
+        onscreen: {
+            opacity:1,   
+            transition: {
+            duration: 0.2,
+            delay: 1,
+            ease: "easeInOut"
+            }
         }
-    }
-};
-const variantCircle1= {
-    offscreen: {
-        x: "-100vw"
-    },
-    onscreen: {
-        x: 0,
-        transition: {
-        duration: 1,
-        delay: 1
+    };
+    const variantCircle1= {
+        offscreen: {
+            x: "-100vw"
+        },
+        onscreen: {
+            x: 0,
+            transition: {
+            duration: 1,
+            delay: 1
+            }
         }
-    }
-};
-const variantCircle2= {
-    offscreen: {
-        x: "100vw"
-    },
-    onscreen: {
-        x: 0,
-        transition: {
-        duration: 1,
-        delay: 1
+    };
+    const variantCircle2= {
+        offscreen: {
+            x: "100vw"
+        },
+        onscreen: {
+            x: 0,
+            transition: {
+            duration: 1,
+            delay: 1
+            }
         }
-    }
-};
+    };
   return (
     <motion.div className='banner_content'
         variants={variantBanner}
@@ -64,8 +90,8 @@ const variantCircle2= {
                 variants={variantData}
                 initial="offscreen"
                 animate="onscreen">
-                    <h1 className='banner_h1'>12k</h1>
-                    <p className='banner_p'>Happy Customers</p>
+                    <h1 className='banner_h1'>{cargandoUsers ? <><BeatLoader color={color} loading={cargandoUsers} size={10}/></> : <>{String(cantidadUsers)}</>}</h1>
+                    <p className='banner_p'>Happy Clients</p>
                 </motion.article>
             </section>
             <section className='banner_box'>
@@ -82,8 +108,8 @@ const variantCircle2= {
                 variants={variantData}
                 initial="offscreen"
                 animate="onscreen">
-                    <h1 className='banner_h1'>210</h1>
-                    <p className='banner_p'>Complete Proyects</p>      
+                    <h1 className='banner_h1'>{cargandoTransfs ? <><BeatLoader color={color} loading={cargandoTransfs} size={10}/></> : <>{String(cantidadTransf)}</>}</h1>
+                    <p className='banner_p'>Complete Transfers</p>      
                 </motion.article>
             </section>
             <section className='banner_box lastbanner_box'>

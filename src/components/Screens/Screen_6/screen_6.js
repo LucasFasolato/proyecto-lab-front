@@ -86,7 +86,7 @@ function Screen_6() {
             initial="offscreen"
             animate="onscreen"
         >
-            <h1 className='s6_h1'>Users loves Banco Austral</h1>
+            <h1 className='s6_h1'>Users love Banco Austral</h1>
             <h2 className='s6_h2'>See what users around the world are saying about us</h2>
         </motion.section>
         <motion.section className='s6_content'

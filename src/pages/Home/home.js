@@ -9,22 +9,8 @@ import Screen_6 from '../../components/Screens/Screen_6/screen_6'
 import Screen_7 from '../../components/Screens/Screen_7/screen_7'
 import { motion } from "framer-motion"
 function Menu() {
-  const variantNavbar = {
-    hidden: { y: '-40px' },
-    visible: { 
-      y: '0px',
-      transition: { duration: 1, ease:'easeInOut' }
-    }
-  }
   return (
     <div className='display-content-menu'>
-      <motion.div
-        variants={variantNavbar}
-        initial="hidden"
-        animate="visible"
-      >
-
-      </motion.div>
         <Screen1/>
         <Screen_2/>
         <Screen_3/>

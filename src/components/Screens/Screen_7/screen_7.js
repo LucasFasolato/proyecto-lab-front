@@ -59,7 +59,9 @@ function Screen_7() {
                 </motion.article>
             </section>
         </section>
+        <section className='s7_footer-content'>
         <Footer/>
+        </section>
     </div>
   )
 }
