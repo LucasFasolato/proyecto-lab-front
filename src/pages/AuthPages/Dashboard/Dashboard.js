@@ -69,9 +69,13 @@ function Dashboard({setIsLoggedIn, isLoggedIn}) {
                                 <hr/>
                                 <div className='column-2-left-fondos-inv'>
                                     <div className='column-2-left-fondos-inv-left'>
-                                        <p className='column-2-left-fondos-inv-p'>Invertido</p>
+                                        <button className='column-2-left-inv-bttn'
+                                                onClick={() => navigate("/perfil/invertirdinero")}>Invertir dinero
+                                        </button>
+                                        
                                     </div>
                                     <div className='column-2-left-fondos-inv-right'>
+                                        <p className='column-2-left-fondos-inv-p'>Invertido</p>
                                         <p className='column-2-left-fondos-inv-p'>$ 0</p>
                                     </div>
 

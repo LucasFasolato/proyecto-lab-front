@@ -182,7 +182,7 @@ function Screen_2() {
                                     <article className='s2_eth-description'>
                                         <h2 className='s2_cards-h2'>Ethereum</h2>
                                     </article>
-                                    <article className='s2_eth-description'>
+                                    <article className='s2_eth-description-p'>
                                         <p className='s2_eth-p'>+4,67</p>
                                     </article>  
                                 </section>

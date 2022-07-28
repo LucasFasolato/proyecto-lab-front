@@ -135,20 +135,33 @@
   display: flex;
   height: max-content;
   align-items: center;
-  width: 50%;
+  width: 60%;
   padding: 0;
   margin: 0;
   padding-left: 8%;
+}
+
+.s2_eth-description-p {
+  display: flex;
+  height: max-content;
+  align-items: center;
+  width: 40%;
+  padding: 0;
+  margin: 0;
+  
 }
 
 .s2_eth-p {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 18px;
-  color: #09c86c;
+  color: #000000;
   margin: 0;
   padding: 0;
-  text-align: center;
+  margin-left: 12%;
+  text-align: left;
+  line-height: 18px;
+  color: #09c86c;
 }
 
 /*-------------------------------------------------------*/

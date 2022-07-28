@@ -21,6 +21,7 @@ import PerfilLayout from "./components/PerfilLayout/PerfilLayout";
 import {ToastContainer} from "react-toastify";
 import Changepassword from './pages/AuthPages/Perfil/ChangePassword/changePassword';
 import MisTransferencias from './pages/AuthPages/MisTransferencias/misTransferencias';
+import Invertir_dinero from './pages/AuthPages/Invertir_dinero/invertir_dinero';
 
 
 function AppWrapper() {
@@ -51,6 +52,7 @@ function AppWrapper() {
                     <Route path="/perfil/changepassword" element={ <Changepassword/> }/>
                     <Route path="/perfil/transferirdinero" element={ <Transferir_dinero/> }/>
                     <Route path="/perfil/ingresardinero" element={ <Ingresar_dinero/> }/>
+                    <Route path="/perfil/invertirdinero" element={ <Invertir_dinero/>}/>
                     <Route path="/miactividad" element={ <MiActividad/> }/>
                     <Route path="/midinero" element={ <MiDinero/> }/>
                     <Route path="/mistransferencias" element={ <MisTransferencias/> }/>

@@ -1,0 +1,102 @@
+.datosuser_size {
+    width: 100%;
+    height: 91vh;
+    display: block;
+    border-top: 2px solid #cccccc;;
+}
+.datosuser_content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.datosuser_column-1 {
+    width: 20%;
+    height: 100%;
+    border-right: 2px solid #cccccc;
+}
+
+.datosuser_column-2 {
+    width: 80%;
+    height: 100%;
+    background-color: #dddddd;
+}
+
+.datosuser_column-2-content {
+    display: block;
+    width: 60%;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 10vh;
+}
+
+.datosuser_column-2-user {
+    width: 100%;
+    height: max-content;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: block;
+    background-color: #ffffff;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.datosuser_column-2-user-img {
+    height: 12vh;
+    width: 100%;
+    position: relative;
+    background-color: #cccccc;
+}
+
+.datosuser_column-2-user-img-size {
+    width: 4vw;
+    height: 4vw;
+    border-radius: 50%;
+    background-color: #ffffff;
+    position:absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    margin: auto;
+
+}
+
+.datosuser_column-2-user-data {
+    width: 100%;
+    height: max-content;
+    padding: 2% 8%;
+}
+
+.datosuser_column-2-user-span {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: left;
+    color: #000000;
+    list-style: none;
+    text-decoration: underline;
+}
+
+.datosuser_column-2-user-h3 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: left;
+    color: #000000;
+    list-style: none;
+}
+
+.datosuser_column-2-user-changepassword {
+    width: 100%;
+    height: 10vh;
+    position: relative;
+}
+
+.datosuser_column-2-user-changepassword-bttn {
+    width: 100%;
+    height: 100%;
+    background-color: #cccccc;
+    border: none;
+}
+
+.datosuser_column-2-user-changepassword-bttn:hover {
+    background-color: #eeeeee;
+}
