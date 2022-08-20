@@ -1,9 +1,38 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react';
 import Comments from '../../Comments/comments'
 import './screen_6.css'
+import {httpGet} from "../../../utils/httpFunctions";
 import { motion } from "framer-motion"
 
 function Screen_6() {
+    let alea = []
+    let aleatorio
+    const [cargandoResena, setCargandoResena] = useState(true);
+    const [alea0, setAlea0] = useState ()
+    const [alea1, setAlea1] = useState ()
+    const [alea2, setAlea2] = useState ()
+    const [alea3, setAlea3] = useState ()
+
+    useEffect(() => {
+        setCargandoResena(true)
+        httpGet("resena").then(res => {
+            for(let i=0; i<4; i++) {
+                aleatorio = res[Math.floor(Math.random() * res.length)];
+                alea.push(aleatorio)
+            }
+            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            console.log(alea);
+            
+            console.log(alea[0]);
+            setAlea0(alea[0])
+            setAlea1(alea[1])
+            setAlea2(alea[2])
+            setAlea3(alea[3])
+            setCargandoResena(false);
+        })
+    }, [])
+
+
     const variantBg= {
         offscreen: {
             scale: 1
@@ -94,34 +123,39 @@ function Screen_6() {
             initial="offscreen"
             animate="onscreen"
         >
-            <motion.article className='s6_comment_1'
-                variants={variantComent1}
-                initial="offscreen"
-                animate="onscreen"    
-            >
-                <Comments/>
-            </motion.article>
-            <motion.article className='s6_comment_2'
-                variants={variantComent2}
-                initial="offscreen"
-                animate="onscreen"    
-            >
-                <Comments/>
-            </motion.article>
-            <motion.article className='s6_comment_3'
-                variants={variantComent3}
-                initial="offscreen"
-                animate="onscreen"    
-            >
-                <Comments/>
-            </motion.article>
-            <motion.article className='s6_comment_4'
-                variants={variantComent4}
-                initial="offscreen"
-                animate="onscreen"    
-            >
-                <Comments/>
-            </motion.article>
+            {cargandoResena ? 
+                <div/> :
+                <>
+                <motion.article className='s6_comment_1'
+                    variants={variantComent1}
+                    initial="offscreen"
+                    animate="onscreen"    
+                >
+                    <Comments res={alea0}/>
+                </motion.article>
+                <motion.article className='s6_comment_2'
+                    variants={variantComent2}
+                    initial="offscreen"
+                    animate="onscreen"    
+                >
+                    <Comments res={alea1} />
+                </motion.article>
+                <motion.article className='s6_comment_3'
+                    variants={variantComent3}
+                    initial="offscreen"
+                    animate="onscreen"    
+                >
+                    <Comments res={alea2} />
+                </motion.article>
+                <motion.article className='s6_comment_4'
+                    variants={variantComent4}
+                    initial="offscreen"
+                    animate="onscreen"    
+                >
+                    <Comments res={alea3} />
+                </motion.article>
+            </>
+        }
         </motion.section>
             
         </section>

@@ -221,7 +221,7 @@ function Screen_2() {
                                     <h1 className='s2_cards-h1'>+ INFO</h1>
                                 </article>
                                 <article className='s2_cards-description'>
-                                    <h2 className='s2_cards-h2'>Más informacion<br/><br/> CLICK AQUÍ </h2>
+                                    <h2 className='s2_cards-h2'>Más informacion<br/> CLICK AQUÍ </h2>
                                 </article>
                             </section>
                             <section className='s2_cards-right'>

@@ -33,12 +33,29 @@
   text-align: left;
 }
 
+.display_content {
+  display: flex;
+  width: 100%;
+}
+
 .display_user-info {
   position: absolute;
-  top: 65%;
-  width: 100%;
+  bottom: 0;
+  width: 60%;
   height: fit-content;
   display: flex;
+}
+
+.display_star-info {
+  position: absolute;
+  bottom: 0;
+  width: 40%;
+  right: 0;
+  height: 37%;
+  display: flex;
+  align-items: center;
+  padding-top: 3%;
+  padding-left: 3%;
 }
 
 .user_img-sp {

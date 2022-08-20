@@ -22,6 +22,7 @@ import {ToastContainer} from "react-toastify";
 import Changepassword from './pages/AuthPages/Perfil/ChangePassword/changePassword';
 import MisTransferencias from './pages/AuthPages/MisTransferencias/misTransferencias';
 import Invertir_dinero from './pages/AuthPages/Invertir_dinero/invertir_dinero';
+import ResenaUSer from './pages/AuthPages/Perfil/ResenaUser/resenaUser';
 
 
 function AppWrapper() {
@@ -48,6 +49,7 @@ function AppWrapper() {
                     <Route path="/dashboard" element={<Dashboard />}/>
                     <Route path="/perfil" element={<Perfil/>}/>
                     <Route path="/perfil/cvu" element={ <Cvu_Alias /> }/>
+                    <Route path="/perfil/comentario" element={ <ResenaUSer/> }/>
                     <Route path="/perfil/datos" element={ <DatosUser/> }/>
                     <Route path="/perfil/changepassword" element={ <Changepassword/> }/>
                     <Route path="/perfil/transferirdinero" element={ <Transferir_dinero/> }/>

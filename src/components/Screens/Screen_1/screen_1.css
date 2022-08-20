@@ -28,7 +28,7 @@
 .text-title-1 {
   font-family: "Poppins", sans-serif;
   font-weight: bold;
-  font-size: 128px;
+  font-size: 112px;
   color: #000000;
   padding: 0;
   margin: 0px;
@@ -38,7 +38,7 @@
 .text-title-2 {
   font-family: "Poppins", sans-serif;
   font-weight: bold;
-  font-size: 128px;
+  font-size: 112px;
   color: #3b6ce1;
 }
 
@@ -48,9 +48,100 @@
 
 .text-subtitle {
   font-family: "Poppins", sans-serif;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 400;
   color: #222222;
   text-align: left;
   margin-left: 8px;
+}
+
+
+@media screen and (max-width: 1500px) {
+  .text-title-1 {
+    font-size: 96px;
+    line-height: 96px;
+  }
+  
+  .text-title-2 {
+    font-size: 96px;
+    line-height: 96px;
+  }
+
+  
+  .text-subtitle {
+    font-size: 24px;
+  }
+  
+}
+
+@media screen and (max-width: 1250px) {
+  .text-title-1 {
+    font-size: 72px;
+    line-height: 72px;
+  }
+  
+  .text-title-2 {
+    font-size: 72px;
+    line-height: 72px;
+  }
+
+  
+  .text-subtitle {
+    font-size: 20px;
+  }
+  
+}
+
+@media screen and (max-width: 900px) {
+  .text-title-1 {
+    font-size: 64px;
+    line-height: 64px;
+  }
+  
+  .text-title-2 {
+    font-size: 64px;
+    line-height: 64px;
+  }
+
+  
+  .text-subtitle {
+    font-size: 18px;
+  }
+  
+}
+
+@media screen and (max-width: 700px) {
+  .text-title-1 {
+    font-size: 56px;
+    line-height: 56px;
+  }
+  
+  .text-title-2 {
+    font-size: 56px;
+    line-height: 56px;
+  }
+
+  
+  .text-subtitle {
+    font-size: 16px;
+  }
+  
+}
+
+@media screen and (max-width: 500px) {
+  .text-title-1 {
+    font-size: 48px;
+    line-height: 48px;
+  }
+  
+  .text-title-2 {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  
+  .text-subtitle {
+    font-size: 16px;
+  }
+  
 }

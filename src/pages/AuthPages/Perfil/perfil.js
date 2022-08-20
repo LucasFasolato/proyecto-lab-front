@@ -129,12 +129,12 @@ function Perfil({isLoggedIn, setIsLoggedIn}) {
                         <div className='perfil_column-2-menu-li-img'>
                             <div className='perfil_column-2-menu-li-img-size'/>
                         </div>
-                        <div className='perfil_column-2-menu-li-info'>
+                        <div className='perfil_column-2-menu-li-info' onClick={() => navigate("/perfil/comentario")}>
                             <div className='perfil_column-2-li-title'>
-                                <h2 className='perfil_column-2-li-h2'>Comunicaciones</h2>
+                                <h2 className='perfil_column-2-li-h2'>Reseña</h2>
                             </div>
                             <div className='perfil_column-2-li-desc'>
-                                <h3 className='perfil_column-2-li-h3'>Elegí que tipo de información queres recibir.</h3>
+                                <h3 className='perfil_column-2-li-h3'>Deja tu valoración y opinión sobre la página.</h3>
                             </div>
                         </div>
                         <div className='perfil_column-2-menu-li-arrow'>

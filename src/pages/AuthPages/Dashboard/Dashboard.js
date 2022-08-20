@@ -12,9 +12,33 @@ function Dashboard({setIsLoggedIn, isLoggedIn}) {
     let [color, setColor] = useState("#3b6ce1");
     const navigate = useNavigate();
     const [transferencias, setTransferencias] = useState(null)
+    const [cantidadPagina, setCantidadPagina] = useState(10)
+    const [nroPagina, setNroPagina] = useState(1)
     const [cargandoTransferencias, setCargandoTransferencias] = useState(false)
+    const [cargandoMasTransferencias, setCargandoMasTransferencias] = useState(false)
     const [user, setUser] = useState({});
     const [cargandoUser, setCargandoUser] = useState(false);
+
+    const myDiv = document.getElementById("column-2-right-actividad-content")
+
+    const onScroll = () => { 
+        // console.log(Math.round(myDiv.scrollHeight - myDiv.scrollTop));
+        // console.log(Math.round(myDiv.clientHeight));
+        if (Math.round(myDiv.scrollHeight - myDiv.scrollTop) === Math.round(myDiv.clientHeight))
+        {
+            scrolled ();
+        }
+        
+    };
+
+    function scrolled() {
+        httpGet(`transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
+        setCargandoTransferencias(false);
+        setTransferencias(prevState => {
+            return [...prevState,...res]    
+        })
+    })
+    }
 
     useEffect(() => {
         setCargandoUser(true)
@@ -27,7 +51,7 @@ function Dashboard({setIsLoggedIn, isLoggedIn}) {
 
     useEffect(() => {
         setCargandoTransferencias(true)
-        httpGet("transfer/me").then(res => {
+        httpGet(`transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
             setCargandoTransferencias(false);
             setTransferencias(res)
             console.log(res)
@@ -37,6 +61,23 @@ function Dashboard({setIsLoggedIn, isLoggedIn}) {
     function tipoTransf(transf) {
         return transf.emisor.userId == user.userId ? "emisor" : "receptor";
     }
+
+    // myDiv.addEventListener('scroll', () => {  
+    //     if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight) {  
+    //       console.log('scrolled to bottom')  
+    //     }  
+    //   })
+
+    
+
+    // function showButton(e) {
+    //     return (
+    //         <div className='dashboard_div-moreoptions'>
+    //             <button className='dashboard_bttn-moreoptions'>Ver más transferencias</button>
+    //         </div>
+    //     )
+    // }
+    
 
     return (
         <>
@@ -106,7 +147,7 @@ function Dashboard({setIsLoggedIn, isLoggedIn}) {
                                     <p className='column-2-left-reportesaldo-left-p'>Reporte saldo al 31/12</p>
                                 </div>
                                 <div className='column-2-left-reportesaldo-right'>
-                                    <button className='column-2-left-reportesaldo-right-bttn'>Pedir reporte</button>
+                                    <button className='column-2-left-reportesaldo-right-bttn'><a href='https://peaceful-harbor-44195.herokuapp.com/transfer/export/pdf'>Pedir reporte</a></button>
                                 </div>
                             </div>
                         </section>
@@ -120,7 +161,7 @@ function Dashboard({setIsLoggedIn, isLoggedIn}) {
                             <div className='column-2-right-actividad-searchbar'>
                                 <input className='column-2-right-actividad-input' type='text' placeholder='Buscar'/>
                             </div>
-                            <div className='column-2-right-actividad-content'>
+                            <div className='column-2-right-actividad-content' id="column-2-right-actividad-content" onScroll={onScroll}>
                                 {cargandoTransferencias ?
                                     <div className="dashboard-transferencias-loading">
                                         <BeatLoader color={color} loading={cargandoTransferencias} size={10}/>

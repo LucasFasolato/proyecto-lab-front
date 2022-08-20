@@ -12,6 +12,8 @@ function MisTransferencias(props) {
     const [transferencias, setTransferencias] = useState(null)
     const [transferenciasRecibidas, setTransferenciasRecibidas] = useState(null)
     const [transferenciasEmitidas, setTransferenciasEmitidas] = useState(null)
+    const [cantidadPagina, setCantidadPagina] = useState(7)
+    const [nroPagina, setNroPagina] = useState(1)
     // const [mostrarAllTransferencias, setMostrarAllTransferencias] = useState(true)
     // const [mostrarTransferenciasRecibidas, setMostrarTransferenciasRecibidas] = useState(false)
     // const [mostrarTransferenciasEmitidas, setMostrarTransferenciasEmitidas] = useState(false)
@@ -19,6 +21,8 @@ function MisTransferencias(props) {
 
     const [user, setUser] = useState({});
     const [cargandoUser, setCargandoUser] = useState(false);
+
+    const mySection= document.getElementById("column-2-actividad-content")
 
     useEffect(() => {
         setCargandoUser(true)
@@ -31,7 +35,7 @@ function MisTransferencias(props) {
 
     useEffect(() => {
         setCargandoTransferencias(true)
-        httpGet("transfer/me").then(res => {
+        httpGet(`transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
             setCargandoTransferencias(false);
             setTransferencias(res)
             console.log(res)
@@ -40,7 +44,7 @@ function MisTransferencias(props) {
 
     useEffect(() => {
         setCargandoTransferencias(true)
-        httpGet("transfer/recibidas").then(res => {
+        httpGet(`transfer/recibidas?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
             setCargandoTransferencias(false);
             setTransferenciasRecibidas(res)
             console.log(res)
@@ -49,7 +53,7 @@ function MisTransferencias(props) {
 
     useEffect(() => {
         setCargandoTransferencias(true)
-        httpGet("transfer/emitidas").then(res => {
+        httpGet(`transfer/emitidas?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
             setCargandoTransferencias(false);
             setTransferenciasEmitidas(res)
             console.log(res)
@@ -91,7 +95,7 @@ function MisTransferencias(props) {
             <div className='dashboard_column-2'>
                 <section className='dashboard_column-2-content'>
                     <section className='column-2'>
-                        <section className='column-2-actividad'>
+                        <section className='column-2-actividad' >
                             <div className='column-2-actividad-title'>
                                 <div className='column-2-actividad-text'>
                                     <h2 className='column-2-actividad-h2'>Tus transferencias</h2>
@@ -110,7 +114,7 @@ function MisTransferencias(props) {
                             <div className='column-2-actividad-searchbar'>
                                 <input className='column-2-actividad-input' type='text' placeholder='Buscar transferencias'/>
                             </div>
-                            <div className='column-2-actividad-content'>
+                            <div className='column-2-actividad-content' id='column-2-actividad-content'>
                                 {showTransfer()}
                             </div>
                             <hr/>

@@ -24,7 +24,7 @@
   margin: 0 auto;
   padding: 0;
   width: 80%;
-  height: 100%;
+  height: max-content;
 }
 
 .s2_title {
@@ -56,16 +56,17 @@
 
 .s2_c {
   width: 100%;
-  height: 80vh;
+  height: max-content;
   display: flex;
 }
 
 .s2_columns {
   margin: 0 0.3%;
   padding: 0;
-  height: 100%;
   width: 33%;
 }
+
+/* //////////////////////////////////////////////////////// */
 
 .s2_firstcolum {
   margin: 0;
@@ -79,12 +80,18 @@
   height: max-content;
 }
 
+.s2_credict-img {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .s2_text-container1 {
   display: block;
   margin: 0;
   margin-top: 12% ;
   width: 100%;
-  padding: 5% 10%;
+  padding: 4% 10%;
 }
 
 .s2_text-container2 {
@@ -102,23 +109,25 @@
   line-height: 36px;
 }
 
+
+/* //////////////////////////////////////////////////////// */
+
 .s2_phone-container {
   width: 100%;
-  height: 100%;
 
 }
 
 .s2_phone-container > img {
   display: block;
   margin: 0 auto;
+  width: 65%;
 }
 
-.s2_credict-img {
-  display: block;
-  margin: 0 auto;
-}
 
-/*--------------------------------------------------------------------------------------------*/
+
+/* //////////////////////////////////////////////////////// */
+
+
 .eth {
   margin: 0 !important;
 }
@@ -256,4 +265,226 @@
 .s2_info-img {
   height: auto;
   margin-left: -10%;
+}
+
+@media screen and (max-width: 1250px) {
+  .s2_background-circle {
+    top: -100%;
+  }
+
+  .s2_size {
+    height: max-content;
+    width: 100%;
+  }
+
+  .s2_content {
+    width: 90%;
+  }
+
+  .s2_h2 {
+    font-size: 20px;
+    color: #222222;
+    line-height: 22px;
+  }
+
+  .s2_phone-container > img {
+    width: 70%;
+  }
+
+  .s2_cards-size {
+    width: 80%;
+  }
+  
+
+}
+
+@media screen and (max-width: 1150px) {
+  .s2_background-circle {
+    top: -105%;
+  }
+
+  .s2_h1 {
+    font-size: 28px;
+    line-height: 28px;
+  }
+  
+}
+
+@media screen and (max-width: 1050px) {
+  .s2_background-circle {
+    top: -110%;
+  }
+
+  .s2_cards-h2 {
+    font-size: 16px;
+    line-height: 16px;
+  }
+  
+}
+
+@media screen and (max-width: 950px) {
+  .s2_background-circle {
+    top: -115%;
+  }
+  .s2_text-container1 {
+    padding: 5% 5% 5% 0;
+  }
+  
+  .s2_text-container2 {
+    padding: 5% 5% 5% 0;
+  }
+
+  .s2_cards-size {
+    width: 90%;
+  }
+
+  .s2_eth-p {
+    font-size: 16px;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .s2_phone-container > img {
+    width: 80%;
+  }
+
+  .s2_cards-h1 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .s2_background-circle {
+    top: -120%;
+  }
+
+  .s2_h1 {
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  .s2_cards-size {
+    width: 100%;
+  }
+
+  .s2_cards-h2 {
+    font-size: 14px;
+    line-height: 14px;
+  }
+  
+}
+
+@media screen and (max-width: 750px) {
+  .s2_background-circle {
+    top: -150%;
+  }
+
+  .s2_title {
+    width: 80%;
+    padding: 6% 0 0 0;
+  }
+
+  .s2_phone-container > img {
+    width: 90%;
+  }
+
+  .s2_text-container2 {
+    margin-top: -6%;
+  }
+
+  .s2_eth-img {
+    display: none;
+  }
+  
+  .s2_inv-img {
+    display: none;
+  }
+   
+  .s2_info-img {
+    display: none;
+  }
+
+  .s2_cards-left {
+    width: 100%;
+    padding: 0 2%;
+  }
+  
+  .s2_cards-right {
+    width: 0%;
+  }
+
+  .s2_eth-p {
+    font-size: 14px;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .s2_h2 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .s2_title {
+    height: 16vh;
+  }
+
+  .s2_text-container1 {
+    padding: 5% 5% 0% 0;
+  }
+  
+  .s2_text-container2 {
+    padding: 0% 5% 5% 0;
+  }
+
+  .s2_cards-h1 {
+    font-size: 14px;
+  }
+
+  .s2_cards-h2 {
+    font-size: 12px;
+    line-height: 12px;
+  }
+}
+
+@media screen and (max-width: 555px) {
+  .s2_title {
+    width: 90%;
+    padding: 8% 0 0 0;
+  }
+
+  .s2_h1 {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .s2_h2 {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .s2_text-container2 {
+    margin-top: -6%;
+  }
+}
+
+@media screen and (max-width: 445px) {
+  .s2_h2 {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+
+@media screen and (max-width: 402px) {
+  .s2_title {
+    width: 92%;
+    padding: 8% 0 0 0;
+  }
+
+  .s2_h1 {
+    font-size: 18px;
+    line-height: 18px;
+  }
 }
