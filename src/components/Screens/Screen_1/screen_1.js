@@ -19,11 +19,11 @@ function Screen1() {
           animate="visible"
         >
           <section className='title'>
-              <h1 className='text-title-1'>Banco <span className='text-title-2'>Austral</span> </h1>
-              <section className='subtitle'>
-                <h2 className='text-subtitle'>Invertí en tu futuro</h2>
-              </section>
-            </section> 
+            <h1 className='text-title-1'>Banco <span className='text-title-2'>Austral</span> </h1>
+            <section className='subtitle'>
+              <h2 className='text-subtitle'>Invertí en tu futuro</h2>
+            </section>
+          </section> 
         </motion.div>
       </section>
     </div>

@@ -31,7 +31,7 @@ function Login({setIsLoggedIn, isLoggedIn}) {
         e.preventDefault();
         setLoading(true);
         let response = await login(username, password);
-        if (response.request.status == 201) {
+        if (response.request.status == 200) {
             localStorage.setItem('user', window.btoa(username + ":" + password));
             setIsLoggedIn(true);
             setLoading(false);
