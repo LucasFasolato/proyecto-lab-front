@@ -10,6 +10,7 @@
   background-image: url(background-screen1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 .title-content {
@@ -88,6 +89,12 @@
   
   .text-subtitle {
     font-size: 20px;
+  }
+
+  .screen_1-background {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
   }
   
 }

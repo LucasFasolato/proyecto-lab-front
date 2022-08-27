@@ -15,8 +15,8 @@ function Menu() {
         <Screen1/>
         <Screen_2/>
         <Screen_3/>
-        {/* <Screen_4/>
-        <Screen_5/>
+        <Screen_4/>
+        {/* <Screen_5/>
         <Banner_data/>
         <Screen_6/>
         <Screen_7/> */}

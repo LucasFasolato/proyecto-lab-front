@@ -44,16 +44,19 @@ const variantImage2= {
               <h1 className='s4_h1'>¿QUIENES SOMOS?</h1>
           </section>
           <section className='s4_content'>
-            <article className='s4_container-text'>
-              <p className='s4_text'>
-                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in which don't look slightly believable.AThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in which don't look slightly believable, but the majority have suffered alteration in which don't look slightly believable.
-              </p>
-            </article>
-            <article className='s4_container-button'>
-              <button className='s4_button'>
-                LEER MÁS
-              </button>
-            </article>
+            <section className='s4_content-left'>
+              <article className='s4_container-text'>
+                <p className='s4_text'>
+                  There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in which don't look slightly believable.AThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in which don't look slightly believable, but the majority have suffered alteration in which don't look slightly believable.
+                </p>
+              </article>
+              <article className='s4_container-button'>
+                <button className='s4_button'>
+                  LEER MÁS
+                </button>
+              </article>
+            </section>
+            
             <section className='s4_container-garantia'>
               <article className='s4_garantia'>
                 <Cartel_garantia/>
@@ -70,7 +73,7 @@ const variantImage2= {
             </section>
           </section>
         </section>
-        <section className='s4_c'>
+        <section className='s4_c2'>
             <div className='s4_img-container'>
                <motion.img className='s4_img1' src={QuienesSomos1} drag dragConstraints={{top: 0,left: 0,right: 0,bottom: 0,}} dragElastic={0.2} variants={variantImage1} initial="offscreen" animate="onscreen"/> 
                <motion.img className='s4_img2' src={QuienesSomos2} drag dragConstraints={{top: 0,left: 0,right: 0,bottom: 0,}} dragElastic={0.2} variants={variantImage2} initial="offscreen" animate="onscreen"/>
