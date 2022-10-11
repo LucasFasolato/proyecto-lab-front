@@ -8,7 +8,7 @@ import Arrow_Down from './../../../imgs/Arrow_down.png'
 import {CircleLoader, ClipLoader, PropagateLoader, PuffLoader, BeatLoader
 } from "react-spinners";
 
-function Dashboard({setIsLoggedIn, isLoggedIn}) {
+function Dashboard({setIsLoggedIn, isLoggedIn, token}) {
     let [color, setColor] = useState("#3b6ce1");
     const navigate = useNavigate();
     const [transferencias, setTransferencias] = useState(null)
@@ -32,7 +32,7 @@ function Dashboard({setIsLoggedIn, isLoggedIn}) {
     };
 
     function scrolled() {
-        httpGet(`transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
+        httpGet(`auth/transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`, token).then(res => {
         setCargandoTransferencias(false);
         setTransferencias(prevState => {
             return [...prevState,...res]    
@@ -42,7 +42,7 @@ function Dashboard({setIsLoggedIn, isLoggedIn}) {
 
     useEffect(() => {
         setCargandoUser(true)
-        httpGet("users/me").then(res => {
+        httpGet("auth/users/me", token).then(res => {
             setCargandoUser(false);
             setUser(res)
             console.log(res)
@@ -51,7 +51,7 @@ function Dashboard({setIsLoggedIn, isLoggedIn}) {
 
     useEffect(() => {
         setCargandoTransferencias(true)
-        httpGet(`transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
+        httpGet(`auth/transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
             setCargandoTransferencias(false);
             setTransferencias(res)
             console.log(res)

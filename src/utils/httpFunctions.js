@@ -1,13 +1,15 @@
 import axios from "axios";
 
-const baseURL = "https://peaceful-harbor-44195.herokuapp.com/";
+// const baseURL = "https://peaceful-harbor-44195.herokuapp.com/";
+const baseURL = "http://168.138.228.14:8080/api/";
+
 // const baseURL = "http://localhost:8080/";
 
 
-export const httpGet = async (endpoint) => {
+export const httpGet = async (endpoint, token = null) => {
     return axios.get(baseURL + endpoint, {
         headers: {
-            authorization: `Basic ${localStorage.getItem('user')}`
+            authorization: `Basic ${token}`
         }
     }).then((res) => {
         return res.data;

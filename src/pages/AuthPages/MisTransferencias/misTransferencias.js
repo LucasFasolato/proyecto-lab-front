@@ -26,7 +26,7 @@ function MisTransferencias(props) {
 
     useEffect(() => {
         setCargandoUser(true)
-        httpGet("users/me").then(res => {
+        httpGet("auth/users/me").then(res => {
             setCargandoUser(false);
             setUser(res)
             console.log(res)
@@ -35,7 +35,7 @@ function MisTransferencias(props) {
 
     useEffect(() => {
         setCargandoTransferencias(true)
-        httpGet(`transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
+        httpGet(`auth/transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
             setCargandoTransferencias(false);
             setTransferencias(res)
             console.log(res)
@@ -44,7 +44,7 @@ function MisTransferencias(props) {
 
     useEffect(() => {
         setCargandoTransferencias(true)
-        httpGet(`transfer/recibidas?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
+        httpGet(`auth/transfer/recibidas?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
             setCargandoTransferencias(false);
             setTransferenciasRecibidas(res)
             console.log(res)
@@ -53,7 +53,7 @@ function MisTransferencias(props) {
 
     useEffect(() => {
         setCargandoTransferencias(true)
-        httpGet(`transfer/emitidas?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
+        httpGet(`auth/transfer/emitidas?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
             setCargandoTransferencias(false);
             setTransferenciasEmitidas(res)
             console.log(res)

@@ -1,6 +1,7 @@
 import './App.css';
 import './../src/components/ResetsEstilos.css'
 import React, {useEffect, useState} from 'react';
+import {useAuth0} from "@auth0/auth0-react";  
 import {Navigate, Route, Routes, BrowserRouter as Router} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login/login'
@@ -26,27 +27,28 @@ import ResenaUSer from './pages/AuthPages/Perfil/ResenaUser/resenaUser';
 
 
 function AppWrapper() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    useEffect(() => {
-        if (localStorage.getItem("user")) {
-            setIsLoggedIn(true)
-        } else {
-            setIsLoggedIn(false)
-        }
-    }, [isLoggedIn])
-
+    const {user, isAuthenticated, isLoading, getAccessTokenSilently} = useAuth0();
+    const [token, setToken] = useState ();
+    useEffect (() => {
+        const token =  getAccessTokenSilently({
+            audience: `banco-austral.web.app/auth0`,
+            scope: "openid%20email%20profile"
+        }).then(
+            setToken(token))
+            console.log(token)
+    }, []);
     return (
         <div>
-            <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+            <Navbar/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/home" element={<Home/>}/>
-                <Route path="/register" element={<Register/>}/>
-                <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/>
+                {/* <Route path="/register" element={<Register/>}/>
+                <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/> */}
 
-                <Route element={<><RequireAuth/><PerfilLayout isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/></> }>
-                    <Route path="/dashboard" element={<Dashboard />}/>
+                <Route element={<><RequireAuth/><PerfilLayout/></> }>
+                    <Route path="/dashboard" element={<Dashboard token={token}/>}/>
                     <Route path="/perfil" element={<Perfil/>}/>
                     <Route path="/perfil/cvu" element={ <Cvu_Alias /> }/>
                     <Route path="/perfil/comentario" element={ <ResenaUSer/> }/>

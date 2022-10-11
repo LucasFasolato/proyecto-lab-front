@@ -6,18 +6,21 @@ import {logout} from "../../utils/httpFunctions";
 import {Link, useNavigate} from "react-router-dom";
 import MenuBurger from './menu-burger.png';
 // import classNames from 'classnames/bind';
+import { useAuth0, User } from "@auth0/auth0-react";
 
-function Navbar({isLoggedIn, setIsLoggedIn}) {
+const axios = require('axios');
+
+function Navbar() {
     const navigate = useNavigate();
     const [activation, setActivation] = useState(false);
     const handleLogout = () => {
-        localStorage.clear();
-        setIsLoggedIn(false);
-        navigate("/");
+        logout({ returnTo: window.location.origin })
     }
+    const { loginWithRedirect } = useAuth0();
+    const { user, isAuthenticated, isLoading } = useAuth0();
+    const { logout } = useAuth0();
     var className = activation ? 'show_content' : 'nav_content';
 
-    
 
     return (
         <div className='nav_size'>
@@ -28,7 +31,7 @@ function Navbar({isLoggedIn, setIsLoggedIn}) {
                     </button>
 
                 </section>
-                {!isLoggedIn &&
+                {!isAuthenticated &&
                 <>
                     <section className='nav_links' onClick={() => {navigate("/home");setActivation(false)}}>
                         <ul>
@@ -44,15 +47,15 @@ function Navbar({isLoggedIn, setIsLoggedIn}) {
                         </ul>
                     </section>
                     <section className='nav_buttons'>
-                        <button className='button_iniciar' onClick={() => {navigate("/login");setActivation(false)}}>
+                        <button className='button_iniciar' onClick={() => {loginWithRedirect();setActivation(false)}}>
                             INICIAR SESIÓN
                         </button>
-                        <button className='button_crear' onClick={() => {navigate("/register");setActivation(false)}}>
+                        <button className='button_crear' onClick={() => {loginWithRedirect();setActivation(false)}}>
                             CREAR USUARIO
                         </button>
                     </section>
                 </>}
-                {isLoggedIn &&
+                {isAuthenticated &&
                 <>
                     <section className='nav_links'>
                         <ul>
