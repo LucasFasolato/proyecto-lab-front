@@ -7,7 +7,7 @@ import {CircleLoader, ClimbingBoxLoader, PropagateLoader} from "react-spinners";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function Transferir_dinero() {
+function Transferir_dinero({token}) {
 
     let [color, setColor] = useState("#3b6ce1");
     const [estadoTransferencia, setEstadoTransferencia] = useState(false)

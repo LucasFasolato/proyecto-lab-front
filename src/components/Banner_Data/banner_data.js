@@ -14,7 +14,7 @@ function Banner_data() {
 
     useEffect(() => {
         setCargandoUsers(true)
-        httpGet("users").then(res => {
+        httpGet("auth/users").then(res => {
             setCargandoUsers(false);
             setCantidadUsers(res.length)
         })
@@ -22,7 +22,7 @@ function Banner_data() {
 
     useEffect(() => {
         setCargandoTransfs(true)
-        httpGet("transfer").then(res => {
+        httpGet("auth/transfer").then(res => {
             setCargandoTransfs(false)
             setCantidadTransf(res.length)
         })

@@ -3,7 +3,6 @@ import StarComment from '../StarComment/starComment'
 import './comments.css'
 
 function Comments({res}) {
-    console.log(res.resena)
   return (
     <div className='comment_box-size'>
         <article className='comment_sp'>

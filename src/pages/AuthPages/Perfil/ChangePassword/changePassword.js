@@ -6,7 +6,7 @@ import {CircleLoader, ClimbingBoxLoader, PropagateLoader} from "react-spinners";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function Changepassword() {
+function Changepassword({token}) {
 
     let [color, setColor] = useState("#3b6ce1");
     const [actualPassword, setActualPassword] = useState("")
@@ -19,7 +19,7 @@ function Changepassword() {
 
     useEffect(() => {
         setCargandoUser(true)
-        httpGet("users/me").then(res => {
+        httpGet("auth/users/me",token).then(res => {
             setCargandoUser(false);
             setUser(res)
             console.log(res)

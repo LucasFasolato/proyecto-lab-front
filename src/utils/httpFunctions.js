@@ -7,9 +7,10 @@ const baseURL = "http://168.138.228.14:8080/api/";
 
 
 export const httpGet = async (endpoint, token = null) => {
+    console.log(token)
     return axios.get(baseURL + endpoint, {
         headers: {
-            authorization: `Basic ${token}`
+            authorization: `Bearer ${token}`
         }
     }).then((res) => {
         return res.data;
@@ -20,7 +21,7 @@ export const login = async (username, password) => {
     try {
         return await axios.get(baseURL + "auth/login", {
             headers: {
-                authorization: `Basic ${window.btoa(username + ":" + password)}`
+                authorization: `Bearer ${window.btoa(username + ":" + password)}`
             }
         })
     } catch (err) {

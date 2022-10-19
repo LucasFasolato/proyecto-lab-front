@@ -5,7 +5,8 @@ import Dashboard_actividad_li from '../../../components/Dashboard_actividad_li/d
 import {httpGet} from "../../../utils/httpFunctions";
 import {Link, useNavigate} from "react-router-dom";
 import Arrow_Down from './../../../imgs/Arrow_down.png'
-import {CircleLoader, ClipLoader, PropagateLoader, PuffLoader, BeatLoader
+import {
+    CircleLoader, ClipLoader, PropagateLoader, PuffLoader, BeatLoader
 } from "react-spinners";
 
 function Dashboard({setIsLoggedIn, isLoggedIn, token}) {
@@ -21,41 +22,44 @@ function Dashboard({setIsLoggedIn, isLoggedIn, token}) {
 
     const myDiv = document.getElementById("column-2-right-actividad-content")
 
-    const onScroll = () => { 
+    const onScroll = () => {
         // console.log(Math.round(myDiv.scrollHeight - myDiv.scrollTop));
         // console.log(Math.round(myDiv.clientHeight));
-        if (Math.round(myDiv.scrollHeight - myDiv.scrollTop) === Math.round(myDiv.clientHeight))
-        {
-            scrolled ();
+        if (Math.round(myDiv.scrollHeight - myDiv.scrollTop) === Math.round(myDiv.clientHeight)) {
+            scrolled();
         }
-        
+
     };
 
     function scrolled() {
-        httpGet(`auth/transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`, token).then(res => {
-        setCargandoTransferencias(false);
-        setTransferencias(prevState => {
-            return [...prevState,...res]    
-        })
-    })
+        if (token) {
+            httpGet(`auth/transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`, token).then(res => {
+                setTransferencias(prevState => {
+                    return [...prevState, ...res]
+                })
+            })
+        }
+
     }
 
     useEffect(() => {
-        setCargandoUser(true)
-        httpGet("auth/users/me", token).then(res => {
-            setCargandoUser(false);
-            setUser(res)
-            console.log(res)
-        })
+        if (token != null) {
+            httpGet("auth/users/me", token).then(res => {
+                console.log("ADSADASDASD")
+                setUser(res)
+                console.log(res)
+            })
+        }
+
     }, [])
 
     useEffect(() => {
-        setCargandoTransferencias(true)
-        httpGet(`auth/transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
-            setCargandoTransferencias(false);
-            setTransferencias(res)
-            console.log(res)
-        })
+        if (token) {
+            httpGet(`auth/transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`, token).then(res => {
+                setTransferencias(res)
+            })
+        }
+
     }, [])
 
     function tipoTransf(transf) {
@@ -68,7 +72,6 @@ function Dashboard({setIsLoggedIn, isLoggedIn, token}) {
     //     }  
     //   })
 
-    
 
     // function showButton(e) {
     //     return (
@@ -77,7 +80,7 @@ function Dashboard({setIsLoggedIn, isLoggedIn, token}) {
     //         </div>
     //     )
     // }
-    
+
 
     return (
         <>
@@ -94,7 +97,7 @@ function Dashboard({setIsLoggedIn, isLoggedIn, token}) {
                                                 <div className="dashboard-fondo-loading">
                                                     <BeatLoader
                                                         color={color} loading={cargandoTransferencias}
-                                                                    size={10}/>
+                                                        size={10}/>
                                                 </div>
                                                 :
                                                 <>$ {user.fondo}</>}
@@ -102,18 +105,18 @@ function Dashboard({setIsLoggedIn, isLoggedIn, token}) {
                                     </div>
                                     <div className='column-2-left-fondos-data'>
                                         <button className='column-2-left-fondos-cvu'
-                                            onClick={() => navigate("/perfil/cvu")}>CVU y Alias
+                                                onClick={() => navigate("/perfil/cvu")}>CVU y Alias
                                         </button>
                                     </div>
                                 </div>
-                                
+
                                 <hr/>
                                 <div className='column-2-left-fondos-inv'>
                                     <div className='column-2-left-fondos-inv-left'>
                                         <button className='column-2-left-inv-bttn'
                                                 onClick={() => navigate("/perfil/invertirdinero")}>Invertir dinero
                                         </button>
-                                        
+
                                     </div>
                                     <div className='column-2-left-fondos-inv-right'>
                                         <p className='column-2-left-fondos-inv-p'>Invertido</p>
@@ -142,12 +145,15 @@ function Dashboard({setIsLoggedIn, isLoggedIn, token}) {
                             <div className='column-2-left-reportesaldo-content'>
                                 <div className='column-2-left-reportesaldo-left'>
                                     <div className='column-2-left-reportesaldo-left-img'>
-                                        <img className='column-2-left-reportesaldo-left-img-size' src={Arrow_Down} alt="Flecha para abajo"/>
+                                        <img className='column-2-left-reportesaldo-left-img-size' src={Arrow_Down}
+                                             alt="Flecha para abajo"/>
                                     </div>
                                     <p className='column-2-left-reportesaldo-left-p'>Reporte saldo al 31/12</p>
                                 </div>
                                 <div className='column-2-left-reportesaldo-right'>
-                                    <button className='column-2-left-reportesaldo-right-bttn'><a href='https://peaceful-harbor-44195.herokuapp.com/transfer/export/pdf'>Pedir reporte</a></button>
+                                    <button className='column-2-left-reportesaldo-right-bttn'><a
+                                        href='http://168.138.228.14:8080/api/auth/transfer/export/pdf'>Pedir
+                                        reporte</a></button>
                                 </div>
                             </div>
                         </section>
@@ -161,7 +167,8 @@ function Dashboard({setIsLoggedIn, isLoggedIn, token}) {
                             <div className='column-2-right-actividad-searchbar'>
                                 <input className='column-2-right-actividad-input' type='text' placeholder='Buscar'/>
                             </div>
-                            <div className='column-2-right-actividad-content' id="column-2-right-actividad-content" onScroll={onScroll}>
+                            <div className='column-2-right-actividad-content' id="column-2-right-actividad-content"
+                                 onScroll={onScroll}>
                                 {cargandoTransferencias ?
                                     <div className="dashboard-transferencias-loading">
                                         <BeatLoader color={color} loading={cargandoTransferencias} size={10}/>

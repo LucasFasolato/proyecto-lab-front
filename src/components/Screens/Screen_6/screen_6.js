@@ -15,15 +15,11 @@ function Screen_6() {
 
     useEffect(() => {
         setCargandoResena(true)
-        httpGet("resena").then(res => {
+        httpGet("resenas").then(res => {
             for(let i=0; i<4; i++) {
                 aleatorio = res[Math.floor(Math.random() * res.length)];
                 alea.push(aleatorio)
             }
-            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            console.log(alea);
-            
-            console.log(alea[0]);
             setAlea0(alea[0])
             setAlea1(alea[1])
             setAlea2(alea[2])

@@ -1,7 +1,7 @@
 import './App.css';
 import './../src/components/ResetsEstilos.css'
 import React, {useEffect, useState} from 'react';
-import {useAuth0} from "@auth0/auth0-react";  
+import {useAuth0} from "@auth0/auth0-react";
 import {Navigate, Route, Routes, BrowserRouter as Router} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login/login'
@@ -27,42 +27,46 @@ import ResenaUSer from './pages/AuthPages/Perfil/ResenaUser/resenaUser';
 
 
 function AppWrapper() {
+    const {user, isAuthenticated, isLoading, getAccessTokenSilently, loginWithRedirect} = useAuth0();
+    const [token, setToken] = useState();
 
-    const {user, isAuthenticated, isLoading, getAccessTokenSilently} = useAuth0();
-    const [token, setToken] = useState ();
-    useEffect (() => {
-        const token =  getAccessTokenSilently({
+    if (isLoading) {
+        return "hola"
+    }
+    useEffect(() => {
+        console.log(user)
+        getAccessTokenSilently({
             audience: `banco-austral.web.app/auth0`,
             scope: "openid%20email%20profile"
-        }).then(
-            setToken(token))
-            console.log(token)
+        }).then((token) => {
+            setToken(token)
+        })
     }, []);
     return (
         <div>
-            <Navbar/>
+            <Navbar loginWithRedirect={loginWithRedirect}/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/home" element={<Home/>}/>
                 {/* <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/> */}
 
-                <Route element={<><RequireAuth/><PerfilLayout/></> }>
-                    <Route path="/dashboard" element={<Dashboard token={token}/>}/>
+                <Route element={<><RequireAuth/><PerfilLayout/></>}>
+                    <Route path="/dashboard" element={<Dashboard token={token} user={user}/>}/>
                     <Route path="/perfil" element={<Perfil/>}/>
-                    <Route path="/perfil/cvu" element={ <Cvu_Alias /> }/>
-                    <Route path="/perfil/comentario" element={ <ResenaUSer/> }/>
-                    <Route path="/perfil/datos" element={ <DatosUser/> }/>
-                    <Route path="/perfil/changepassword" element={ <Changepassword/> }/>
-                    <Route path="/perfil/transferirdinero" element={ <Transferir_dinero/> }/>
-                    <Route path="/perfil/ingresardinero" element={ <Ingresar_dinero/> }/>
-                    <Route path="/perfil/invertirdinero" element={ <Invertir_dinero/>}/>
-                    <Route path="/miactividad" element={ <MiActividad/> }/>
-                    <Route path="/midinero" element={ <MiDinero/> }/>
-                    <Route path="/mistransferencias" element={ <MisTransferencias/> }/>
+                    <Route path="/perfil/cvu" element={<Cvu_Alias token={token}/>}/>
+                    <Route path="/perfil/comentario" element={<ResenaUSer/>}/>
+                    <Route path="/perfil/datos" element={<DatosUser/>}/>
+                    <Route path="/perfil/changepassword" element={<Changepassword token={token}/>}/>
+                    <Route path="/perfil/transferirdinero" element={<Transferir_dinero/>}/>
+                    <Route path="/perfil/ingresardinero" element={<Ingresar_dinero token={token}/>}/>
+                    <Route path="/perfil/invertirdinero" element={<Invertir_dinero token={token}/>}/>
+                    <Route path="/miactividad" element={<MiActividad token={token}/>}/>
+                    <Route path="/midinero" element={<MiDinero token={token}/>}/>
+                    <Route path="/mistransferencias" element={<MisTransferencias/>}/>
                 </Route>
 
-                <Route path="*" element={<h1>PÁGINA NO ENCONTRADA</h1>} />
+                <Route path="*" element={<h1>PÁGINA NO ENCONTRADA</h1>}/>
             </Routes>
         </div>
     );
@@ -70,7 +74,7 @@ function AppWrapper() {
 
 const App = () => (
     <Router>
-        <ToastContainer />
+        <ToastContainer/>
         <AppWrapper/>
     </Router>
 );

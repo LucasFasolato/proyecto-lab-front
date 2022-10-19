@@ -4,7 +4,7 @@ import Dashboard_menu from '../../../components/Dashboard_menu/dashboard_menu';
 import {Link, useNavigate} from "react-router-dom";
 import {httpGet} from "../../../utils/httpFunctions";
 
-function Cvu_Alias() {
+function Cvu_Alias({token}) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
     const [user, setUser] = useState({});
@@ -13,7 +13,7 @@ function Cvu_Alias() {
     
     useEffect(() => {
         setCargandoUser(true)
-        httpGet("users/me").then(res => {
+        httpGet("auth/users/me", token).then(res => {
             setCargandoUser(false);
             setUser(res)
             console.log(res)
