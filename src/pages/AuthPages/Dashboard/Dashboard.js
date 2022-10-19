@@ -8,8 +8,9 @@ import Arrow_Down from './../../../imgs/Arrow_down.png'
 import {
     CircleLoader, ClipLoader, PropagateLoader, PuffLoader, BeatLoader
 } from "react-spinners";
+import {useAuth0} from "@auth0/auth0-react";
 
-function Dashboard({setIsLoggedIn, isLoggedIn, token}) {
+function Dashboard({token}) {
     let [color, setColor] = useState("#3b6ce1");
     const navigate = useNavigate();
     const [transferencias, setTransferencias] = useState(null)
@@ -19,7 +20,7 @@ function Dashboard({setIsLoggedIn, isLoggedIn, token}) {
     const [cargandoMasTransferencias, setCargandoMasTransferencias] = useState(false)
     const [user, setUser] = useState({});
     const [cargandoUser, setCargandoUser] = useState(false);
-
+    const {isAuthenticated} = useAuth0()
     const myDiv = document.getElementById("column-2-right-actividad-content")
 
     const onScroll = () => {
@@ -32,7 +33,7 @@ function Dashboard({setIsLoggedIn, isLoggedIn, token}) {
     };
 
     function scrolled() {
-        if (token) {
+        if (isAuthenticated) {
             httpGet(`auth/transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`, token).then(res => {
                 setTransferencias(prevState => {
                     return [...prevState, ...res]
@@ -43,7 +44,7 @@ function Dashboard({setIsLoggedIn, isLoggedIn, token}) {
     }
 
     useEffect(() => {
-        if (token != null) {
+        if (isAuthenticated) {
             httpGet("auth/users/me", token).then(res => {
                 console.log("ADSADASDASD")
                 setUser(res)
@@ -54,7 +55,7 @@ function Dashboard({setIsLoggedIn, isLoggedIn, token}) {
     }, [])
 
     useEffect(() => {
-        if (token) {
+        if (isAuthenticated) {
             httpGet(`auth/transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`, token).then(res => {
                 setTransferencias(res)
             })

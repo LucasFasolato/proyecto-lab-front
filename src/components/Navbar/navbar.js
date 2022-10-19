@@ -10,8 +10,7 @@ import { useAuth0, User } from "@auth0/auth0-react";
 
 const axios = require('axios');
 
-function Navbar() {
-    const {user, isAuthenticated, isLoading, getAccessTokenSilently, loginWithRedirect} = useAuth0();
+function Navbar({loginWithRedirect, isAuthenticated}) {
 
     const navigate = useNavigate();
     const [activation, setActivation] = useState(false);

@@ -30,21 +30,20 @@ function AppWrapper() {
     const {user, isAuthenticated, isLoading, getAccessTokenSilently, loginWithRedirect} = useAuth0();
     const [token, setToken] = useState();
 
-    if (isLoading) {
-        return "hola"
-    }
     useEffect(() => {
-        console.log(user)
-        getAccessTokenSilently({
-            audience: `banco-austral.web.app/auth0`,
-            scope: "openid%20email%20profile"
-        }).then((token) => {
-            setToken(token)
-        })
-    }, []);
+        if (isAuthenticated && !isLoading) {
+            getAccessTokenSilently({
+                audience: `banco-austral.web.app/auth0`,
+                scope: "openid%20email%20profile"
+            }).then(res => {
+                setToken(res)
+            })
+        }
+    }, [isLoading])
+
     return (
         <div>
-            <Navbar loginWithRedirect={loginWithRedirect}/>
+            <Navbar loginWithRedirect={loginWithRedirect} isAuthenticated={isAuthenticated}/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/home" element={<Home/>}/>
@@ -52,7 +51,7 @@ function AppWrapper() {
                 <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/> */}
 
                 <Route element={<><RequireAuth/><PerfilLayout/></>}>
-                    <Route path="/dashboard" element={<Dashboard token={token} user={user}/>}/>
+                    <Route path="/dashboard" element={<Dashboard token={token}/>}/>
                     <Route path="/perfil" element={<Perfil/>}/>
                     <Route path="/perfil/cvu" element={<Cvu_Alias token={token}/>}/>
                     <Route path="/perfil/comentario" element={<ResenaUSer/>}/>
