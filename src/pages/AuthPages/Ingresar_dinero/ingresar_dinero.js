@@ -13,7 +13,7 @@ function Ingresar_dinero() {
     
     useEffect(() => {
         setCargandoUser(true)
-        httpGet("users/me").then(res => {
+        httpGet("auth/users/me").then(res => {
             setCargandoUser(false);
             setUser(res)
             console.log(res)

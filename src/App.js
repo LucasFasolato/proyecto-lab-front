@@ -27,8 +27,7 @@ import ResenaUSer from './pages/AuthPages/Perfil/ResenaUser/resenaUser';
 
 
 function AppWrapper() {
-    const {user, isAuthenticated, isLoading, getAccessTokenSilently, loginWithRedirect} = useAuth0();
-    const [token, setToken] = useState();
+    const {isAuthenticated, isLoading, getAccessTokenSilently, loginWithRedirect} = useAuth0();
 
     useEffect(() => {
         if (isAuthenticated && !isLoading) {
@@ -36,7 +35,7 @@ function AppWrapper() {
                 audience: `banco-austral.web.app/auth0`,
                 scope: "openid%20email%20profile"
             }).then(res => {
-                setToken(res)
+                localStorage.setItem('ba_token', res);
             })
         }
     }, [isLoading])
@@ -51,17 +50,17 @@ function AppWrapper() {
                 <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/> */}
 
                 <Route element={<><RequireAuth/><PerfilLayout/></>}>
-                    <Route path="/dashboard" element={<Dashboard token={token}/>}/>
+                    <Route path="/dashboard" element={<Dashboard />}/>
                     <Route path="/perfil" element={<Perfil/>}/>
-                    <Route path="/perfil/cvu" element={<Cvu_Alias token={token}/>}/>
+                    <Route path="/perfil/cvu" element={<Cvu_Alias />}/>
                     <Route path="/perfil/comentario" element={<ResenaUSer/>}/>
                     <Route path="/perfil/datos" element={<DatosUser/>}/>
-                    <Route path="/perfil/changepassword" element={<Changepassword token={token}/>}/>
+                    <Route path="/perfil/changepassword" element={<Changepassword />}/>
                     <Route path="/perfil/transferirdinero" element={<Transferir_dinero/>}/>
-                    <Route path="/perfil/ingresardinero" element={<Ingresar_dinero token={token}/>}/>
-                    <Route path="/perfil/invertirdinero" element={<Invertir_dinero token={token}/>}/>
-                    <Route path="/miactividad" element={<MiActividad token={token}/>}/>
-                    <Route path="/midinero" element={<MiDinero token={token}/>}/>
+                    <Route path="/perfil/ingresardinero" element={<Ingresar_dinero />}/>
+                    <Route path="/perfil/invertirdinero" element={<Invertir_dinero />}/>
+                    <Route path="/miactividad" element={<MiActividad />}/>
+                    <Route path="/midinero" element={<MiDinero />}/>
                     <Route path="/mistransferencias" element={<MisTransferencias/>}/>
                 </Route>
 

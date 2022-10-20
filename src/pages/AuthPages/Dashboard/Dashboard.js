@@ -10,7 +10,7 @@ import {
 } from "react-spinners";
 import {useAuth0} from "@auth0/auth0-react";
 
-function Dashboard({token}) {
+function Dashboard() {
     let [color, setColor] = useState("#3b6ce1");
     const navigate = useNavigate();
     const [transferencias, setTransferencias] = useState(null)
@@ -34,7 +34,7 @@ function Dashboard({token}) {
 
     function scrolled() {
         if (isAuthenticated) {
-            httpGet(`auth/transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`, token).then(res => {
+            httpGet(`auth/transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
                 setTransferencias(prevState => {
                     return [...prevState, ...res]
                 })
@@ -45,7 +45,7 @@ function Dashboard({token}) {
 
     useEffect(() => {
         if (isAuthenticated) {
-            httpGet("auth/users/me", token).then(res => {
+            httpGet("auth/users/me").then(res => {
                 console.log("ADSADASDASD")
                 setUser(res)
                 console.log(res)
@@ -56,7 +56,7 @@ function Dashboard({token}) {
 
     useEffect(() => {
         if (isAuthenticated) {
-            httpGet(`auth/transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`, token).then(res => {
+            httpGet(`auth/transfer/me?nroPag=${nroPagina}&pageSize=${cantidadPagina}`).then(res => {
                 setTransferencias(res)
             })
         }
