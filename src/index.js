@@ -12,6 +12,8 @@ root.render(
       domain="dev-4gyuwauo.us.auth0.com"
       clientId="D4u81F60gFrulRSXtS0Ce21TgIt3fJRj"
       redirectUri={window.location.origin}
+      scope="openid%20email%20profile"
+      audience="banco-austral.web.app/auth0"
     >
       <App />
     </Auth0Provider>,

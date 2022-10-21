@@ -15,7 +15,7 @@ function Dashboard() {
     const navigate = useNavigate();
     const [transferencias, setTransferencias] = useState(null)
     const [cantidadPagina, setCantidadPagina] = useState(10)
-    const [nroPagina, setNroPagina] = useState(1)
+    const [nroPagina, setNroPagina] = useState(0)
     const [cargandoTransferencias, setCargandoTransferencias] = useState(false)
     const [cargandoMasTransferencias, setCargandoMasTransferencias] = useState(false)
     const [user, setUser] = useState({});
@@ -62,6 +62,12 @@ function Dashboard() {
         }
 
     }, [])
+
+    let handlePdfRequest = (e) => {
+        httpGet("auth/transfer/export/pdf", true).then(res => {
+            window.download(res)
+        })
+    }
 
     function tipoTransf(transf) {
         return transf.emisor.userId == user.userId ? "emisor" : "receptor";
@@ -152,9 +158,8 @@ function Dashboard() {
                                     <p className='column-2-left-reportesaldo-left-p'>Reporte saldo al 31/12</p>
                                 </div>
                                 <div className='column-2-left-reportesaldo-right'>
-                                    <button className='column-2-left-reportesaldo-right-bttn'><a
-                                        href='http://168.138.228.14:8080/api/auth/transfer/export/pdf'>Pedir
-                                        reporte</a></button>
+                                    <button onClick={handlePdfRequest} className='column-2-left-reportesaldo-right-bttn'>
+                                        Pedir reporte</button>
                                 </div>
                             </div>
                         </section>

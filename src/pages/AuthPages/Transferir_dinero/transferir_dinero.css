@@ -71,6 +71,13 @@
     height: 400px;
 }
 
+.cargando-user-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 .transferirdinero_column-2-transf-h2 {
     font-family: "Poppins", sans-serif;
     font-weight: 500;

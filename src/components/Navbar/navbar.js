@@ -10,18 +10,19 @@ import { useAuth0, User } from "@auth0/auth0-react";
 
 const axios = require('axios');
 
-function Navbar({loginWithRedirect, isAuthenticated}) {
+function Navbar() {
 
     const navigate = useNavigate();
     const [activation, setActivation] = useState(false);
-    const handleLogout = () => {
-        logout({ returnTo: window.location.origin })
-    }
 
-    const { logout } = useAuth0();
+
+    const { logout, loginWithRedirect, isAuthenticated } = useAuth0();
     var className = activation ? 'show_content' : 'nav_content';
 
-
+    const handleLogout = () => {
+        localStorage.removeItem("ba_token")
+        logout({ returnTo: window.location.origin })
+    }
     return (
         <div className='nav_size'>
             <nav className={className} id='nav_content'>

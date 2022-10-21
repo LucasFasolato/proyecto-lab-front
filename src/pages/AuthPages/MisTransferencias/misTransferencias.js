@@ -13,7 +13,7 @@ function MisTransferencias(props) {
     const [transferenciasRecibidas, setTransferenciasRecibidas] = useState(null)
     const [transferenciasEmitidas, setTransferenciasEmitidas] = useState(null)
     const [cantidadPagina, setCantidadPagina] = useState(7)
-    const [nroPagina, setNroPagina] = useState(1)
+    const [nroPagina, setNroPagina] = useState(0)
     // const [mostrarAllTransferencias, setMostrarAllTransferencias] = useState(true)
     // const [mostrarTransferenciasRecibidas, setMostrarTransferenciasRecibidas] = useState(false)
     // const [mostrarTransferenciasEmitidas, setMostrarTransferenciasEmitidas] = useState(false)

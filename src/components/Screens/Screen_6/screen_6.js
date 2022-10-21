@@ -15,7 +15,7 @@ function Screen_6() {
 
     useEffect(() => {
         setCargandoResena(true)
-        httpGet("resenas").then(res => {
+        httpGet("resenas",false).then(res => {
             for(let i=0; i<4; i++) {
                 aleatorio = res[Math.floor(Math.random() * res.length)];
                 alea.push(aleatorio)

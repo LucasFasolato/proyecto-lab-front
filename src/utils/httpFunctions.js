@@ -1,9 +1,8 @@
 import axios from "axios";
 
-// const baseURL = "https://peaceful-harbor-44195.herokuapp.com/";
 const baseURL = "http://168.138.228.14:8080/api/";
 
-// const baseURL = "http://localhost:8080/";
+//const baseURL = "http://localhost:8080/api/";
 
 
 export const httpGet = async (endpoint, auth = true) => {
@@ -11,6 +10,7 @@ export const httpGet = async (endpoint, auth = true) => {
         let token = localStorage.getItem('ba_token');
         return axios.get(baseURL + endpoint, {
             headers: {
+                'access-Control-Allow-Origin': '*',
                 authorization: `Bearer ${token}`
             }
         }).then((res) => {
@@ -57,7 +57,7 @@ export const httpPost = async (endpoint, data, auth = true) => {
                     'access-Control-Allow-Origin': '*',
                     'content-Type': 'application/json',
                     'dataType': 'json',
-                    authorization: `Basic ${token}`
+                    authorization: `Bearer ${token}`
                 }
             }
             return await axios.post(baseURL + endpoint, data, config)
@@ -92,7 +92,7 @@ export const httpPut = async (endpoint, data) => {
             'access-Control-Allow-Origin': '*',
             'content-Type': 'application/json',
             'dataType': 'json',
-            authorization: `Basic ${localStorage.getItem('user')}`
+            authorization: `Bearer ${localStorage.getItem('user')}`
         }
     }).then((res) => {
         return res.data;

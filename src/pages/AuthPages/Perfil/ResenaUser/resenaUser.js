@@ -49,10 +49,9 @@ function ResenaUSer({isLoggedIn, setIsLoggedIn}) {
         if(comment.length >= 10)
         {
             if(starRating != 0) {
-                httpPost('resena', {resena: comment, puntuacion: starRating}, false)
+                httpPost('auth/resenas', {resena: comment, puntuacion: starRating})
                     .then((res) => {
                         setEnviandoResena(false)
-                        console.log(res)
                         if (res.request.status === 201) {
                             enviada()
                         } else {
