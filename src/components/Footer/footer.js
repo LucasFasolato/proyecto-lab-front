@@ -7,7 +7,8 @@ function Footer() {
         <section className='display_footer-content'>
             <article className='footer_first-box'>
                 <h1 className='footer_title'>Austral |   Banco Austral</h1>
-                <p className='footer_text'>While the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees.While the lovely valley teems with vapour around me.</p>
+                <p className='footer_text'>While the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of 
+                the impenetrable foliage of my trees.While the lovely valley teems with vapour around me.</p>
             </article>
             <article className='footer_second-box'>
                 <ul>

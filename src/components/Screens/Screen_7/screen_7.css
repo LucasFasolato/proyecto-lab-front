@@ -13,7 +13,8 @@
   width: 80%;
   height: 50%;
   overflow: hidden;
-  padding-bottom: 10vh;
+  padding-bottom: 6vh;
+  overflow: hidden;
 }
 
 .s7_footer-content {
@@ -43,16 +44,105 @@
 
 .s7_cardcontent {
   width: 60%;
-  max-height: 40vh;
-  margin: 2vh auto;
+  margin: 3vh auto 0;
   display: flex;
   justify-content: space-around;
-  padding: 0;
+  padding: 2vh 0 0;
+  background: none;
+  overflow: hidden;
 }
 
 .s7_card_sp {
   width: 30%;
-  height: 35vh;
+  height: 100%;
   margin: 0;
   padding: 0;
+  background: none;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+
+  .s7_h1 {
+    font-size: 42px;
+    line-height: 24px;
+  }
+
+  .s7_cardcontent {
+    width: 60%;
+  }
+
+  .s7_card_sp {
+    width: 30%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+}
+
+@media screen and (max-width: 1000px) {
+
+  .s7_cardcontent {
+    width: 60%;
+  }
+
+  .s7_card_sp {
+    width: 40%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+}
+
+
+@media screen and (max-width: 550px) {
+
+  .s7_h1 {
+    font-size: 32px;
+    line-height: 16px;
+  }
+
+  .s7_cardcontent {
+    width: 70%;
+  }
+
+  .s7_card_sp {
+    width: 40%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+
+  .s7_h1 {
+    font-size: 32px;
+    line-height: 16px;
+  }
+
+  .s7_cardcontent {
+    width: 80%;
+  }
+
+  .s7_card_sp {
+    width: 40%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+}
+
+@media screen and (max-width: 300px) {
+
+  .s7_h1 {
+    font-size: 24px;
+    line-height: 16px;
+  }
+
 }
