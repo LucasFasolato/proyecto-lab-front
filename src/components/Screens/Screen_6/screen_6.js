@@ -111,8 +111,8 @@ function Screen_6() {
             initial="offscreen"
             animate="onscreen"
         >
-            <h1 className='s6_h1'>Users love Banco Austral</h1>
-            <h2 className='s6_h2'>See what users around the world are saying about us</h2>
+            <h1 className='s6_h1'>Reseñas de nuestros usuarios</h1>
+            <h2 className='s6_h2'>Mira lo que el mundo dice sobre nosotros</h2>
         </motion.section>
         <motion.section className='s6_content'
             variants={variantBg}

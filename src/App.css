@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Fira+Sans:wght@300;400&family=Inter&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap');
 .App {
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .App-logo {

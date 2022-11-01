@@ -5,6 +5,14 @@ import './screen_7.css'
 import { motion } from "framer-motion"
 
 function Screen_7() {
+    let autor1 = {
+        name: "Lucas",
+        lastname: "Fasolato"
+    }
+    let autor2 = {
+        name: "Mariano",
+        lastname: "Pereyra"
+    }
     const variantTitle= {
         offscreen: {
             opacity:0
@@ -48,19 +56,19 @@ function Screen_7() {
                     initial="offscreen"
                     animate="onscreen"
                 >
-                    <Author_card/>
+                    <Author_card res={autor1}/>
                 </motion.article>
                 <motion.article className='s7_card_sp'
                     variants={variantCard}
                     initial="offscreen"
                     animate="onscreen"
                 >
-                    <Author_card/>
+                    <Author_card res={autor2}/>
                 </motion.article>
             </section>
         </section>
         <section className='s7_footer-content'>
-        <Footer/>
+            <Footer/>
         </section>
     </div>
   )
