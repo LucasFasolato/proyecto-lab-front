@@ -5,6 +5,7 @@ import QuienesSomos1 from './../../../imgs/Quienes_somos1.svg'
 import QuienesSomos2 from './../../../imgs/Quienes_somos2.svg'
 import Circles from './../../../imgs/Circles.svg'
 import Cartel_garantia from '../../Cartel_Garantia/cartel_garantia'
+import topleft from './../../../imgs/lefttop.png'
 import { motion } from "framer-motion"
 
 function Screen_4() {
@@ -80,6 +81,8 @@ const variantImage2= {
                <motion.img className='s4_img3' src={Circles} drag dragConstraints={{top: 0,left: 0,right: 0,bottom: 0,}} dragElastic={0.2} variants={variantImage1} initial="offscreen" animate="onscreen"/>  
             </div>
         </section>
+        
+        <img src={topleft} className='topleft'/>
     </div>
   )
 }

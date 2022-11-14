@@ -5,6 +5,7 @@ import CredictCard from './../../../imgs/CredictCard_photo.svg'
 import LogoEthereum from './../../../imgs/LogoEthereum.svg'
 import LogoCohete from './../../../imgs/LogoCohete.svg'
 import LogoInfo from './../../../imgs/LogoInfo.svg'
+import rightbottom from './../../../imgs/rightbottom.png'
 import { motion } from "framer-motion"
 
 function Screen_2() {
@@ -246,6 +247,7 @@ function Screen_2() {
                     </motion.path>
                 </motion.svg>
             </div>
+            <img src={rightbottom} className='rightbottom'/>
     </div>
     )
 }

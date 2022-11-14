@@ -4,6 +4,8 @@ import Pagination_circle from '../../Pagination_circle/pagination_circle'
 import './screen_3.css'
 import Circle_decorationW from './../../../imgs/Circle_decorationW.svg'
 import { motion } from "framer-motion"
+import topleft from './../../../imgs/lefttopw.png'
+import rightbottom from './../../../imgs/rightbottomw.png'
 
 function Screen_3() {
 const variantTitle= {
@@ -156,8 +158,9 @@ const variantTitle= {
                 initial="hidden"
                 animate="visible"/>
         </motion.svg>
-
         </div>
+        <img src={topleft} className='topleft'/>
+        <img src={rightbottom} className='rightbottom'/>
     </div>
   )
 }

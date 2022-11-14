@@ -2,14 +2,16 @@
   margin: 0 auto;
   padding: 0;
   height: 100vh;
-  width: 80%;
+  width: 100%;
   background-color: #ffffff;
   display: flex;
+  position: relative;
 }
 
 .s4_c {
   margin: 0;
   padding: 0;
+  padding-left: 10%;
   width: 50%;
   height: 100%;
   justify-content: center;
@@ -19,7 +21,7 @@
 
 .s4_c2{
   margin: 0;
-  padding: 0;
+  padding-right: 10%;
   width: 50%;
   height: 100%;
   justify-content: center;
@@ -27,11 +29,22 @@
   background-color: none;
 }
 
+.topleft {
+  position: absolute;
+  padding: 0;
+  top: 0;
+  left: 0;
+  width: 50vw;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: max-content;
+}
+
 .s4_titles {
   width: 100%;
   height: auto;
   margin: 0 auto;
-  padding: 6% 24px 2%;
+  padding: 20% 24px 2%;
   padding-right: 0;
 }
 
