@@ -11,7 +11,7 @@
   width: 70vw;
   height: 20vh;
   border-radius: 32px;
-  background-color: #222222;
+  background-color: #0839b0;
   color: #ffffff;
   align-items: center;
   margin: 100px auto;
@@ -22,7 +22,7 @@
   display: flex;
   width: 25%;
   height: 75%;
-  border-right: 3px solid #3b6ce1;
+  border-right: 3px solid #ffffff;
   z-index: 10;
 }
 
@@ -55,13 +55,13 @@
 }
 
 .banner_circle {
+  display: none;
   position: absolute;
   width: 10vh;
   height: 10vh;
   border-radius: 50%;
-  background-color: #3b6ce1;
+  background-color: #bcdeff;
   z-index: -1;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .position_tl {
@@ -110,7 +110,6 @@
     width: 10vh;
     height: 10vh;
     border-radius: 50%;
-    background-color: #3b6ce1;
     z-index: -1;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
@@ -162,7 +161,6 @@
     width: 8vh;
     height: 8vh;
     border-radius: 50%;
-    background-color: #3b6ce1;
     z-index: -1;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
@@ -215,7 +213,6 @@
     width: 6vh;
     height: 6vh;
     border-radius: 50%;
-    background-color: #3b6ce1;
     z-index: -1;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
@@ -267,7 +264,6 @@
     width: 4vh;
     height: 4vh;
     border-radius: 50%;
-    background-color: #3b6ce1;
     z-index: -1;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }

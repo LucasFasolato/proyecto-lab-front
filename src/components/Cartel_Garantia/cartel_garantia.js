@@ -2,7 +2,7 @@ import React from 'react'
 import './cartel_garantia.css'
 import LogoGarantia from './../../imgs/LogoGarantia.svg'
 
-function Cartel_garantia() {
+function Cartel_garantia({res}) {
   return (
     <div className='cartel_garantia-size'>
         <section className='cg_left'>
@@ -10,10 +10,10 @@ function Cartel_garantia() {
         </section>
         <section className='cg_right'>
             <article className='cg_title'>
-                <h1 className='cg_h1'>Satisfaccion garantizada</h1>
+                <h1 className='cg_h1'>{res.title}</h1>
             </article>
             <article className='cg_description'>
-                <p className='cg_p'>Suffered alteration in which don't look believable.</p>
+                <p className='cg_p'>{res.content}</p>
             </article>
         </section>
     </div>

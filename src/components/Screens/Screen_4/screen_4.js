@@ -9,6 +9,22 @@ import topleft from './../../../imgs/lefttop.png'
 import { motion } from "framer-motion"
 
 function Screen_4() {
+  let box1 = {
+    title: "Seguimiento personalizado",
+    content: "Cada uno de nuestros clientes cuentan con un comercial propio."
+  }
+  let box2 = {
+    title: "Informes diarios",
+    content: "Información local y global disponible en todo momento."
+  }
+  let box3 = {
+    title: "Oportunidades de inversión",
+    content: "Equipo de Research pendiente oportunidades de inversión."
+  }
+  let box4 = {
+    title: "Seguridad y transparencia",
+    content: "Control de todo lo que sucede en todo momento."
+  }
   const variantImage1= {
     offscreen: {
         scale: 0,
@@ -48,7 +64,7 @@ const variantImage2= {
             <section className='s4_content-left'>
               <article className='s4_container-text'>
                 <p className='s4_text'>
-                  There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in which don't look slightly believable.AThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in which don't look slightly believable, but the majority have suffered alteration in which don't look slightly believable.
+                  Banco Austral surge como una propuesta innovadora para el manejo cuentas bancarias y portfolios de inversión. Teniendo al cliente como prioridad buscamos generar un servicio práctico, completo y funcional que le permita a los usuarios tomar decisiones, poder informarse y todo el tiempo tener control de su dinero. 
                 </p>
               </article>
               <article className='s4_container-button'>
@@ -60,16 +76,16 @@ const variantImage2= {
             
             <section className='s4_container-garantia'>
               <article className='s4_garantia'>
-                <Cartel_garantia/>
+                <Cartel_garantia res={box1}/>
               </article>
               <article className='s4_garantia'>
-                <Cartel_garantia/>
+                <Cartel_garantia res={box2}/>
               </article>
               <article className='s4_garantia'>
-                <Cartel_garantia/>
+                <Cartel_garantia res={box3}/>
               </article>
               <article className='s4_garantia'>
-                <Cartel_garantia/>
+                <Cartel_garantia res={box4}/>
               </article>
             </section>
           </section>
