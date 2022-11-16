@@ -41,13 +41,13 @@
 .s5_c1 {
   margin: 0;
   padding: 0;
-  width: 70%;
+  width: 50%;
   height: 100%;
   background-color: none;
 }
 
 .s5_img-container {
-  width: 100%;
+  width: 90%;
   height: max-content;
   background-color: none;
 }
@@ -56,13 +56,13 @@
   display: block;
   margin: 2% auto;
   padding: 0;
-  width: 98%;
+  width: 100%;
 }
 
 .s5_c2 {
   margin: 0;
   padding: 0;
-  width: 30%;
+  width: 50%;
   height: max-content;
 }
 

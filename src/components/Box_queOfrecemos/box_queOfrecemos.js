@@ -1,7 +1,7 @@
 import React from 'react'
 import './box_queOfrecemos.css'
 // sp es size and position (linea 8)
-function Box_queOfrecemos() {
+function Box_queOfrecemos({res}) {
   return (
     <div className='box_size'>
       <section className='head_box'>
@@ -9,12 +9,12 @@ function Box_queOfrecemos() {
             <img className='img_size' src="https://cdn.pixabay.com/photo/2016/06/15/16/16/man-1459246_960_720.png" alt='LOGO BOX QUE OFRECEMOS'/>
         </section>
         <section className='title_sp'>
-            <p>TITLE</p>
+            <p>{res.title}</p>
         </section>
       </section>
         
         <section className='description_sp'>
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
+            <p>{res.content}</p>
         </section>
     </div>
   )

@@ -5,7 +5,7 @@
 
 .screen_1-background {
   width: 100%;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 9vh);
   background-image: url(background-screen1.jpg);
   background-repeat: no-repeat;
   background-size: cover;

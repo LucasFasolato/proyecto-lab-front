@@ -8,6 +8,23 @@ import topleft from './../../../imgs/lefttopw.png'
 import rightbottom from './../../../imgs/rightbottomw.png'
 
 function Screen_3() {
+
+    let box1 = {
+        title: "Seguimiento personalizado",
+        content: "Cada uno de nuestros clientes cuentan con un comercial propio."
+      }
+      let box2 = {
+        title: "Informes diarios",
+        content: "Información local y global disponible en todo momento."
+      }
+      let box3 = {
+        title: "Oportunidades de inversión",
+        content: "Equipo de Research pendiente oportunidades de inversión."
+      }
+      let box4 = {
+        title: "Seguridad y transparencia",
+        content: "Control de todo lo que sucede en todo momento."
+      }
 const variantTitle= {
     offscreen: {
         y: "-200px",
@@ -121,28 +138,28 @@ const variantTitle= {
                 initial="offscreen"
                 animate="onscreen"
             >
-                <Box_queOfrecemos/>
+                <Box_queOfrecemos res={box1}/>
             </motion.article>
             <motion.article className='s3_box_sp'
                 variants={variantBox3}
                 initial="offscreen"
                 animate="onscreen"
             >
-                <Box_queOfrecemos/>
+                <Box_queOfrecemos res={box2}/>
             </motion.article>
             <motion.article className='s3_box_sp'
                 variants={variantBox2}
                 initial="offscreen"
                 animate="onscreen"
             >
-                <Box_queOfrecemos/>
+                <Box_queOfrecemos res={box3}/>
             </motion.article>
             <motion.article className='s3_box_sp'
                 variants={variantBox1}
                 initial="offscreen"
                 animate="onscreen"
             >
-                <Box_queOfrecemos/>
+                <Box_queOfrecemos res={box4}/>
             </motion.article>
         </section>
         <section className='s3_pagination'>
