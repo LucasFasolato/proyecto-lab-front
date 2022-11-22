@@ -102,9 +102,76 @@
   }
 }
 
-@media screen and (max-width: 1000px) {
-  .s6_size {
-    height: 75vw;
+@media screen and (max-width: 1200px) {
+  .s6_comment_1 {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 2%;
+    left: 4%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .s6_comment_2 {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 5%;
+    left: 56%;
+    margin: 0;
+  }
+  
+  .s6_comment_3 {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 40%;
+    left: 6%;
+    margin: 0;
+  }
+  
+  .s6_comment_4 {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 48%;
+    left: 58%;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .s6_comment_1 {
+    position: absolute;
+    top: 0%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .s6_comment_2 {
+    position: absolute;
+    top: 23vh;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .s6_comment_3 {
+    display: none !important;
+    right: 200%;
+  }
+  
+  .s6_comment_4 {
+    position: absolute;
+    top: 46vh;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
   }
 }
 
@@ -122,9 +189,6 @@
 }
 
 @media screen and (max-width: 650px) {
-  .s6_size {
-    height: 80vw;
-  }
   .s6_h2 {
     font-size: 12px;
     line-height: 12px;
@@ -137,16 +201,11 @@
 
 }
 
-@media screen and (max-width: 515px) {
-
-  .s6_size {
-    height: 85vw;
-  }
-
-}
 
 @media screen and (max-width: 475px) {
-
+  .s6_titles {
+    padding-bottom: 24px;
+  }
   .s6_h2 {
     font-size: 10px;
     line-height: 10px;
@@ -158,8 +217,44 @@
   }
 
   .s6_size {
-    height: 90vw;
+    height: 80vh;
   }
+  .s6_c {
+    width: 100vw;
+  }
+
+  .s6_comment_1 {
+    position: absolute;
+    top: 0%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .s6_comment_2 {
+    position: absolute;
+    top: 20vh;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .s6_comment_3 {
+    display: none !important;
+    right: 200%;
+  }
+  
+  .s6_comment_4 {
+    position: absolute;
+    top: 40vh;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  }
+
 
 }
 
@@ -174,10 +269,6 @@
   .s6_h1 {
     font-size: 16px;
     line-height: 16px;
-  }
-
-  .s6_size {
-    height: 100vw;
   }
 
 }
