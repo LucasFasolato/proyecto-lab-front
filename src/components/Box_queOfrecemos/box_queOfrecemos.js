@@ -13,10 +13,14 @@ function Box_queOfrecemos({res}) {
             <p>{res.title}</p>
         </section>
       </section>
-        
-        <section className='description_sp'>
-            <p>{res.content}</p>
-        </section>
+      <section className='description_sp'>
+          <p>{res.content}</p>
+      </section>
+      <section className='button_sp'>
+        <button>
+          OBTENER MÁS INFORMACIÓN
+        </button>
+      </section>
     </div>
   )
 }

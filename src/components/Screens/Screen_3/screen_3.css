@@ -14,7 +14,7 @@
   width: 100%;
   height: max-content;
   margin: 0 auto;
-  padding: 18vh 0 16vh;
+  padding: 18vh 0 9vh;
   overflow: hidden;
 }
 
@@ -38,7 +38,7 @@
 
 .s3_boxcontent {
   width: 80%;
-  height: max-content;
+  height: 35vh;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -46,8 +46,8 @@
 }
 
 .s3_box_sp {
-  width: 20%;
-  height: max-content;
+  width: 24%;
+  height: 100%;
   border-radius: 48px;
   margin: 0;
   padding: 0;
@@ -123,9 +123,21 @@
   }
   
 
+  .s3_boxcontent {
+    width: 80%;
+    height: max-content;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
   .s3_box_sp {
     width: 45%;
+    height: 100%;
     border-radius: 8px;
+    margin: 0;
+    padding: 0;
   }
 }
 

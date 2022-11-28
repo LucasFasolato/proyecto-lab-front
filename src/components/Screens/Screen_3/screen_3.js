@@ -16,22 +16,22 @@ function Screen_3() {
     let box1 = {
         title: "Seguimiento personalizado",
         content: "Cada uno de nuestros clientes cuentan con un comercial propio.",
-        img: "https://i.ibb.co/XzvyQfg/seguimientopersonalizado2.png"
+        img: "https://i.ibb.co/2cBLNGz/seguimientopersonalizado2.png"
       }
       let box2 = {
-        title: "Informes diarios",
+        title: "Información actualizada",
         content: "Información local y global disponible en todo momento.",
-        img: "https://i.ibb.co/Qdz1fQc/informediario.png"
+        img: "https://i.ibb.co/P5Z0mr5/informediario.png"
       }
       let box3 = {
         title: "Oportunidades de inversión",
         content: "Equipo de Research pendiente oportunidades de inversión.",
-        img: "https://i.ibb.co/30jwH9m/inversion2.png"
+        img: "https://i.ibb.co/525GNxj/inversion2.png"
       }
       let box4 = {
         title: "Seguridad y transparencia",
         content: "Control de todo lo que sucede en todo momento.",
-        img: "https://i.ibb.co/Ws952sh/proteccion.png"
+        img: "https://i.ibb.co/C0GvJCb/proteccion.png" 
       }
 const variantTitle= {
     offscreen: {

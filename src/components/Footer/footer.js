@@ -1,7 +1,9 @@
 import React from 'react'
 import './footer.css'
+import {Link, useNavigate} from "react-router-dom";
 
 function Footer() {
+    const navigate = useNavigate();
   return (
     <div className='footer_size'>
         <section className='display_footer-content'>
@@ -12,11 +14,11 @@ function Footer() {
             <article className='footer_second-box'>
                 <ul>
                     <h2>LINKS ÚTILES</h2>
-                    <li className='footer_li'>Home</li>
+                    <a href='/home'><li className='footer_li'> Home</li></a>
                     <li className='footer_li'>Portfolio</li>
-                    <li className='footer_li'>Blog</li>
-                    <li className='footer_li'>About</li>
-                    <li className='footer_li'>Contact</li>
+                    <a href='/home'><li className='footer_li'>Blog</li></a>
+                    <a href='https://linktr.ee/lucasfasolato' target='_blank'><li className='footer_li'>About</li></a>
+                    <a href='https://linktr.ee/lucasfasolato' target='_blank'><li className='footer_li'>Contact</li> </a>
                 </ul>
             </article>
             <article className='footer_third-box'>

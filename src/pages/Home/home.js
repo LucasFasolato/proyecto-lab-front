@@ -7,6 +7,7 @@ import Screen_4 from '../../components/Screens/Screen_4/screen_4'
 import Screen_5 from '../../components/Screens/Screen_5/screen_5'
 import Screen_6 from '../../components/Screens/Screen_6/screen_6'
 import Screen_7 from '../../components/Screens/Screen_7/screen_7'
+import GoToTopBtnn from './../../components/GoToTopBttn/goToTopBttn'
 
 function Menu() {
   return (
@@ -19,6 +20,7 @@ function Menu() {
         <Banner_data/>
         <Screen_6/>
         <Screen_7/>
+        <GoToTopBtnn />
     </div>
   )
 }

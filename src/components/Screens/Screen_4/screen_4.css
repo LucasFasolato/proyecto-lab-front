@@ -6,6 +6,7 @@
   background-color: #ffffff;
   display: flex;
   position: relative;
+  z-index: 100;
 }
 
 .s4_c {
@@ -32,7 +33,7 @@
 .topleft {
   position: absolute;
   padding: 0;
-  top: 0;
+  top: -1px;
   left: 0;
   width: 50vw;
   background-repeat: no-repeat;
@@ -214,6 +215,19 @@
     width: 50%;
   }
 
+  .s4_button {
+    margin-top: 6vh;
+    margin-left: 24px;
+    margin-right: 24px;
+    width: 100%;
+    padding: 2% 0;
+    border-radius: 0;
+    height: max-content;
+    border: none;
+    color: #ffffff;
+    background-color: #3b6ce1;
+  }
+
   .s4_container-garantia {
     display: flex;
     flex-wrap: wrap;
@@ -290,7 +304,19 @@
     line-height: 24px;
   }
   .s4_titles {
+    padding-top: 12vh;
     padding-bottom: 4%;
+  }
+
+  .s4_button {
+    margin-top: 3vh;
+    width: 35%;
+    padding: 2% 3%;
+    border-radius: 16px;
+    height: max-content;
+    border: none;
+    color: #ffffff;
+    background-color: #3b6ce1;
   }
 }
 
@@ -325,7 +351,7 @@
   }
 
   .s4_garantia {
-    width: 100%;
+    width: 80%;
     height: 16vh;
     margin: 2%;
     border-radius: 12px;

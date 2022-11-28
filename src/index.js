@@ -16,7 +16,7 @@ root.render(
       audience="banco-austral.web.app/auth0"
     >
       <App />
-    </Auth0Provider>,
+    </Auth0Provider>
   </React.StrictMode>
 );
 
