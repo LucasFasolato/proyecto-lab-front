@@ -6,24 +6,32 @@ import Circle_decorationW from './../../../imgs/Circle_decorationW.svg'
 import { motion } from "framer-motion"
 import topleft from './../../../imgs/lefttopw.png'
 import rightbottom from './../../../imgs/rightbottomw.png'
+import segui from './../../../imgs/seguimientopersonalizado2.png'
+import informe from './../../../imgs/informediario.png'
+import opor from './../../../imgs/inversion2.png'
+import segu from './../../../imgs/proteccion.png'
 
 function Screen_3() {
 
     let box1 = {
         title: "Seguimiento personalizado",
-        content: "Cada uno de nuestros clientes cuentan con un comercial propio."
+        content: "Cada uno de nuestros clientes cuentan con un comercial propio.",
+        img: "https://i.ibb.co/XzvyQfg/seguimientopersonalizado2.png"
       }
       let box2 = {
         title: "Informes diarios",
-        content: "Información local y global disponible en todo momento."
+        content: "Información local y global disponible en todo momento.",
+        img: "https://i.ibb.co/Qdz1fQc/informediario.png"
       }
       let box3 = {
         title: "Oportunidades de inversión",
-        content: "Equipo de Research pendiente oportunidades de inversión."
+        content: "Equipo de Research pendiente oportunidades de inversión.",
+        img: "https://i.ibb.co/30jwH9m/inversion2.png"
       }
       let box4 = {
         title: "Seguridad y transparencia",
-        content: "Control de todo lo que sucede en todo momento."
+        content: "Control de todo lo que sucede en todo momento.",
+        img: "https://i.ibb.co/Ws952sh/proteccion.png"
       }
 const variantTitle= {
     offscreen: {
