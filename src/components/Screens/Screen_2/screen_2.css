@@ -375,6 +375,7 @@
   .s2_h1 {
     font-size: 24px;
     line-height: 24px;
+    color: #000000;
   }
 
   .s2_cards-size {
@@ -490,10 +491,15 @@
 }
 
 
-@media screen and (max-width: 402px) {
+@media screen and (max-width: 420px) {
   .s2_title {
     width: 92%;
     padding: 8% 0 0 0;
+  }
+
+  .s2_h1 {
+    font-size: 18px;
+    line-height: 18px;
   }
 
   .s2_h1 {

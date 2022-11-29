@@ -3,6 +3,7 @@
     height: 91vh;
     display: block;
     border-top: 2px solid #cccccc;;
+    z-index: 10;
 }
 .dashboard_content {
     width: 100%;
@@ -90,7 +91,8 @@
     border: none;
     background: none;
     width: 50%;
-    height: 4vh;
+    height: max-content;
+    padding: 1%;
     border-radius: 16px;
     background-color: #eeeeee;
     right: 0;

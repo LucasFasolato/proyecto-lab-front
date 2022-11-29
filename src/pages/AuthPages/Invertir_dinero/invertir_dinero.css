@@ -1,0 +1,93 @@
+.container_inv_dinero {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #eeeeee;
+}
+
+.container_left {
+    height: 100%;
+    width: 49%;
+}
+
+.container_right {
+    height: 100%;
+    width: 49%;
+}
+
+.container_dinero_disp {
+    display: block;
+    height: max-content;
+    padding-bottom: 1%;
+    width: 80%;
+    border-radius: 12px;
+    margin: 4vh auto;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.cont_din_disp {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mid_container {
+    width: 49%;
+    height: max-content;
+}
+
+.container_buttonback {
+    width: 100%;
+    height: 6vh;
+}
+
+.buttonback {
+    width: 40%;
+    margin-left: 10%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.text_dindisp {
+    width: 100%;
+    height: 15%;
+    padding-left: 12px;
+    padding-top: 12px;
+}
+
+.text_dindisp > h2 {
+    color: #020202;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 2vh;
+}
+
+.text_fondouser {
+    color: #020202;
+    padding-left: 12px;
+    font-size: 32px;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 8vh;
+}
+
+.container_buttons {
+    width: 100%;
+    margin: 3vh 0;
+    height: 6vh;
+}
+
+.buttonleftcolum {
+    display: block;
+    width: 90%;
+    border: none;
+    margin: 0 auto;
+    border-radius: 8px;
+    height: 100%;
+    background-color: #cccccc;
+}

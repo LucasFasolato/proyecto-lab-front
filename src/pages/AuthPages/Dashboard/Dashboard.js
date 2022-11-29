@@ -46,7 +46,6 @@ function Dashboard() {
     useEffect(() => {
         if (isAuthenticated) {
             httpGet("auth/users/me").then(res => {
-                console.log("ADSADASDASD")
                 setUser(res)
                 console.log(res)
             })
@@ -72,22 +71,12 @@ function Dashboard() {
     function tipoTransf(transf) {
         return transf.emisor.userId == user.userId ? "emisor" : "receptor";
     }
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
 
-    // myDiv.addEventListener('scroll', () => {  
-    //     if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight) {  
-    //       console.log('scrolled to bottom')  
-    //     }  
-    //   })
-
-
-    // function showButton(e) {
-    //     return (
-    //         <div className='dashboard_div-moreoptions'>
-    //             <button className='dashboard_bttn-moreoptions'>Ver más transferencias</button>
-    //         </div>
-    //     )
-    // }
-
+    let newdate = day + "/" + month + "/" +  year;
 
     return (
         <>
@@ -155,7 +144,7 @@ function Dashboard() {
                                         <img className='column-2-left-reportesaldo-left-img-size' src={Arrow_Down}
                                              alt="Flecha para abajo"/>
                                     </div>
-                                    <p className='column-2-left-reportesaldo-left-p'>Reporte saldo al 31/12</p>
+                                    <p className='column-2-left-reportesaldo-left-p'>Reporte saldo al {newdate}</p>
                                 </div>
                                 <div className='column-2-left-reportesaldo-right'>
                                     <button onClick={handlePdfRequest} className='column-2-left-reportesaldo-right-bttn'>

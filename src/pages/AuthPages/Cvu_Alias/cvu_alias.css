@@ -92,6 +92,13 @@
     width: 100%;
 }
 
+.cvu_alias_column-2-cvu-arrow-size:hover {
+    background-color: #aaaaaa;
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+
 .cvu_alias_column-2-alias {
     margin-top: 5vh;
     width: 100%;
@@ -155,6 +162,13 @@
 
 .cvu_alias_column-2-alias-arrow-size {
     background: none;
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+
+.cvu_alias_column-2-alias-arrow-size:hover {
+    background-color: #aaaaaa;
     border: none;
     height: 100%;
     width: 100%;
