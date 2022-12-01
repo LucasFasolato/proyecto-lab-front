@@ -26,6 +26,7 @@ import Invertir_dinero from './pages/AuthPages/Invertir_dinero/invertir_dinero';
 import ResenaUSer from './pages/AuthPages/Perfil/ResenaUser/resenaUser';
 import {PropagateLoader} from "react-spinners";
 import Portfolio from './pages/AuthPages/Portfolio/Portfolio';
+import ComprarAccion from "./pages/AuthPages/comprar_accion/ComprarAccion";
 
 
 function AppWrapper() {
@@ -70,6 +71,8 @@ function AppWrapper() {
                         <Route path="/perfil/changepassword" element={<Changepassword/>}/>
                         <Route path="/perfil/transferirdinero" element={<Transferir_dinero/>}/>
                         <Route path="/perfil/ingresardinero" element={<Cvu_Alias/>}/>
+                        <Route path="/perfil/compraraccion" element={<ComprarAccion/>}/>
+                        <Route path="/perfil/compraraccion/:paramSymbol" element={<ComprarAccion/>}/>
                         <Route path="/perfil/invertirdinero" element={<Invertir_dinero/>}/>
                         <Route path="/miactividad" element={<MiActividad/>}/>
                         <Route path="/midinero" element={<MiDinero/>}/>
