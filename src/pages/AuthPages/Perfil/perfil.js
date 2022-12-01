@@ -5,6 +5,10 @@ import {httpGet} from "../../../utils/httpFunctions";
 import {formatDate, makeAvatarUrl} from "../../../utils/helpers";
 import {BeatLoader} from "react-spinners";
 import placeholder from "./placeholder.jpg";
+import userimg from "./../../../imgs/user-circle.png";
+import security from "./../../../imgs/security.png";
+import card from "./../../../imgs/card.png";
+import resena from "./../../../imgs/star.png";
 
 
 function Perfil({isLoggedIn, setIsLoggedIn}) {
@@ -58,7 +62,7 @@ function Perfil({isLoggedIn, setIsLoggedIn}) {
                     </div>
                     <div className='perfil_column-2-menu-li'>
                         <div className='perfil_column-2-menu-li-img'>
-                            <div className='perfil_column-2-menu-li-img-size'/>
+                            <img className='perfil_column-2-menu-li-img-size' src={userimg}/>
                         </div>
                         <div className='perfil_column-2-menu-li-info' onClick={() => navigate("/perfil/datos")}>
                             <div className='perfil_column-2-li-title'>
@@ -75,7 +79,7 @@ function Perfil({isLoggedIn, setIsLoggedIn}) {
                     <hr/>
                     <div className='perfil_column-2-menu-li'>
                         <div className='perfil_column-2-menu-li-img'>
-                            <div className='perfil_column-2-menu-li-img-size'/>
+                            <img className='perfil_column-2-menu-li-img-size' src={security}/>
                         </div>
                         <div className='perfil_column-2-menu-li-info'>
                             <div className='perfil_column-2-li-title'>
@@ -92,7 +96,7 @@ function Perfil({isLoggedIn, setIsLoggedIn}) {
                     <hr/>
                     <div className='perfil_column-2-menu-li'>
                         <div className='perfil_column-2-menu-li-img'>
-                            <div className='perfil_column-2-menu-li-img-size'/>
+                            <img className='perfil_column-2-menu-li-img-size' src={card}/>
                         </div>
                         <div className='perfil_column-2-menu-li-info'>
                             <div className='perfil_column-2-li-title'>
@@ -107,7 +111,7 @@ function Perfil({isLoggedIn, setIsLoggedIn}) {
                         </div>
                     </div>
                     <hr/>
-                    <div className='perfil_column-2-menu-li'>
+                    {/* <div className='perfil_column-2-menu-li'>
                         <div className='perfil_column-2-menu-li-img'>
                             <div className='perfil_column-2-menu-li-img-size'/>
                         </div>
@@ -123,10 +127,10 @@ function Perfil({isLoggedIn, setIsLoggedIn}) {
                             <button className='perfil_column-2-menu-li-arrow-size'>&gt;</button>
                         </div>
                     </div>
-                    <hr/>
+                    <hr/> */}
                     <div className='perfil_column-2-menu-li'>
                         <div className='perfil_column-2-menu-li-img'>
-                            <div className='perfil_column-2-menu-li-img-size'/>
+                            <img className='perfil_column-2-menu-li-img-size' src={resena}/>
                         </div>
                         <div className='perfil_column-2-menu-li-info' onClick={() => navigate("/perfil/comentario")}>
                             <div className='perfil_column-2-li-title'>

@@ -31,11 +31,11 @@ function Dashboard_menu({isLoggedIn, setIsLoggedIn}) {
                     <h2 className='dashboard_menu-h2'>Transferencias</h2>
                 </a>
             </div>
-            <div className='dashboard_menu-link'>
+            {/* <div className='dashboard_menu-link'>
                 <a className='dashboard_menu-a' onClick={() => navigate("/midinero")}>
                     <h2 className='dashboard_menu-h2'>Tu dinero</h2>
                 </a>
-            </div>
+            </div> */}
             <div className='dashboard_menu-link'>
                 <a className='dashboard_menu-a' onClick={() => navigate("/miactividad")}>
                     <h2 className='dashboard_menu-h2'>Actividad</h2>

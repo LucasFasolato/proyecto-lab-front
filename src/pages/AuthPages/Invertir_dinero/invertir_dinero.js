@@ -90,7 +90,7 @@ function Invertir_dinero({token}) {
                             </div>
                         </div>
                         <div className='container_buttons'>
-                            <button onClick={() => navigate("/perfil")} className='buttonleftcolum'>Ver mi portfolio</button>
+                            <button onClick={() => navigate("/perfil/portfolio")} className='buttonleftcolum'>Ver mi portfolio</button>
                         </div>
                         <div className='container_buttons'>
                             <button onClick={() => navigate("/perfil/cvu")} className='buttonleftcolum'>Ingresar dinero</button>

@@ -67,7 +67,7 @@ function Navbar() {
                             <Link to={"/mistransferencias"}>Transferencias</Link>
                             </li>
                             <li className='links_text' onClick={() => {setActivation(false)}}>
-                                Portfolio
+                            <Link to={"/perfil/portfolio"}>Portfolio</Link>
                             </li>
                             <li className='links_text' onClick={() => {setActivation(false)}}>
                             <Link to={"/perfil"}>Perfil</Link>

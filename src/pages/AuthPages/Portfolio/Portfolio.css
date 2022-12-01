@@ -1,0 +1,46 @@
+.bgcolor {
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #dddddd;
+    height: max-content;
+    padding: 6vh 0;
+}
+
+.table {
+    width: 80% !important;
+    margin: 0 auto;
+    height: max-content;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tr {
+    background-color: #fff;
+}
+
+Td {
+    text-align: center;    
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+}
+
+button {
+    border-radius: 8px;
+    padding: 1%;
+    border: none;
+    background-color: #dddddd;
+}
+
+.colorgreen{
+    color: #6cbb3c !important;
+}
+
+.colorred{
+    color: #9b111e !important;
+}
+
+.colorblack{
+    color: #000000 !important;
+}
