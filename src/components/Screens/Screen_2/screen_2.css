@@ -494,7 +494,8 @@
 @media screen and (max-width: 420px) {
   .s2_title {
     width: 92%;
-    padding: 8% 0 0 0;
+    padding: 8% 0 5%;
+    height: max-content;
   }
 
   .s2_h1 {
