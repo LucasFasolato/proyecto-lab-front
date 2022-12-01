@@ -7,14 +7,17 @@ import {BeatLoader} from "react-spinners";
 import TableCripto from './TableCripto';
 
 function Invertir_dinero({token}) {
-    
+    const accionesEjemplo = ["Tesla TSLA, Google GOOG, Apple AAPL, Amazon AMZN"]
+
     let [color, setColor] = useState("#3b6ce1");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [cargandoCotizaciones, setCargandoCotizaciones] = useState(false)
+    const [cotizaciones, setCotizaciones] = useState([])
     const navigate = useNavigate();
     const [user, setUser] = useState({});
     const [cargandoUser, setCargandoUser] = useState(false);
 
-    
+
     useEffect(() => {
         setCargandoUser(true)
         httpGet("auth/users/me", token).then(res => {
@@ -23,7 +26,31 @@ function Invertir_dinero({token}) {
             console.log(res)
         })
     }, [])
-    
+
+
+    useEffect(() => {
+        setCargandoCotizaciones(true)
+        let instrumentosSymbol = ["TSLA", "GOGL", "AAPL", "AMZN"];
+        let promises = []
+        instrumentosSymbol.forEach(instrmento => {
+            promises.push(httpGet("auth/instrumentos/lastprice?symbol=" + instrmento))
+        })
+        Promise.all(promises).then(res => {
+
+            let promiseResult = res
+            let cotizacionesForState = []
+
+            for (let i = 0; i < instrumentosSymbol.length; i++) {
+                cotizacionesForState.push({
+                    symbol: instrumentosSymbol[i],
+                    price: promiseResult[i]
+                })
+            }
+            setCotizaciones(cotizacionesForState)
+            setCargandoCotizaciones(false)
+        })
+    }, [])
+
   return (
             <div className='container_inv_dinero'>
                 <div className='container_left'>
@@ -74,7 +101,12 @@ function Invertir_dinero({token}) {
                     </div>
                 </div>
                 <div className='container_right'>
-                    <TableCripto />
+                    {cargandoCotizaciones &&
+                    <p>spiner</p>
+                    }
+                    {!cargandoCotizaciones &&
+                    <TableCripto cotizaciones={cotizaciones}/>
+                    }
                 </div>
             </div>
 
