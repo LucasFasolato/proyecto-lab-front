@@ -132,6 +132,7 @@
   display: flex;
   justify-content: right;
   align-items: center;
+  margin-top: 3vh;
 }
 
 .s4_button {
@@ -151,7 +152,7 @@
   transition-duration: 0.4s;
   transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform: translateY(4px);
-  box-shadow: 0 6px 8px #4d4d4d;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   cursor: pointer;
 }
 
@@ -169,17 +170,9 @@
   height: 12vh;
   margin: 2%;
   border-radius: 24px;
+  color: #000;
 }
 
-.s4_garantia:hover {
-  transition-property: all;
-  transition-delay: 0ms;
-  transition-duration: 0.4s;
-  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transform: translateY(8px);
-  box-shadow: 0 10px 20px #4d4d4d;
-  cursor: pointer;
-}
 
 @media screen and (max-width: 1250px) {
   .s4_img-container {

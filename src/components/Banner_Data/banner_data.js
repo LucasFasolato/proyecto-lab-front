@@ -91,7 +91,7 @@ function Banner_data() {
                 initial="offscreen"
                 animate="onscreen">
                     <h1 className='banner_h1'>{cargandoUsers ? <><BeatLoader color={color} loading={cargandoUsers} size={10}/></> : <>{String(cantidadUsers)}</>}</h1>
-                    <p className='banner_p'>Happy Clients</p>
+                    <p className='banner_p'>Usuarios felices</p>
                 </motion.article>
             </section>
             <section className='banner_box'>
@@ -99,8 +99,8 @@ function Banner_data() {
                 variants={variantData}
                 initial="offscreen"
                 animate="onscreen">
-                    <h1 className='banner_h1'>+99</h1>
-                    <p className='banner_p'>Business Plan</p>
+                    <h1 className='banner_h1'>+25</h1>
+                    <p className='banner_p'>Planes de negocio</p>
                 </motion.article>
             </section>
             <section className='banner_box'>
@@ -109,7 +109,7 @@ function Banner_data() {
                 initial="offscreen"
                 animate="onscreen">
                     <h1 className='banner_h1'>{cargandoTransfs ? <><BeatLoader color={color} loading={cargandoTransfs} size={10}/></> : <>{String(cantidadTransf)}</>}</h1>
-                    <p className='banner_p'>Complete Transfers</p>      
+                    <p className='banner_p'>Transferencias realizadas</p>      
                 </motion.article>
             </section>
             <section className='banner_box lastbanner_box'>
@@ -117,8 +117,8 @@ function Banner_data() {
                 variants={variantData}
                 initial="offscreen"
                 animate="onscreen">
-                    <h1 className='banner_h1'>+5</h1>
-                    <p className='banner_p'>Years Experience</p>  
+                    <h1 className='banner_h1'>+1</h1>
+                    <p className='banner_p'>Año de experiencia</p>  
                 </motion.article>
             </section>
             <motion.div className='banner_circle position_tl' variants={variantCircle1}

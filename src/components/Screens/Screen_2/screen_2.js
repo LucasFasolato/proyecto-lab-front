@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import './screen_2.css'
 import Phone from './../../../imgs/Phone_photo.svg'
 import CredictCard from './../../../imgs/CredictCard_photo.svg'
@@ -7,8 +7,24 @@ import LogoCohete from './../../../imgs/LogoCohete.svg'
 import LogoInfo from './../../../imgs/LogoInfo.svg'
 import rightbottom from './../../../imgs/rightbottom.png'
 import { motion } from "framer-motion"
+import { useAuth0, User } from "@auth0/auth0-react";
+import {httpGet} from "../../../utils/httpFunctions";
 
-function Screen_2() {
+function Screen_2s() {
+    const { logout, loginWithRedirect, isAuthenticated } = useAuth0();
+    const [cargandoCotizaciones, setCargandoCotizaciones] = useState(false)
+    const [cotizaciones, setCotizaciones] = useState([])
+
+    useEffect(() => {
+        setCargandoCotizaciones(true)
+        httpGet("auth/instrumentos/lastprice?symbol=TSLA").then(res => {
+            setCargandoCotizaciones(false)
+            setCotizaciones(res)
+            console.log(cotizaciones)
+        })
+    }, [])
+
+
     const variantTitle= {
         offscreen: {
           y: "-200px"
@@ -118,6 +134,8 @@ function Screen_2() {
             transition: { duration: 1.5, delay: 0.5, ease:"easeInOut" }
         }
     }
+
+    console.log(cotizaciones)
   return (
     <div className='s2_size'>
         <div className='s2_background-circle'/>
@@ -181,10 +199,10 @@ function Screen_2() {
                                 </article>
                                 <section className='s2_eth-content'>
                                     <article className='s2_eth-description'>
-                                        <h2 className='s2_cards-h2'>Ethereum</h2>
+                                        <h2 className='s2_cards-h2'>TESLA</h2>
                                     </article>
                                     <article className='s2_eth-description-p'>
-                                        <p className='s2_eth-p'>+4,67</p>
+                                        <p className='s2_eth-p'>$ {cotizaciones}</p>
                                     </article>  
                                 </section>
                                 
@@ -193,24 +211,50 @@ function Screen_2() {
                                 <img className='s2_eth-img' src={LogoEthereum} alt="Imagen logo ethereum"/>
                             </section>
                         </motion.div>
+                        {isAuthenticated &&
+                            <a href="/perfil/invertirdinero">
+                                    <motion.div className='s2_cards-size '
+                                    variants={variantRightColum2}
+                                    initial="offscreen"
+                                    animate="onscreen"
+                                >
+                                    <section className='s2_cards-left'>
+                                        <article className='s2_cards-title'>
+                                            <h1 className='s2_cards-h1'>INVERTI AHORA</h1>
+                                        </article>
+                                        <article className='s2_cards-description'>
+                                            <h2 className='s2_cards-h2'>Que el dinero trabaje por vos <br/> <br/>Rendimientos de la última semana</h2>
+                                        </article>
+                                    </section>
+                                    <section className='s2_cards-right'>
+                                        <img className='s2_inv-img' src={LogoCohete} alt="Imagen logo cohete"/>
+                                    </section>
+                                </motion.div>
+                            </a>
+                        }
+
+                        {!isAuthenticated &&
+                            <div onClick={() => {loginWithRedirect()}}>
+                                    <motion.div className='s2_cards-size '
+                                    variants={variantRightColum2}
+                                    initial="offscreen"
+                                    animate="onscreen"
+                                >
+                                    <section className='s2_cards-left'>
+                                        <article className='s2_cards-title'>
+                                            <h1 className='s2_cards-h1'>INVERTI AHORA</h1>
+                                        </article>
+                                        <article className='s2_cards-description'>
+                                            <h2 className='s2_cards-h2'>Que el dinero trabaje por vos <br/> <br/>Rendimientos de la última semana</h2>
+                                        </article>
+                                    </section>
+                                    <section className='s2_cards-right'>
+                                        <img className='s2_inv-img' src={LogoCohete} alt="Imagen logo cohete"/>
+                                    </section>
+                                </motion.div>
+                            </div>
+                        }
                         
-                        <motion.div className='s2_cards-size '
-                            variants={variantRightColum2}
-                            initial="offscreen"
-                            animate="onscreen"
-                        >
-                            <section className='s2_cards-left'>
-                                <article className='s2_cards-title'>
-                                    <h1 className='s2_cards-h1'>INVERTI AHORA</h1>
-                                </article>
-                                <article className='s2_cards-description'>
-                                    <h2 className='s2_cards-h2'>Que el dinero trabaje por vos <br/> <br/>Rendimientos de la última semana</h2>
-                                </article>
-                            </section>
-                            <section className='s2_cards-right'>
-                                <img className='s2_inv-img' src={LogoCohete} alt="Imagen logo cohete"/>
-                            </section>
-                        </motion.div>
 
                         <motion.div className='s2_cards-size '
                             variants={variantRightColum3}
@@ -252,4 +296,4 @@ function Screen_2() {
     )
 }
 
-export default Screen_2
+export default Screen_2s

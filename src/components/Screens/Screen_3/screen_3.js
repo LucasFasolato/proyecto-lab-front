@@ -127,7 +127,7 @@ const variantTitle= {
         }
     }
   return (
-    <div className='s3_size'>
+    <div className='s3_size' id='s3'>
         <section className='s3_titles'>
             <motion.h2 className='s3_h2'
                 variants={variantTitle}

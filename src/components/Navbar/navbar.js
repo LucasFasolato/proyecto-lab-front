@@ -36,15 +36,21 @@ function Navbar() {
                 <>
                     <section className='nav_links' onClick={() => {navigate("/home");setActivation(false)}}>
                         <ul>
-                            <li className='links_text' onClick={() => {navigate("/home");setActivation(false)}}>
-                                Productos
-                            </li>
-                            <li className='links_text' onClick={() => {navigate("/home");setActivation(false)}}>
+                            <a href='#s4'>
+                                <li className='links_text' onClick={() => {navigate("/home");setActivation(false)}}>
+                                    Quienes somos
+                                </li>
+                            </a>
+                            <a href='#s3'>
+                                <li className='links_text' onClick={() => {setActivation(false)}}>
                                 Servicios
-                            </li>
-                            <li className='links_text' onClick={() => {navigate("/home");setActivation(false)}}>
-                                Contacto
-                            </li>
+                                </li>
+                            </a>
+                            <a href='https://linktr.ee/lucasfasolato' target='_blank'>
+                                <li className='links_text' onClick={() => {setActivation(false)}}>
+                                    Contacto
+                                </li>
+                            </a>
                         </ul>
                     </section>
                     <section className='nav_buttons'>

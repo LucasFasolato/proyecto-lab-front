@@ -16,11 +16,11 @@ function Box_queOfrecemos({res}) {
       <section className='description_sp'>
           <p>{res.content}</p>
       </section>
-      <section className='button_sp'>
+      {/* <section className='button_sp'>
         <button>
           OBTENER MÁS INFORMACIÓN
         </button>
-      </section>
+      </section> */}
     </div>
   )
 }

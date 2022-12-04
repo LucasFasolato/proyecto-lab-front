@@ -18,7 +18,11 @@ function Screen_5() {
             <section className='s5_c2'>
                 <article className='s5_container-text'>
                     <p className='s5_text'>
-                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in which don't look slightly believable.AThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in which don't look slightly believable, but the majority have suffered alteration in which don't look slightly believable.
+                        Actualmente las inversiones en criptomonedas son una inversión extraordinaria. Con conocimiento y experiencia en el tema y en 
+                        el mercado, se pueden sacar grandes beneficios de ls volatilidad diaria que presentan los precios de las criptomonedas a día de hoy. En un 
+                        mercado de constante baja (últimos 12 meses), puede ser muy rentable invertir. Si hay una correcta detección de los picos, los
+                        cuales presentan gran diferencia diaria, se pueden ganar grandes cantidades de dinero. Por esa razón contamos con un equipo de 
+                        expertos en inversiones y criptomonedas para ofrecerle un servicio con rendimiento diario asegurado.
                     </p>
                 </article>
             </section> 

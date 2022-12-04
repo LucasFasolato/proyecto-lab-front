@@ -54,7 +54,7 @@ const variantImage2= {
   }
 };
   return (
-    <div className='s4_size'>
+    <div className='s4_size' id='s4'>
         <section className='s4_c'>
           <section className='s4_titles'>
               <h2 className='s4_h2'>Sobre nosotros</h2>
@@ -67,11 +67,11 @@ const variantImage2= {
                   Banco Austral surge como una propuesta innovadora para el manejo cuentas bancarias y portfolios de inversión. Teniendo al cliente como prioridad buscamos generar un servicio práctico, completo y funcional que le permita a los usuarios tomar decisiones, poder informarse y todo el tiempo tener control de su dinero. 
                 </p>
               </article>
-              <article className='s4_container-button'>
+              {/* <article className='s4_container-button'>
                 <button className='s4_button'>
                   LEER MÁS
                 </button>
-              </article>
+              </article> */}
             </section>
             
             <section className='s4_container-garantia'>
