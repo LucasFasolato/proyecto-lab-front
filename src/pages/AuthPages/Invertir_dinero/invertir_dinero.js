@@ -9,6 +9,7 @@ import TableCripto from './TableCripto';
 function Invertir_dinero({token}) {
     const accionesEjemplo = ["Tesla TSLA, Google GOOG, Apple AAPL, Amazon AMZN"]
 
+    let [total, setTotal] = useState(0);
     let [color, setColor] = useState("#3b6ce1");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [cargandoCotizaciones, setCargandoCotizaciones] = useState(false)
@@ -16,6 +17,10 @@ function Invertir_dinero({token}) {
     const navigate = useNavigate();
     const [user, setUser] = useState({});
     const [cargandoUser, setCargandoUser] = useState(false);
+    const [cantidadPagina2, setCantidadPagina2] = useState(7);
+    const [nroPagina2, setNroPagina2] = useState(0);
+    const [Portfolio, setPortfolio] = useState(false)
+    const [cargandoPortfolio, setCargandoPortfolio] = useState(false)
 
 
     useEffect(() => {
@@ -24,6 +29,15 @@ function Invertir_dinero({token}) {
             setCargandoUser(false);
             setUser(res)
             console.log(res)
+        })
+    }, [])
+    
+    useEffect(() => {
+        setCargandoPortfolio(true)
+        httpGet(`auth/instrumentos/portfolio?nroPag=${nroPagina2}&pageSize=${cantidadPagina2}`).then(res => {
+            setCargandoPortfolio(false);
+            setPortfolio(res)
+            calcularTotal(res)
         })
     }, [])
 
@@ -50,6 +64,18 @@ function Invertir_dinero({token}) {
             setCargandoCotizaciones(false)
         })
     }, [])
+
+    function calcularTotal (res) {
+        res.forEach(port => {{
+            let intcant = parseFloat(port.actualQuaintity,10);
+            let intprecio = parseFloat(port.currentPrice,10);
+                if(port.result > 0) {
+                    setTotal(total + intprecio * intcant);
+                }
+                console.log(total)
+        }})
+    }
+    
 
   return (
             <div className='container_inv_dinero'>
@@ -84,7 +110,7 @@ function Invertir_dinero({token}) {
                                                 size={10}/>
                                         </div>
                                         :
-                                        <>$ -</>}
+                                        <>$ {total}</>}
                                     </h1>
                                 </div>
                             </div>

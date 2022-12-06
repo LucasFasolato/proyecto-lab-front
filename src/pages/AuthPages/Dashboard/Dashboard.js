@@ -11,6 +11,7 @@ import {
 import {useAuth0} from "@auth0/auth0-react";
 
 function Dashboard() {
+    let [total, setTotal] = useState(0);
     let [color, setColor] = useState("#3b6ce1");
     const navigate = useNavigate();
     const [transferencias, setTransferencias] = useState(null)
@@ -22,6 +23,11 @@ function Dashboard() {
     const [cargandoUser, setCargandoUser] = useState(false);
     const {isAuthenticated} = useAuth0()
     const myDiv = document.getElementById("column-2-right-actividad-content")
+    const [Portfolio, setPortfolio] = useState([])
+    const [cargandoPortfolio, setCargandoPortfolio] = useState(false)
+    const [cantidadPagina2, setCantidadPagina2] = useState(7);
+    const [nroPagina2, setNroPagina2] = useState(0);
+
 
     const onScroll = () => {
         // console.log(Math.round(myDiv.scrollHeight - myDiv.scrollTop));
@@ -42,6 +48,15 @@ function Dashboard() {
         }
 
     }
+
+    useEffect(() => {
+        setCargandoPortfolio(true)
+        httpGet(`auth/instrumentos/portfolio?nroPag=${nroPagina2}&pageSize=${cantidadPagina2}`).then(res => {
+            setCargandoPortfolio(false);
+            setPortfolio(res)
+            calcularTotal(res)
+        })
+    }, [])
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -71,6 +86,19 @@ function Dashboard() {
     function tipoTransf(transf) {
         return transf.emisor.userId == user.userId ? "emisor" : "receptor";
     }
+    function calcularTotal (res) {
+        res.forEach(port => {{
+            let intcant = parseFloat(port.actualQuaintity,10);
+            let intprecio = parseFloat(port.currentPrice,10);
+                if(port.result > 0) {
+                    setTotal(total + intprecio * intcant);
+                }
+                console.log(total)
+        }})
+    }
+    
+        
+
     var dateObj = new Date();
     var month = dateObj.getUTCMonth() + 1; //months from 1-12
     var day = dateObj.getUTCDate();
@@ -116,7 +144,7 @@ function Dashboard() {
                                     </div>
                                     <div className='column-2-left-fondos-inv-right'>
                                         <p className='column-2-left-fondos-inv-p'>Invertido</p>
-                                        <p className='column-2-left-fondos-inv-p'>$ 0</p>
+                                        <p className='column-2-left-fondos-inv-p2'>$ {total}</p>
                                     </div>
 
                                 </div>

@@ -8,6 +8,7 @@ import {CircleLoader, ClipLoader, PropagateLoader, PuffLoader, BeatLoader} from 
 import {useNavigate} from "react-router-dom";
 
 function Portfolio({token}) {
+    let [total, setTotal] = useState(0);
     const navigate = useNavigate()
     let [color, setColor] = useState("#3b6ce1");
     const [Portfolio, setPortfolio] = useState(false)
@@ -32,8 +33,21 @@ function Portfolio({token}) {
             setCargandoPortfolio(false);
             setPortfolio(res)
             console.log(res)
+            calcularTotal(res)
         })
     }, [])
+
+    function calcularTotal (res) {
+      res.forEach(port => {{
+          let intcant = parseFloat(port.actualQuaintity,10);
+          let intprecio = parseFloat(port.currentPrice,10);
+              if(port.result > 0) {
+                  setTotal(total + intprecio * intcant);
+              }
+              console.log(total)
+      }})
+  }
+  
 
     function showPortfolio () {
       return (
@@ -100,6 +114,13 @@ function Portfolio({token}) {
               </Thead>
               <Tbody>
                 {showPortfolio()}
+                <Th> </Th>
+                <Th> </Th>
+                <Th> </Th>
+                <Th> </Th>
+                <Th>TOTAL</Th>
+                <Td>{total.toFixed(2)}</Td>
+                      
               </Tbody>
             </Table>
         </div>

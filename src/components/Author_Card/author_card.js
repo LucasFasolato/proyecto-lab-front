@@ -5,7 +5,7 @@ import imgMariano from './../../imgs/fotoMariano.jpeg'
 
 function Author_card({res}) {
   var src = (res.name == 'Lucas') ? imgLucas : imgMariano;
-  var href = (res.name == 'Lucas') ? 'https://linktr.ee/lucasfasolato' : '';
+  var href = (res.name == 'Lucas') ? 'https://linktr.ee/lucasfasolato' : 'https://linktr.ee/marianompereyra';
   return (
     <div className='author_card-size'>
         <a href={href} target='_blank'>
