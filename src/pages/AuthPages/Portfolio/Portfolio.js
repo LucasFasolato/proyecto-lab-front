@@ -67,10 +67,10 @@ function Portfolio({token}) {
                       return (
                         <Tr>
                           <Td>{port.symbol}</Td>
-                          <Td>{port.actualQuaintity}</Td>
-                          <Td>{port.avgBuyingPrice}</Td>
-                          <Td>{port.currentPrice}</Td>
-                          <Td className="colorgreen">{port.result}</Td>
+                          <Td>${port.actualQuaintity}</Td>
+                          <Td>${port.avgBuyingPrice}</Td>
+                          <Td>${port.currentPrice}</Td>
+                          <Td className="colorgreen">${port.result}</Td>
                           <Td><button onClick={() => navigate("/perfil/venderaccion/" + port.symbol + "/" + port.actualQuaintity) }>Vender</button></Td>
                         </Tr>
                       )
@@ -80,9 +80,9 @@ function Portfolio({token}) {
                         <Tr>
                           <Td>{port.symbol}</Td>
                           <Td>{port.actualQuaintity}</Td>
-                          <Td>{port.avgBuyingPrice}</Td>
-                          <Td>{port.currentPrice}</Td>
-                          <Td className="colorred">{port.result}</Td>
+                          <Td>${port.avgBuyingPrice}</Td>
+                          <Td>${port.currentPrice}</Td>
+                          <Td className="colorred">${port.result}</Td>
                           <Td><button onClick={() => navigate("/perfil/venderaccion/" + port.symbol + "/" + port.actualQuaintity) }>Vender</button></Td>
                         </Tr>
                       )
@@ -92,9 +92,9 @@ function Portfolio({token}) {
                     <Tr>
                       <Td>{port.symbol}</Td>
                       <Td>{port.actualQuaintity}</Td>
-                      <Td>{port.avgBuyingPrice}</Td>
-                      <Td>{port.currentPrice}</Td>
-                      <Td className="colorblack">{port.result}</Td>
+                      <Td>${port.avgBuyingPrice}</Td>
+                      <Td>${port.currentPrice}</Td>
+                      <Td className="colorblack">${port.result}</Td>
                       <Td><button>Vender</button></Td>
                     </Tr>
                   )
@@ -103,6 +103,18 @@ function Portfolio({token}) {
           </>
         )
     }
+
+    if (cargandoPortfolio) {
+        return (
+                <div className="responsiveTable bgcolor">
+                    <div className="dashboard-porterencias-loading">
+                        <BeatLoader color={color} loading={cargandoPortfolio} size={10}/>
+                    </div>
+                </div>
+
+        )
+    }
+
     return (
         <div className="responsiveTable bgcolor">
             <Table className="table">
@@ -118,14 +130,19 @@ function Portfolio({token}) {
               </Thead>
               <Tbody>
                 {showPortfolio()}
-                <Th> </Th>
-                <Th> </Th>
-                <Th> </Th>
-                <Th> </Th>
-                <Th>TOTAL</Th>
-                <Td>{total.toFixed(2)}</Td>
+                  <Tr>
+                      <Th> </Th>
+                      <Th> </Th>
+                      <Th> </Th>
+
+                      <Th>TOTAL TENENCIAS</Th>
+                      <Td>${total.toFixed(2)}</Td>
+                      <Th> </Th>
+                  </Tr>
+
                       
               </Tbody>
+
             </Table>
         </div>
             

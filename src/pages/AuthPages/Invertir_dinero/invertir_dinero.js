@@ -133,7 +133,12 @@ function Invertir_dinero({token}) {
                 </div>
                 <div className='container_right'>
                     {cargandoCotizaciones &&
-                    <p>spiner</p>
+                     <div className="spinner_div">
+                         <BeatLoader
+                             color={color} loading={cargandoCotizaciones}
+                             size={10}/>
+
+                     </div>
                     }
                     {!cargandoCotizaciones &&
                     <TableCripto cotizaciones={cotizaciones}/>

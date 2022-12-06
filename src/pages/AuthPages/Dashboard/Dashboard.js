@@ -59,10 +59,12 @@ function Dashboard() {
     }, [])
 
     useEffect(() => {
+        setCargandoUser(true)
         if (isAuthenticated) {
             httpGet("auth/users/me").then(res => {
                 setUser(res)
                 console.log(res)
+                setCargandoUser(false)
             })
         }
 
@@ -123,7 +125,7 @@ function Dashboard() {
                                             {cargandoUser ?
                                                 <div className="dashboard-fondo-loading">
                                                     <BeatLoader
-                                                        color={color} loading={cargandoTransferencias}
+                                                        color={color} loading={cargandoUser}
                                                         size={10}/>
                                                 </div>
                                                 :

@@ -10,14 +10,14 @@ function TableCripto ({cotizaciones}) {
     return (
         <div className="table_size">
             <div className="table_firstrow">
-                <h2 className="column">Name/Symbol</h2>
-                <h2 className="column">Price</h2>
-                <h2 className="column lastcolumn">Variation lt</h2>
+                <h2 className="column">Nombre/Symbol</h2>
+                <h2 className="column">Precio</h2>
+                <h2 className="column lastcolumn">Comprar</h2>
             </div>
             {cotizaciones.map(cotizacion => {
                 return (<div className="table_row">
                     <h2 className="column">{cotizacion.symbol}</h2>
-                    <h2 className="column">{cotizacion.price}</h2>
+                    <h2 className="column">${cotizacion.price}</h2>
                     <div className="column lastcolumn"><button  onClick={() => navigate("/perfil/compraraccion/"+cotizacion.symbol)}>Comprar</button></div>
                 </div>)
             })}
