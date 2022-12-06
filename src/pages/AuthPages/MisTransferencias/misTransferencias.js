@@ -80,6 +80,8 @@ function MisTransferencias(props) {
                                                     mailEmisor={transf.emisor.mail}
                                                     mailReceptor={transf.receptor.mail}
                                                     tipo={tipoTransf(transf)}
+                                                    avatarEmisor={transf.emisor.avatar}
+                                                    avatarReceptor={transf.receptor.avatar}
                             />
                         </div>
                     )

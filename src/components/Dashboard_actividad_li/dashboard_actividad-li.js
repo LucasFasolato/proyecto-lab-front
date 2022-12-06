@@ -2,7 +2,7 @@ import React from 'react'
 import './dashboard_actividad_li.css'
 import {formatDate, makeAvatarUrl} from "../../utils/helpers";
 
-function Dashboard_actividad_li({cantidad, mailReceptor, mailEmisor, tipo, fecha}) {
+function Dashboard_actividad_li({cantidad, mailReceptor, mailEmisor, tipo, fecha, avatarEmisor, avatarReceptor}) {
     const profilePicOwner = () => {
         if (tipo == "emisor") {
             return mailReceptor
@@ -10,10 +10,12 @@ function Dashboard_actividad_li({cantidad, mailReceptor, mailEmisor, tipo, fecha
             return mailEmisor
         }
     }
+
   return (
     <div className='dashboard_actividad_li-size'>
         <div className='dashboard_actividad_li-img'>
-            <img src={makeAvatarUrl(profilePicOwner())} className='dashboard_actividad_li-img-size'/>
+
+            <img src={tipo === "emisor" ? avatarReceptor : avatarEmisor} className='dashboard_actividad_li-img-size'/>
         </div>
         <div className='dashboard_actividad_li-datos'>
             <h3 className='dashboard_actividad_li-datos-h3'>
