@@ -29,7 +29,7 @@ function DatosUSer({isLoggedIn, setIsLoggedIn}) {
             <section className='datosuser_column-2-content'>
                 <section className='datosuser_column-2-user'>
                     <div className='datosuser_column-2-user-img'>
-                        <img src={!cargandoUser ? makeAvatarUrl(user.mail) : placeholder} className='datosuser_column-2-user-img-size'/>
+                        <img src={!cargandoUser ? user.avatar : placeholder} className='datosuser_column-2-user-img-size'/>
                     </div>
                     <div className='datosuser_column-2-user-data'>
                         <h3 className='datosuser_column-2-user-h3'>{cargandoUser ? <></> : <><span className='datosuser_column-2-user-span'>USERNAME</span>: {user.username}</>}</h3>

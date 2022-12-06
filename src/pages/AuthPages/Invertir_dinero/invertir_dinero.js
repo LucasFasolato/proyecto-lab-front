@@ -17,7 +17,7 @@ function Invertir_dinero({token}) {
     const navigate = useNavigate();
     const [user, setUser] = useState({});
     const [cargandoUser, setCargandoUser] = useState(false);
-    const [cantidadPagina2, setCantidadPagina2] = useState(7);
+    const [cantidadPagina2, setCantidadPagina2] = useState(70);
     const [nroPagina2, setNroPagina2] = useState(0);
     const [Portfolio, setPortfolio] = useState(false)
     const [cargandoPortfolio, setCargandoPortfolio] = useState(false)
@@ -66,18 +66,22 @@ function Invertir_dinero({token}) {
     }, [])
 
     function calcularTotal (res) {
+        let total = 0;
         res.forEach(port => {{
             let intcant = parseFloat(port.actualQuaintity,10);
             let intprecio = parseFloat(port.currentPrice,10);
-                if(port.result > 0) {
-                    setTotal(total + intprecio * intcant);
-                }
-                console.log(total)
-        }})
-    }
-    
+            if(port.result) {
+                total += intprecio * intcant
 
-  return (
+            }
+            console.log(total)
+        }})
+        setTotal(total)
+    }
+
+
+
+    return (
             <div className='container_inv_dinero'>
                 <div className='container_left'>
                     <div className='container_dinero_disp'>

@@ -25,7 +25,7 @@ function Dashboard() {
     const myDiv = document.getElementById("column-2-right-actividad-content")
     const [Portfolio, setPortfolio] = useState([])
     const [cargandoPortfolio, setCargandoPortfolio] = useState(false)
-    const [cantidadPagina2, setCantidadPagina2] = useState(7);
+    const [cantidadPagina2, setCantidadPagina2] = useState(70);
     const [nroPagina2, setNroPagina2] = useState(0);
 
 
@@ -77,24 +77,27 @@ function Dashboard() {
 
     }, [])
 
-    let handlePdfRequest = (e) => {
-        httpGet("auth/transfer/export/pdf", true).then(res => {
-            window.download(res)
-        })
-    }
+    // let handlePdfRequest = (e) => {
+    //     httpGet("auth/transfer/export/pdf", true).then(res => {
+    //         window.download(res)
+    //     })
+    // }
 
     function tipoTransf(transf) {
         return transf.emisor.userId == user.userId ? "emisor" : "receptor";
     }
     function calcularTotal (res) {
+        let total = 0;
         res.forEach(port => {{
             let intcant = parseFloat(port.actualQuaintity,10);
             let intprecio = parseFloat(port.currentPrice,10);
-                if(port.result > 0) {
-                    setTotal(total + intprecio * intcant);
+                if(port.result) {
+                    total += intprecio * intcant
+
                 }
                 console.log(total)
         }})
+        setTotal(total)
     }
     
         
@@ -175,8 +178,10 @@ function Dashboard() {
                                     <p className='column-2-left-reportesaldo-left-p'>Reporte saldo al {newdate}</p>
                                 </div>
                                 <div className='column-2-left-reportesaldo-right'>
-                                    <button onClick={handlePdfRequest} className='column-2-left-reportesaldo-right-bttn'>
-                                        Pedir reporte</button>
+                                    <a href={"https://bancoaustralback.systems/api/auth/transfer/export/pdf/" + user.username} >
+                                        <button className='column-2-left-reportesaldo-right-bttn'>
+                                            Pedir reporte</button></a>
+
                                 </div>
                             </div>
                         </section>

@@ -15,7 +15,7 @@ function Portfolio({token}) {
     const [cargandoPortfolio, setCargandoPortfolio] = useState(false)
     const [user, setUser] = useState({});
     const [cargandoUser, setCargandoUser] = useState(false);
-    const [cantidadPagina, setCantidadPagina] = useState(7);
+    const [cantidadPagina, setCantidadPagina] = useState(70);
     const [nroPagina, setNroPagina] = useState(0);
 
     useEffect(() => {
@@ -38,16 +38,20 @@ function Portfolio({token}) {
     }, [])
 
     function calcularTotal (res) {
-      res.forEach(port => {{
-          let intcant = parseFloat(port.actualQuaintity,10);
-          let intprecio = parseFloat(port.currentPrice,10);
-              if(port.result > 0) {
-                  setTotal(total + intprecio * intcant);
-              }
-              console.log(total)
-      }})
-  }
-  
+        let total = 0;
+        res.forEach(port => {{
+            let intcant = parseFloat(port.actualQuaintity,10);
+            let intprecio = parseFloat(port.currentPrice,10);
+            if(port.result) {
+                total += intprecio * intcant
+
+            }
+            console.log(total)
+        }})
+        setTotal(total)
+    }
+
+
 
     function showPortfolio () {
       return (
