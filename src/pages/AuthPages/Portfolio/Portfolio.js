@@ -5,8 +5,10 @@ import {httpGet} from "../../../utils/httpFunctions";
 import './Portfolio.css'
 import './../../../../node_modules/react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import {CircleLoader, ClipLoader, PropagateLoader, PuffLoader, BeatLoader} from "react-spinners";
+import {useNavigate} from "react-router-dom";
 
 function Portfolio({token}) {
+    const navigate = useNavigate()
     let [color, setColor] = useState("#3b6ce1");
     const [Portfolio, setPortfolio] = useState(false)
     const [cargandoPortfolio, setCargandoPortfolio] = useState(false)
@@ -51,7 +53,7 @@ function Portfolio({token}) {
                           <Td>{port.avgBuyingPrice}</Td>
                           <Td>{port.currentPrice}</Td>
                           <Td className="colorgreen">{port.result}</Td>
-                          <Td><button>Vender</button></Td>
+                          <Td><button onClick={() => navigate("/perfil/venderaccion/" + port.symbol + "/" + port.actualQuaintity) }>Vender</button></Td>
                         </Tr>
                       )
                     }
@@ -63,7 +65,7 @@ function Portfolio({token}) {
                           <Td>{port.avgBuyingPrice}</Td>
                           <Td>{port.currentPrice}</Td>
                           <Td className="colorred">{port.result}</Td>
-                          <Td><button>Vender</button></Td>
+                          <Td><button onClick={() => navigate("/perfil/venderaccion/" + port.symbol + "/" + port.actualQuaintity) }>Vender</button></Td>
                         </Tr>
                       )
                     }

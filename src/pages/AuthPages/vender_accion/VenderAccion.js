@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react'
-import './comprarAccion.css'
+import './venderAccion.css'
 import {useNavigate, useParams} from "react-router-dom";
 import {httpPut, httpGet, httpPost} from "../../../utils/httpFunctions";
 import {CircleLoader, ClimbingBoxLoader, ClipLoader, PropagateLoader} from "react-spinners";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function ComprarAccion({token}) {
+function VenderAccion({token}) {
 
     let [color, setColor] = useState("#3b6ce1");
 
@@ -14,13 +14,14 @@ function ComprarAccion({token}) {
     const [symbolName, setSymbolName] = useState("")
     const [instrumentPrice, setInstrumentPrice] = useState(null)
     const [cantidadInstrumentos, setCantidadInstrumentos] = useState("")
-    const [comprarAccion, setComprarAccion] = useState(false);
+    const [venderAccion, setvenderAccion] = useState(false);
     const navigate = useNavigate();
     const [user, setUser] = useState({});
     const [cargandoUser, setCargandoUser] = useState(true);
     const [cargandoInstrumento, setCargandoInstrumento] = useState(false)
     const [symbolNameError, setSymbolNameError] = useState("")
     const {paramSymbol} = useParams()
+    const {paramQty} = useParams()
 
     useEffect(() => {
         if (paramSymbol) {
@@ -64,13 +65,12 @@ function ComprarAccion({token}) {
     const handleCantidadInput = (e) => {
         setCantidadInstrumentos(e.target.value)
         setMontoTotal((e.target.value * instrumentPrice).toFixed(2))
-
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         if (symbolNameError !== "" || symbolName == "") {
-            toast.error("Debe ingresar un símbolo antes de comprar", {
+            toast.error("Debe ingresar un símbolo antes de vender", {
                 position: toast.POSITION.BOTTOM_RIGHT,
             });
             setSymbolNameError("No puede estar vacío")
@@ -79,15 +79,15 @@ function ComprarAccion({token}) {
 
         const data = {
             symbol: symbolName,
-            quantity: cantidadInstrumentos
+            quantity: cantidadInstrumentos * -1
         }
         httpPost("auth/instrumentos/buy",data).then(res => {
-            toast.success("Compra realizada existosamente", {
+            toast.success("Venta realizada existosamente", {
                 position: toast.POSITION.BOTTOM_RIGHT,
             });
             navigate("/perfil/portfolio")
         }).catch(err => {
-            toast.error("Hubo un error en la compra", {
+            toast.error("Hubo un error en la venta", {
                 position: toast.POSITION.BOTTOM_RIGHT,
             });
         })
@@ -104,23 +104,23 @@ function ComprarAccion({token}) {
         toast.error("Contraseña no modificada", {
             position: toast.POSITION.BOTTOM_RIGHT,
         });
-        setTimeout(() => setComprarAccion(false) , 100);
+        setTimeout(() => setvenderAccion(false) , 100);
     }
 
 
     return (
-        <div className='comprarAccion_column-2'>
-            <section className='comprarAccion_column-2-content'>
-                <section className='comprarAccion_column-2-transf'>
-                    {!comprarAccion &&
-                    <form className='comprarAccion_column-2-transf-form' onSubmit={handleSubmit}>
-                        <div className='comprarAccion_column-2-transf-info'>
-                            <div className='comprarAccion_column-2-transf-title'>
-                                <h2 className='comprarAccion_column-2-transf-h2'>Comprar instrumento</h2>
+        <div className='venderAccion_column-2'>
+            <section className='venderAccion_column-2-content'>
+                <section className='venderAccion_column-2-transf'>
+                    {!venderAccion &&
+                    <form className='venderAccion_column-2-transf-form' onSubmit={handleSubmit}>
+                        <div className='venderAccion_column-2-transf-info'>
+                            <div className='venderAccion_column-2-transf-title'>
+                                <h2 className='venderAccion_column-2-transf-h2'>Vender instrumento</h2>
                             </div>
-                            <div className='comprarAccion_column-2-transf-dest'>
-                                <h3 className='comprarAccion_column-2-transf-h3'>Ingrese el simbolo del instrumento</h3>
-                                <div className='comprarACcion_isntrumento_spinner_container'>
+                            <div className='venderAccion_column-2-transf-dest'>
+                                <h3 className='venderAccion_column-2-transf-h3'>Símbolo del instrumento a vender</h3>
+                                <div className='venderAccion_isntrumento_spinner_container'>
                                     <ClipLoader
                                         color={color}
                                         loading={cargandoInstrumento}
@@ -131,21 +131,22 @@ function ComprarAccion({token}) {
                                 </div>
 
                                 {!cargandoInstrumento &&
-                                    <><input type="text" className='comprarAccion_column-2-transf-input' placeholder='Ej: TSLA'
-                                             value={symbolName} onChange={(e) => setSymbolName(e.target.value)}
-                                             onBlur={(e) => lostFocusHandler(e)}/>
-                                        <p className='comprarAccion_error_msg'>{symbolNameError}</p></>
+                                    <><input type="text" className='venderAccion_column-2-transf-input' placeholder='Ej: TSLA'
+                                             value={symbolName}
+                                             disabled={true} />
+                                        <p className='venderAccion_error_msg'>{symbolNameError}</p></>
                                 }
                             </div>
-                            <div className='comprarAccion_column-2-transf-monto'>
-                                <h3 className='comprarAccion_column-2-transf-h3'>Cantidad </h3>
-                                <input type="text" className='comprarAccion_column-2-transf-input' placeholder='Ej: 10'
+                            <div className='venderAccion_column-2-transf-monto'>
+                                <h3 className='venderAccion_column-2-transf-h3'>Cantidad a vender (en cartera: {paramQty})</h3>
+                                <input type="number" className='venderAccion_column-2-transf-input' placeholder='Ej: 10'
+                                       max={paramQty}
                                        value={cantidadInstrumentos} onChange={(e) => handleCantidadInput(e)}/>
                             </div>
 
-                            <div className='comprarAccion_column-2-transf-monto'>
-                                <h3 className='comprarAccion_column-2-transf-h3'>Valor actual</h3>
-                                <div className='comprarACcion_isntrumento_spinner_container'>
+                            <div className='venderAccion_column-2-transf-monto'>
+                                <h3 className='venderAccion_column-2-transf-h3'>Valor actual</h3>
+                                <div className='venderAccion_isntrumento_spinner_container'>
                                     <ClipLoader
                                         color={color}
                                         loading={cargandoInstrumento}
@@ -155,32 +156,32 @@ function ComprarAccion({token}) {
                                     />
                                 </div>
                                 {!cargandoInstrumento &&
-                                <><input disabled={true} type="text" className='comprarAccion_column-2-transf-input'
+                                <><input disabled={true} type="text" className='venderAccion_column-2-transf-input'
                                          value={instrumentPrice} /></>
                                 }
                             </div>
-                            <div className='comprarAccion_column-2-transf-monto'>
-                                <h3 className='comprarAccion_column-2-transf-h3'>Monto total </h3>
-                                <input disabled={true} type="text" className='comprarAccion_column-2-transf-input'
+                            <div className='venderAccion_column-2-transf-monto'>
+                                <h3 className='venderAccion_column-2-transf-h3'>Monto total venta </h3>
+                                <input disabled={true} type="text" className='venderAccion_column-2-transf-input'
                                        value={montoTotal}/>
                             </div>
                         </div>
-                        <div className='comprarAccion_column-2-bttn-enviar'>
-                            <button type='submit' className='comprarAccion_column-2-bttn-enviar-bttn'>COMPRAR</button>
+                        <div className='venderAccion_column-2-bttn-enviar'>
+                            <button type='submit' className='venderAccion_column-2-bttn-enviar-bttn'>VENDER</button>
                         </div>
                     </form>
                     }
-                    {comprarAccion &&
-                    <div className='comprarAccion_column-2-transf-modificando'>
-                        <h2 className='comprarAccion_column-2-transf-h2'>Modificando contraseña...</h2>
-                        <div className="comprarAccion-loading">
-                            <PropagateLoader color={color} loading={comprarAccion} size={10}/>
+                    {venderAccion &&
+                    <div className='venderAccion_column-2-transf-modificando'>
+                        <h2 className='venderAccion_column-2-transf-h2'>Modificando contraseña...</h2>
+                        <div className="venderAccion-loading">
+                            <PropagateLoader color={color} loading={venderAccion} size={10}/>
                         </div>
                     </div>
                     }
                 </section>
                 <div className='transferirdinero_column-2-bttn-volver'>
-                    <button className='transferirdinero_column-2-bttn-volver-bttn' onClick={() => navigate("/perfil/invertirdinero")}>VOLVER</button>
+                    <button className='transferirdinero_column-2-bttn-volver-bttn' onClick={() => navigate("/perfil/portfolio")}>VOLVER</button>
                 </div>
             </section>
         </div>
@@ -188,4 +189,4 @@ function ComprarAccion({token}) {
     )
 }
 
-export default ComprarAccion
+export default VenderAccion
