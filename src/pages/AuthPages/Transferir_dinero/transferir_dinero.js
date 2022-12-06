@@ -32,7 +32,19 @@ function Transferir_dinero({token}) {
     const createTransfer = (e) => {
         setEnviandoTransferencia(true);
         e.preventDefault()
-        httpPost('auth/transfer', {cantidadTransferida: Number(cantidad), cbuReceptor: destinatario})
+        const data = {}
+        data.cantidadTransferida = Number(cantidad)
+
+        // Si el destinatario es un string numerico es un CBU, si tiene letras es un ALIAS
+        if (/^\d+$/.test(destinatario)) {
+            data.cbuReceptor = destinatario
+            data.alias = null
+        } else {
+
+            data.alias = destinatario
+            data.cbuReceptor = null
+        }
+        httpPost('auth/transfer', data)
             .then((res) => {
                 setEnviandoTransferencia(false)
                 console.log(res)
@@ -41,8 +53,6 @@ function Transferir_dinero({token}) {
                 } else {
                     rechazada()
                 }
-
-
             }).catch((err)=> alert.show('No se ha podido realizar la transferencia.',{
                 type: "error"
             }))
