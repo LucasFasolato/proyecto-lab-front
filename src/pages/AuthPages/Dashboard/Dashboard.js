@@ -144,7 +144,7 @@ function Dashboard() {
                                     </div>
                                     <div className='column-2-left-fondos-inv-right'>
                                         <p className='column-2-left-fondos-inv-p'>Invertido</p>
-                                        <p className='column-2-left-fondos-inv-p2'>$ {total}</p>
+                                        <p className='column-2-left-fondos-inv-p2'>$ {total.toFixed(2)}</p>
                                     </div>
 
                                 </div>

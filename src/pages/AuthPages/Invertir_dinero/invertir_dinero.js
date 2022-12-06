@@ -110,7 +110,7 @@ function Invertir_dinero({token}) {
                                                 size={10}/>
                                         </div>
                                         :
-                                        <>$ {total}</>}
+                                        <>$ {total.toFixed(2)}</>}
                                     </h1>
                                 </div>
                             </div>
